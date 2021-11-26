@@ -34,6 +34,10 @@ Route::get('product-category/{slug}/', [\App\Http\Controllers\Frontend\IndexCont
 //Product detail
 Route::get('product-detail/{slug}/', [\App\Http\Controllers\Frontend\IndexController::class, 'productDetail'])->name('product.detail');
 
+//Product Review
+Route::post('product-review/{slug}', [\App\Http\Controllers\ProductReviewController::class, 'productReview'])->name('product.review');
+
+
 //Blog
 Route::get('/blog', [\App\Http\Controllers\Frontend\IndexController::class, 'blogDetail'])->name('blog.detail');
 

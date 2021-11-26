@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsersTable extends Migration
+class CreateSellersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('sellers', function (Blueprint $table) {
             $table->id();
             $table->string('full_name');
             $table->string('username')->nullable();
@@ -22,22 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('photo')->nullable();
             $table->string('phone')->nullable();
-            // $table->enum('role', ['admin', 'seller', 'customer'])->default('customer');
             $table->enum('status', ['active', 'inactive'])->default('active');
-
-            $table->string('country')->nullable();
-            $table->string('city')->nullable();
-            $table->string('postcode')->nullable();
-            $table->string('state')->nullable();
-            $table->string('address')->nullable();
-
-
-            $table->string('n_country')->nullable();
-            $table->string('n_city')->nullable();
-            $table->string('n_postcode')->nullable();
-            $table->string('n_state')->nullable();
-            $table->string('n_address')->nullable();
-            $table->rememberToken();
             $table->timestamps();
         });
     }
@@ -49,6 +34,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('sellers');
     }
 }
