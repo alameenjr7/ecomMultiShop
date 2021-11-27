@@ -14,7 +14,7 @@
                     </h2>
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item">
-                            <a href="index.html">
+                            <a href="{{route('admin')}}">
                                 <i class="icon-home"></i>
                             </a>
                         </li>
@@ -42,30 +42,8 @@
             <div class="col-lg-3 col-md-6">
                 <div class="card overflowhidden">
                     <div class="body">
-                        <h3>109 <i class="float-right icon-basket-loaded"></i></h3>
-                        <span>Products Sold</span>
-                    </div>
-                    <div class="progress progress-xs progress-transparent custom-color-blue m-b-0">
-                        <div class="progress-bar" data-transitiongoal="64"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="card overflowhidden">
-                    <div class="body">
-                        <h3>235 <i class="float-right icon-user-follow"></i></h3>
-                        <span>New Customers</span>
-                    </div>
-                    <div class="progress progress-xs progress-transparent custom-color-purple m-b-0">
-                        <div class="progress-bar" data-transitiongoal="67"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="card overflowhidden">
-                    <div class="body">
-                        <h3>2,318 <i class="float-right fa fa-dollar"></i></h3>
-                        <span>Net Profit</span>
+                        <h3>{{App\Models\Product::where('status','active')->where('created_at','>',now()->subDays(30)->endOfDay())->count()}} <i class="float-right icon-briefcase"></i></h3>
+                        <span>Total products: {{App\Models\Product::where('status','active')->count()}}</span>
                     </div>
                     <div class="progress progress-xs progress-transparent custom-color-yellow m-b-0">
                         <div class="progress-bar" data-transitiongoal="89"></div>
@@ -75,8 +53,30 @@
             <div class="col-lg-3 col-md-6">
                 <div class="card overflowhidden">
                     <div class="body">
-                        <h3>68% <i class="float-right icon-heart"></i></h3>
-                        <span>Customer Satisfaction</span>
+                        <h3>{{App\Models\User::where('status','active')->where('created_at','>',now()->subDays(30)->endOfDay())->count()}} <i class="float-right icon-user-follow"></i></h3>
+                        <span>New Customers (last month)</span>
+                    </div>
+                    <div class="progress progress-xs progress-transparent custom-color-purple m-b-0">
+                        <div class="progress-bar" data-transitiongoal="67"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="card overflowhidden">
+                    <div class="body">
+                        <h3>{{number_format(App\Models\Product::where('status','active')->sum('offer_price'),2)}} <i class="float-right fa fa-dollar"></i></h3>
+                        <span>Total product active</span>
+                    </div>
+                    <div class="progress progress-xs progress-transparent custom-color-blue m-b-0">
+                        <div class="progress-bar" data-transitiongoal="64"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="card overflowhidden">
+                    <div class="body">
+                        <h3>{{App\Models\Order::where('payment_status','paid')->sum('total_amount')}}<i class="float-right fa fa-money"></i></h3>
+                        <span>Total Product Paid</span>
                     </div>
                     <div class="progress progress-xs progress-transparent custom-color-green m-b-0">
                         <div class="progress-bar" data-transitiongoal="68"></div>
@@ -149,7 +149,7 @@
             <div class="col-sm-12 col-md-12 col-lg-12">
                 <div class="card">
                     <div class="header">
-                        <h2>Recent Transactions</h2>
+                        <h2>Recent Orders</h2>
                         <ul class="header-dropdown">
                             <li class="dropdown">
                                 <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
@@ -168,59 +168,57 @@
                                     <tr>
                                         <th style="width:60px;">#</th>
                                         <th>Name</th>
-                                        <th>Item</th>
-                                        <th>Address</th>
-                                        <th>Quantity</th>
-                                        <th>Status</th>
+                                        <th>Email</th>
+                                        <th>Payment Methode</th>
+                                        <th>Condition</th>
+                                        <th>Order Status</th>
                                         <th>Amount</th>
+                                        <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @forelse ($orders as $order)
                                     <tr>
-                                        <td><img src="http://via.placeholder.com/60x50" alt="Product img"></td>
-                                        <td>Hossein</td>
-                                        <td>IPONE-7</td>
-                                        <td>Porterfield 508 Virginia Street Chicago, IL 60653</td>
-                                        <td>3</td>
-                                        <td><span class="badge badge-success">DONE</span></td>
-                                        <td>$ 356</td>
+                                            <td>{{$order->order_number}}</td>
+                                            <td>{{$order->first_name}} {{$order->last_name}}</td>
+                                            <td>{{$order->email}}</td>
+                                            <td>{{$order->payment_method=="cod" ? "Cash on Delivery" : $order->payment_method}}</td>
+                                            @if ($order->condition=='pending')
+                                                <td><span class="badge badge-info">{{ucfirst($order->condition)}}</span></td>
+                                            @elseif ($order->condition=='processing')
+                                                <td><span class="badge badge-warning">{{ucfirst($order->condition)}}</span></td>
+                                            @elseif ($order->condition=='delivered')
+                                                <td><span class="badge badge-primary">{{ucfirst($order->condition)}}</span></td>
+                                            @else
+                                                <td><span class="badge badge-danger">{{ucfirst($order->condition)}}</span></td>
+                                            @endif
+                                            @if ($order->payment_status=='paid')
+                                                <td><span class="badge badge-success">{{ucfirst($order->payment_status)}}</span></td>
+                                            @else
+                                                <td><span class="badge badge-danger">{{ucfirst($order->payment_status)}}</span></td>
+                                            @endif
+                                            <td>$ {{number_format($order->total_amount,2)}}</td>
+                                            <td style="text-align: center;">
+                                                <div class="row">
+                                                    <a href="javascript:void(0);" data-toggle="modal" data-target="#userID{{$order->id}}" data-toggle="tooltip"
+                                                        title="view" class="float-left ml-1 btn btn-sm btn-outline-secondary"
+                                                        data-placement="bottom"><i class="icon-eye"></i>
+                                                    </a>
+                                                    <form class="float-left ml-1"
+                                                        action="{{route('user.destroy', $order->id)}}" method="post">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <a href="" data-toggle="tooltip" title="delete"
+                                                            data-id="{{$order->id}}"
+                                                            class="dltBtn btn btn-sm btn-outline-danger"
+                                                            data-placement="bottom"><i class="icon-trash"></i></a>
+                                                    </form>
+                                                </div>
+                                            </td>
                                     </tr>
-                                    <tr>
-                                        <td><img src="http://via.placeholder.com/60x50" alt="Product img"></td>
-                                        <td>Camara</td>
-                                        <td>NOKIA-8</td>
-                                        <td>2595 Pearlman Avenue Sudbury, MA 01776 </td>
-                                        <td>3</td>
-                                        <td><span class="badge badge-default">Delivered</span></td>
-                                        <td>$ 542</td>
-                                    </tr>
-                                    <tr>
-                                        <td><img src="http://via.placeholder.com/60x50" alt="Product img"></td>
-                                        <td>Maryam</td>
-                                        <td>NOKIA-456</td>
-                                        <td>Porterfield 508 Virginia Street Chicago, IL 60653</td>
-                                        <td>4</td>
-                                        <td><span class="badge badge-success">DONE</span></td>
-                                        <td>$ 231</td>
-                                    </tr>
-                                    <tr>
-                                        <td><img src="http://via.placeholder.com/60x50" alt="Product img"></td>
-                                        <td>Micheal</td>
-                                        <td>SAMSANG PRO</td>
-                                        <td>508 Virginia Street Chicago, IL 60653</td>
-                                        <td>1</td>
-                                        <td><span class="badge badge-success">DONE</span></td>
-                                        <td>$ 601</td>
-                                    </tr>
-                                    <tr>
-                                        <td><img src="http://via.placeholder.com/60x50" alt="Product img"></td>
-                                        <td>Frank</td>
-                                        <td>NOKIA-456</td>
-                                        <td>1516 Holt Street West Palm Beach, FL 33401</td>
-                                        <td>13</td>
-                                        <td><span class="badge badge-warning">PENDING</span></td>
-                                        <td>$ 128</td>
-                                    </tr>
+                                    @empty
+                                        <td colspan="6" class="text-center">No orders</td>
+                                    @endforelse
                                 </tbody>
                             </table>
                         </div>

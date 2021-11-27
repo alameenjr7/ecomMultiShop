@@ -99,7 +99,7 @@
                                 </div>
 
                                 <div class="row col-lg-12 col-md-12 col-sm-12">
-                                    <div class="col-md-6">
+                                    {{-- <div class="col-md-6">
                                         <label for="">Role <span class="text-danger">*</span></label>
                                         <select name="role" class="form-control show-tick">
                                             <option value="">-- Role --</option>
@@ -110,7 +110,7 @@
                                             <option value="vendor" {{$user->role=='vendor' ? 'selected' : '' }}>Vendor
                                             </option>
                                         </select>
-                                    </div>
+                                    </div> --}}
                                     <div class="col-md-6">
                                         <label for="">Status <span class="text-danger">*</span></label>
                                         <select name="status" class="form-control show-tick">

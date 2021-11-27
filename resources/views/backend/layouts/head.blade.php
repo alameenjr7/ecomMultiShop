@@ -24,6 +24,7 @@
 {{--summernote--}}
 <link rel="stylesheet" href="{{asset('backend/assets/vendor/summernote/summernote.css')}}">
 
+<link rel="stylesheet" href="{{asset('frontend/assets/styles/style.css')}}">
 <!-- MAIN CSS -->
 <link rel="stylesheet" href="{{asset('backend/assets/css/main.css')}}">
 <link rel="stylesheet" href="{{asset('backend/assets/css/color_skins.css')}}">

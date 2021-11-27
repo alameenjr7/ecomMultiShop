@@ -15,7 +15,6 @@ class Order extends Model
         'order_number',
         'sub_total',
         'total_amount',
-        'quantity',
         'delivery_charge',
         'coupon',
         'first_name',
@@ -44,4 +43,8 @@ class Order extends Model
         'payment_method',
         'condition',
     ];
+
+    public function products(){
+        return $this->belongsToMany(Product::class, 'product_orders')->withPivot('quantity');
+    }
 }

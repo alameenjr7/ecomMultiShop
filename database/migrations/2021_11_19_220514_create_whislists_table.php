@@ -24,9 +24,9 @@ class CreateWhislistsTable extends Migration
             $table->float('amount')->default(0);
 
 
-            $table->foreign('product_id')->references('id')->on('brands')->onDelete('cascade');
-            $table->foreign('user_id')->references('id')->on('categories')->onDelete('cascade');
-            $table->foreign('cat_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreign('product_id')->references('id')->on('brands')->onDelete('CASCADE');
+            $table->foreign('user_id')->references('id')->on('categories')->onDelete('CASCADE');
+            $table->foreign('cat_id')->references('id')->on('categories')->onDelete('CASCADE');
             $table->timestamps();
         });
     }

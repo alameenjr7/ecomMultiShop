@@ -35,8 +35,8 @@ class CreateProductsTable extends Migration
             $table->unsignedBigInteger('vendor_id')->nullable();
             $table->enum('status',['active','inactive'])->default('active');
 
-            $table->foreign('brand_id')->references('id')->on('brands')->onDelete('cascade');
-            $table->foreign('cat_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreign('brand_id')->references('id')->on('brands')->onDelete('CASCADE');
+            $table->foreign('cat_id')->references('id')->on('categories')->onDelete('CASCADE');
             $table->foreign('child_cat_id')->references('id')->on('categories')->onDelete('SET NULL');
             $table->foreign('vendor_id')->references('id')->on('users')->onDelete('SET NULL');
             $table->timestamps();

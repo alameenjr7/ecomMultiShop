@@ -4,7 +4,7 @@
             <img src="{{asset('backend/assets/images/user.jpg')}}" class="rounded-circle user-photo" alt="User Profile Picture">
             <div class="dropdown">
                 <span>Welcome,</span>
-                <a href="javascript:void(0);" class="dropdown-toggle user-name" data-toggle="dropdown"><strong>Al Ameen JR</strong></a>
+                <a href="javascript:void(0);" class="dropdown-toggle user-name" data-toggle="dropdown"><strong>{{ucfirst(auth('admin')->user()->full_name)}}</strong></a>
                 <ul class="dropdown-menu dropdown-menu-right account">
                     <li><a href="page-profile2.html"><i class="icon-user"></i>My Profile</a></li>
                     <li><a href="app-inbox.html"><i class="icon-envelope-open"></i>Messages</a></li>
@@ -87,8 +87,8 @@
                         <li class="desactive">
                             <a href="#Dashboard" class="has-arrow"><i class="icon-layers"></i> <span>Order Managements</span></a>
                             <ul>
-                                {{-- <li><a href="{{route('order.index')}}">All Orders</a></li>
-                                <li><a href="{{route('order.create')}}">Add Order</a></li> --}}
+                                <li><a href="{{route('order.index')}}">All Orders</a></li>
+                                {{-- <li><a href="{{route('order.create')}}">Add Order</a></li> --}}
                             </ul>
                         </li>
                         <li class="desactive">
@@ -295,22 +295,6 @@
                         <input type="text" class="form-control" placeholder="Search...">
                     </div>
                 </form>
-                <ul class="list-unstyled question">
-                    <li class="menu-heading">HOW-TO</li>
-                    <li><a href="javascript:void(0);">How to Create Campaign</a></li>
-                    <li><a href="javascript:void(0);">Boost Your Sales</a></li>
-                    <li><a href="javascript:void(0);">Website Analytics</a></li>
-                    <li class="menu-heading">ACCOUNT</li>
-                    <li><a href="javascript:void(0);">Cearet New Account</a></li>
-                    <li><a href="javascript:void(0);">Change Password?</a></li>
-                    <li><a href="javascript:void(0);">Privacy &amp; Policy</a></li>
-                    <li class="menu-heading">BILLING</li>
-                    <li><a href="javascript:void(0);">Payment info</a></li>
-                    <li><a href="javascript:void(0);">Auto-Renewal</a></li>
-                    <li class="menu-button m-t-30">
-                        <a href="javascript:void(0);" class="btn btn-primary"><i class="icon-question"></i> Need Help?</a>
-                    </li>
-                </ul>
             </div>
         </div>
     </div>

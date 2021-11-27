@@ -7,15 +7,16 @@
         <div class="block-header">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12">
-                    <h2><a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth"><i
-                                class="fa fa-arrow-left"></i></a>Users : <a class="btn btn-sm btn-outline-secondary"
-                            href="{{route('user.create')}}"><i class="icon-plus"></i> Create User</a> </h2>
+                    <h2><a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth">
+                        <i class="fa fa-arrow-left"></i>
+                        </a>Users
+                    </h2>
                     <ul class="float-left breadcrumb">
                         <li class="breadcrumb-item"><a href="{{route('admin')}}"><i class="icon-home"></i></a></li>
-                        <li class="breadcrumb-item">User</li>
+                        <li class="breadcrumb-item">Order</li>
                         {{-- <li class="breadcrumb-item active">Add users</li> --}}
                     </ul>
-                    <p class="float-right"> Total Users : {{\App\Models\User::count()}}</p>
+                    <p class="float-right"> Total Orders : {{\App\Models\Order::count()}}</p>
                 </div>
             </div>
         </div>
@@ -28,155 +29,70 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="header">
-                            <h2><strong>User</strong> List</h2>
+                            <h2><strong>Order</strong> List</h2>
                         </div>
                         <div class="body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered table-striped table-hover dataTable js-exportable">
-                                    <thead>
-                                        <tr>
-                                            <th>S. N.</th>
-                                            <th>Photo</th>
-                                            <th>Full name</th>
-                                            <th>Email</th>
-                                            <th>Phone</th>
-                                            <th>Role</th>
-                                            <th>Status</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>S. N.</th>
-                                            <th>Photo</th>
-                                            <th>Full name</th>
-                                            <th>Email</th>
-                                            <th>Phone</th>
-                                            <th>Role</th>
-                                            <th>Status</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                        @foreach ($users as $item)
-                                        <tr>
-                                            <th>{{$loop->iteration}}</th>
-                                            <td>
-                                                <img src="{{$item->photo }}" alt="user photo" style="border-radius: 50%; max-height: 50px; max-width: 50px;" class="profile">
-                                                {{-- ? \Storage::url($item->photo) : asset('assets/no-image.png') --}}
-                                            </td>
-                                            <td>{{$item->full_name}}</td>
-                                            <td>{{$item->email}}</td>
-                                            <td>{{$item->phone}}</td>
-                                            <td>{{$item->role}}</td>
-
-                                            <td>
-                                                <input type="checkbox" name="toogle" value="{{$item->id}}"
-                                                    data-toggle="switchbutton" {{$item->status=='active' ? 'checked' :
-                                                ''}}
-                                                data-onlabel="active" data-offlabel="inactive" data-size="sm"
-                                                data-onstyle="success" data-offstyle="danger">
-                                            </td>
-                                            <td>
-                                                <div class="row">
-                                                    <a href="javascript:void(0);" data-toggle="modal" data-target="#userID{{$item->id}}" data-toggle="tooltip"
-                                                        title="view" class="float-left btn btn-sm btn-outline-secondary"
-                                                        data-placement="bottom"><i class="icon-eye"></i>
-                                                    </a>
-                                                    <a href="{{route('user.edit', $item->id)}}" data-toggle="tooltip"
-                                                        title="edit" class="float-left ml-1 btn btn-sm btn-outline-warning"
-                                                        data-placement="bottom"><i class="icon-note"></i></a>
-                                                    <form class="float-left ml-1"
-                                                        action="{{route('user.destroy', $item->id)}}" method="post">
-                                                        @csrf
-                                                        @method('delete')
-                                                        <a href="" data-toggle="tooltip" title="delete"
-                                                            data-id="{{$item->id}}"
-                                                            class="dltBtn btn btn-sm btn-outline-danger"
-                                                            data-placement="bottom"><i class="icon-trash"></i></a>
-                                                    </form>
-                                                </div>
-                                            </td>
-                                            {{-- modal --}}
-                                            <!-- Modal -->
-                                            <div class="modal fade" id="userID{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                                    @php
-                                                        $user=\App\Models\User::where('id',$item->id)->first();
-                                                    @endphp
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            {{-- <h5 class="modal-title" id="exampleModalLongTitle">{{$user->full_name}}</h5> --}}
-                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                        </div>
-                                                        <div class="text-center">
-                                                            <img src="{{$user->photo}}" style="max-height: 70px; max-width: 70px; border-radius: 50%; margin: 2% 0" alt="">
-
-                                                            <div class="text-center">
-                                                                {{-- <strong>Username:</strong> --}}
-                                                                <p>{{$user->username}}</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="modal-body">
+                                {{-- <table class="table table-bordered table-striped table-hover dataTable js-exportable"> --}}
+                                    <div class="table-responsive">
+                                        <table class="table table-hover table-striped ">
+                                            <thead class="thead-dark">
+                                                <tr>
+                                                    <th style="width:60px;">#</th>
+                                                    <th>Name</th>
+                                                    <th>Email</th>
+                                                    <th>Payment Methode</th>
+                                                    <th>Condition</th>
+                                                    <th>Order Status</th>
+                                                    <th>Amount</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @forelse ($orders as $order)
+                                                <tr>
+                                                        <td>{{$order->order_number}}</td>
+                                                        <td>{{$order->first_name}} {{$order->last_name}}</td>
+                                                        <td>{{$order->email}}</td>
+                                                        <td>{{$order->payment_method=="cod" ? "Cash on Delivery" : $order->payment_method}}</td>
+                                                        @if ($order->condition=='pending')
+                                                            <td><span class="badge badge-info">{{ucfirst($order->condition)}}</span></td>
+                                                        @elseif ($order->condition=='processing')
+                                                            <td><span class="badge badge-warning">{{ucfirst($order->condition)}}</span></td>
+                                                        @elseif ($order->condition=='delivered')
+                                                            <td><span class="badge badge-primary">{{ucfirst($order->condition)}}</span></td>
+                                                        @else
+                                                            <td><span class="badge badge-danger">{{ucfirst($order->condition)}}</span></td>
+                                                        @endif
+                                                        @if ($order->payment_status=='paid')
+                                                            <td><span class="badge badge-success">{{ucfirst($order->payment_status)}}</span></td>
+                                                        @else
+                                                            <td><span class="badge badge-danger">{{ucfirst($order->payment_status)}}</span></td>
+                                                        @endif
+                                                        <td>$ {{number_format($order->total_amount,2)}}</td>
+                                                        <td style="text-align: center;">
                                                             <div class="row">
-                                                                <div class="col-md-6">
-                                                                    <strong>Full Name:</strong>
-                                                                    <p>{{$user->full_name}}</p>
-                                                                </div>
-
-                                                                <div class="col-md-6">
-                                                                    <strong>Email:</strong>
-                                                                    <p>{{$user->email}}</p>
-                                                                </div>
+                                                                <a href="{{route('order.show',$order->id)}}" data-target="#userID{{$order->id}}" data-toggle="tooltip"
+                                                                    title="view" class="float-left ml-1 btn btn-sm btn-outline-secondary"
+                                                                    data-placement="bottom"><i class="icon-eye"></i>
+                                                                </a>
+                                                                <form class="float-left ml-1"
+                                                                    action="{{route('order.destroy', $order->id)}}" method="post">
+                                                                    @csrf
+                                                                    @method('delete')
+                                                                    <a href="" data-toggle="tooltip" title="delete"
+                                                                        data-id="{{$order->id}}"
+                                                                        class="dltBtn btn btn-sm btn-outline-danger"
+                                                                        data-placement="bottom"><i class="icon-trash"></i></a>
+                                                                </form>
                                                             </div>
-
-                                                            <div class="row">
-                                                                <div class="col-md-6">
-                                                                    <strong>Phone N.:</strong>
-                                                                    <p>{{$user->phone}}</p>
-                                                                </div>
-                                                                <div class="col-md-6">
-                                                                    <strong>Address:</strong>
-                                                                    <p>{{$user->address}}</p>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="row">
-                                                                <div class="col-md-6">
-                                                                    <strong>Role:</strong>
-                                                                    @if($user->role=='admin')
-                                                                        <p class="badge badge-success">{{$user->role}}</p>
-                                                                    @elseif ($user->role=='vendor')
-                                                                        <p class="badge badge-warning">{{$user->role}}</p>
-                                                                    @else
-                                                                        <p class="badge badge-primary">{{$user->role}}</p>
-                                                                    @endif
-                                                                </div>
-                                                                <div class="col-md-6">
-                                                                    <strong>Status:</strong>
-                                                                    @if ($user->status=='active')
-                                                                        <p class="badge badge-success">{{$user->status}}</p>
-                                                                    @else
-                                                                        <p class="badge badge-danger">{{$user->status}}</p>
-                                                                    @endif
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                            <button type="button" class="btn btn-primary" data-dismiss="modal">Save Change</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
+                                                        </td>
+                                                </tr>
+                                                @empty
+                                                    <td colspan="6" class="text-center">No orders</td>
+                                                @endforelse
+                                            </tbody>
+                                        </table>
+                                    </div>
                         </div>
                     </div>
                 </div>

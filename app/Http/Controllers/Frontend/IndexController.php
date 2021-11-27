@@ -266,10 +266,10 @@ class IndexController extends Controller
             Session::put('user',$request->email);
 
             if(Session::get('url.intended')){
-                return Redirect::to(Session::get('url.intended'));
+                return Redirect::to(Session::get('url.intended'))->with('success','Successfully login');
             }
             else{
-                return redirect()->route('home')->with('success','Successfully login');
+                return redirect()->route('home');
             }
         }
         else{
@@ -291,7 +291,7 @@ class IndexController extends Controller
         Session::put('user',$data['email']);
         Auth::login($check);
         if($check){
-            return redirect()->route('home')->with('success', 'Successfully register');
+            return redirect()->route('home')->with('success', 'Successfully registered');
         }
         else{
             return back()->with('error',['Please check your credentials']);
@@ -313,7 +313,7 @@ class IndexController extends Controller
     {
         Session::forget('user');
         Auth::logout();
-        return \redirect()->home()->with('success','Successfully');
+        return \redirect()->home()->with('success','Successfully logout');
     }
 
     //user dashboard
@@ -327,7 +327,7 @@ class IndexController extends Controller
     public function userOrder()
     {
         $user=Auth::user();
-        // dd($user);
+
         return view('frontend.user.order',compact('user'));
     }
 

@@ -57,7 +57,7 @@ class UserController extends Controller
             'phone'=>'string|nullable',
             'address'=>'string|nullable',
             'photo'=>'required',
-            'role'=>'required|in:admin,vendor,customer',
+            // 'role'=>'required|in:admin,vendor,customer',
             'status'=>'required|in:active,inactive',
         ]);
         $data=$request->all();
@@ -123,7 +123,7 @@ class UserController extends Controller
                 'phone'=>'string|nullable',
                 'address'=>'string|nullable',
                 'photo'=>'required',
-                'role'=>'required|in:admin,vendor,customer',
+                // 'role'=>'required|in:admin,vendor,customer',
                 'status'=>'required|in:active,inactive',
             ]);
 

@@ -22,8 +22,8 @@ class CreateProductReviewsTable extends Migration
             $table->enum('reason',['quality','value','design','price','others'])->default('others');
             $table->enum('status',['pending','accept','reject'])->default('pending');
 
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('CASCADE');
             $table->timestamps();
         });
     }

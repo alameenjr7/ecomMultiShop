@@ -25,7 +25,6 @@
 <script src="{{asset('backend/assets/bundles/mainscripts.bundle.js')}}"></script>
 <script src="{{asset('backend/assets/js/index8.js')}}"></script>
 
-
 @yield('scripts')
 
 
