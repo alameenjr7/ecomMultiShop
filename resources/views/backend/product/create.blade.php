@@ -127,7 +127,7 @@
                                         <select id="cat_id" name="cat_id" class="form-control show-tick">
                                             <option value="">-- Categories --</option>
                                             @foreach (\App\Models\Category::where('is_parent',1)->get() as $cat)
-                                                <option value="{{$cat->id}}">{{$cat->title}}</option>
+                                                <option value="{{$cat->id}}">{{ucfirst($cat->title)}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -146,7 +146,7 @@
                                         <select name="brand_id" class="form-control show-tick">
                                             <option value="">-- Brands --</option>
                                             @foreach (\App\Models\Brand::get() as $brand)
-                                                <option value="{{$brand->id}}">{{$brand->title}}</option>
+                                                <option value="{{$brand->id}}">{{ucfirst($brand->title)}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -163,7 +163,7 @@
                                 </div>
 
 
-                                <div class="mt-3 col-lg-12 col-md-12 col-sm-12">
+                                {{-- <div class="mt-3 col-lg-12 col-md-12 col-sm-12">
                                     <label for="">Vendor </label>
                                     <select name="vendor_id" class="form-control show-tick">
                                         <option value="">-- Vendors --</option>
@@ -171,7 +171,7 @@
                                             <option value="{{$vendor->id}}">{{$vendor->full_name}}</option>
                                         @endforeach
                                     </select>
-                                </div>
+                                </div> --}}
 
                                 <div class="mt-3 row col-lg-12 col-md-12 col-sm-12">
                                     <div class="col-md-6">

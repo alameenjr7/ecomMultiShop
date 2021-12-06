@@ -1173,7 +1173,7 @@ textarea:focus,
   right: 15px;
   text-align: center;
   top: 10px;
-  z-index: 9;
+  z-index: 9999999;
   line-height: 28px; }
 
 .quickview_body {

@@ -12,15 +12,18 @@ Route::post('user/register', [\App\Http\Controllers\Frontend\IndexController::cl
 
 Route::get('/', [\App\Http\Controllers\Frontend\IndexController::class, 'home'])->name('home');
 
+//About US
+Route::get('/about-us', [\App\Http\Controllers\Frontend\IndexController::class, 'aboutUs'])->name('about.us');
+
 //Product category
 Route::get('product-category/{slug}/', [\App\Http\Controllers\Frontend\IndexController::class, 'productCategory'])->name('product.category');
 
 //Product detail
 Route::get('product-detail/{slug}/', [\App\Http\Controllers\Frontend\IndexController::class, 'productDetail'])->name('product.detail');
+Route::get('product-detail/{id}/', [\App\Http\Controllers\Frontend\IndexController::class, 'productDetail1'])->name('product.detail1');
 
 //Product Review
 Route::post('product-review/{slug}', [\App\Http\Controllers\ProductReviewController::class, 'productReview'])->name('product.review');
-
 
 //Blog
 Route::get('/blog', [\App\Http\Controllers\Frontend\IndexController::class, 'blogDetail'])->name('blog.detail');
@@ -45,6 +48,15 @@ Route::get('wishlist', [\App\Http\Controllers\Frontend\WishlistController::class
 Route::post('wishlist/store', [\App\Http\Controllers\Frontend\WishlistController::class, 'wishlistStore'])->name('wishlist.store');
 Route::post('wishlist/move-to-cart', [\App\Http\Controllers\Frontend\WishlistController::class, 'moveToCart'])->name('wishlist.move.cart');
 Route::post('wishlist/delete', [\App\Http\Controllers\Frontend\WishlistController::class, 'wishlistDelete'])->name('wishlist.delete');
+
+
+//Compare section
+Route::get('compare', [\App\Http\Controllers\Frontend\CompareController::class, 'compare'])->name('compare');
+Route::post('compare/store', [\App\Http\Controllers\Frontend\CompareController::class, 'compareStore'])->name('compare.store');
+Route::post('compare/move-to-cart', [\App\Http\Controllers\Frontend\CompareController::class, 'moveToCart'])->name('compare.move.cart');
+Route::post('compare/move-to-wishlist', [\App\Http\Controllers\Frontend\CompareController::class, 'moveToWishlist'])->name('compare.move.wishlist');
+Route::post('compare/delete', [\App\Http\Controllers\Frontend\CompareController::class, 'compareDelete'])->name('compare.delete');
+
 
 //Checkout section
 Route::get('checkout1', [\App\Http\Controllers\Frontend\CheckoutController::class, 'checkout1'])->name('checkout1')->middleware('user');

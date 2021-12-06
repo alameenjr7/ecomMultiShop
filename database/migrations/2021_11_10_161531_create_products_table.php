@@ -25,6 +25,7 @@ class CreateProductsTable extends Migration
             $table->unsignedBigInteger('brand_id');
             $table->unsignedBigInteger('cat_id');
             $table->unsignedBigInteger('child_cat_id')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->string('photo');
             $table->string('size_guide')->nullable();
             $table->float('price')->default(0);
@@ -32,13 +33,15 @@ class CreateProductsTable extends Migration
             $table->float('discount')->default(0);
             $table->enum('size',['S','M','L','XL'])->default('S');
             $table->enum('conditions',['new','popular','winter'])->default('new');
-            $table->unsignedBigInteger('vendor_id')->nullable();
             $table->enum('status',['active','inactive'])->default('active');
+            $table->string('added_by')->nullable();
+            $table->boolean('is_featured')->default(0)->nullable();
+            $table->string('url')->nullable();
 
             $table->foreign('brand_id')->references('id')->on('brands')->onDelete('CASCADE');
             $table->foreign('cat_id')->references('id')->on('categories')->onDelete('CASCADE');
             $table->foreign('child_cat_id')->references('id')->on('categories')->onDelete('SET NULL');
-            $table->foreign('vendor_id')->references('id')->on('users')->onDelete('SET NULL');
+            // $table->foreign('user_id')->references('id')->on('users')->onDelete('SET NULL');
             $table->timestamps();
         });
     }

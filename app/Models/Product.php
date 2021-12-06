@@ -28,12 +28,19 @@ class Product extends Model
         'discount',
         'size',
         'conditions',
-        'vendor_id',
+        'user_id',
+        'added_by',
+        'is_featured',
+        'url',
         'status',
     ];
 
     public function brand(){
         return $this->belongsTo('App\Models\Brand');
+    }
+
+    public function category(){
+        return $this->belongsTo('App\Models\Category', 'cat_id', 'id');
     }
 
     public function rel_prods(){
@@ -47,5 +54,9 @@ class Product extends Model
 
     public function orders(){
         return $this->belongsToMany(Order::class, 'product_orders')->withPivot('quantity');
+    }
+
+    public function reviews(){
+        return $this->hasMany(ProductReview::class);
     }
 }

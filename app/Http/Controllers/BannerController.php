@@ -50,20 +50,14 @@ class BannerController extends Controller
     {
         $this->validate($request, [
             'title'=>'string|required',
-            'slug'=>'string|required|unique:banners,slug',
+            'slug'=>'string|nullable|unique:banners,slug',
             'description'=>'string|nullable',
             'photo'=>'required',
             'condition'=>'nullable|in:banner,promo',
             'status'=>'nullable|in:active,inactive',
         ]);
         $data=$request->all();
-        // $slug=Str::slug($request->input('title'));
-        // $slug_count=Banner::where('slug', $slug)->count();
-        // if($slug_count>0){
-        //     $slug = time().'-'.$slug;
-        // }
-        // $data['slug']=$slug;
-        // // return $data;
+
         $status=Banner::create($data);
         if($status){
             return redirect()->route('banner.index')->with('success', 'Successfully created banner');
@@ -113,7 +107,7 @@ class BannerController extends Controller
         if($banner){
             $this->validate($request, [
                 'title'=>'string|required',
-                'slug'=>'string|required|exists:banners,slug',
+                'slug'=>'string|nullable|exists:banners,slug',
                 'description'=>'string|nullable',
                 'photo'=>'required',
                 'condition'=>'nullable|in:banner,promo',

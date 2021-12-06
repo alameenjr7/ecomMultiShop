@@ -87,6 +87,17 @@ class OrderController extends Controller
         }
     }
 
+    public function showFacture($id)
+    {
+        $order=Order::find($id);
+        if($order){
+            return view('backend.order.order-facture',compact('order'));
+        }
+        else{
+            abort(404);
+        }
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

@@ -23,7 +23,7 @@
                     <td>
                         <a href="{{route('product.detail',$item->model->slug)}}">{{$item->name}}</a>
                     </td>
-                    <td>${{number_format($item->price,2)}}</td>
+                    <td>{{Helper::currency_converter($item->price)}}</td>
 
                     <td><a href="javascript:void(0);" data-id="{{$item->rowId}}" class="move-to-cart btn btn-primary btn-sm">Add to Cart</a></td>
                 </tr>

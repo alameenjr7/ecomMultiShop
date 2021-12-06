@@ -6,7 +6,7 @@
                     <div class="col-6">
                         <div class="welcome-note">
                             <span class="popover--text" data-toggle="popover" data-content="Welcome to Bigshop ecommerce template."><i class="icofont-info-square"></i></span>
-                            <span class="text">Welcome to Kaay-Deals ecommerce website.</span>
+                            <span class="text">Welcome to {{get_setting('meta_keywords')}}</span>
                         </div>
                     </div>
                     <div class="col-6">
@@ -27,12 +27,23 @@
                             <!-- Currency Dropdown -->
                             <div class="currency-dropdown">
                                 <div class="dropdown">
+                                    @php
+                                        Helper::currency_load();
+                                        $currency_code=session('currency_code');
+                                        $currency_symbol=session('currency_symbol');
+                                        if($currency_symbol==""){
+                                            $system_default_currency_info=session('system_default_currency_info');
+                                            $currency_symbol=$system_default_currency_info->symbol;
+                                            $currency_code=$system_default_currency_info->code;
+                                        }
+                                    @endphp
                                     <a class="btn btn-sm dropdown-toggle" href="#" role="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        $ USD
+                                        {{$currency_symbol}} {{$currency_code}}
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu2">
-                                        <a class="dropdown-item" href="#">€ Euro</a>
-                                        <a class="dropdown-item" href="#">F Cfa</a>
+                                        @foreach (App\Models\Currency::where('status','active')->get() as $currency)
+                                            <a class="dropdown-item" href="javascript:;" onclick="currency_change('{{$currency['code']}}')">{{$currency->symbol}} {{Illuminate\Support\Str::upper($currency->code)}}</a>
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
@@ -49,7 +60,7 @@
                     <nav class="classy-navbar" id="bigshopNav">
 
                         <!-- Nav Brand -->
-                        <a href="{{route('home')}}" class="nav-brand"><img src="{{asset('frontend/assets/img/core-img/logo.png')}}" alt="logo"></a>
+                        <a href="{{route('home')}}" class="nav-brand"><img src="{{asset(get_setting('logo'))}}" alt="logo"></a>
 
                         <!-- Toggler -->
                         <div class="classy-navbar-toggler">
@@ -69,38 +80,10 @@
                                     <li class="active">
                                         <a href="{{route('home')}}">Home</a>
                                     </li>
+                                    <li><a href="{{route('about.us')}}">About Us</a>
+                                    </li>
                                     <li>
                                         <a href="{{route('shop')}}">Shop</a>
-                                    </li>
-                                    <li><a href="#">Pages</a>
-                                        <div class="megamenu">
-                                            <ul class="single-mega cn-col-4">
-                                                <li><a href="about-us.html">- About Us</a></li>
-                                                <li><a href="faq.html">- FAQ</a></li>
-                                                <li><a href="contact.html">- Contact</a></li>
-                                                <li><a href="login.html">- Login &amp; Register</a></li>
-                                                <li><a href="404.html">- 404</a></li>
-                                                <li><a href="500.html">- 500</a></li>
-                                            </ul>
-                                            <ul class="single-mega cn-col-4">
-                                                <li><a href="my-account.html">- Dashboard</a></li>
-                                                <li><a href="order-list.html">- Orders</a></li>
-                                                <li><a href="downloads.html">- Downloads</a></li>
-                                                <li><a href="addresses.html">- Addresses</a></li>
-                                                <li><a href="account-details.html">- Account Details</a></li>
-                                                <li><a href="coming-soon.html">- Coming Soon</a></li>
-                                            </ul>
-                                            <div class="single-mega cn-col-2">
-                                                <div class="megamenu-slides owl-carousel">
-                                                    <a href="shop-grid-left-sidebar.html">
-                                                        <img src="{{asset('frontend/assets/img/bg-img/mega-slide-2.jpg')}}" alt="">
-                                                    </a>
-                                                    <a href="shop-list-left-sidebar.html">
-                                                        <img src="{{asset('frontend/assets/img/bg-img/mega-slide-1.jpg')}}" alt="">
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </li>
                                     <li><a href="{{route('blog.detail')}}">Blog</a>
                                     </li>
@@ -152,16 +135,29 @@
                             </div>
 
                             <!-- Wishlist -->
-                            <div class="wishlist-area">
-                                <a href="{{route('wishlist')}}" class="wishlist-btn" id="wishlist_counter"><i class="icofont-heart"><span class="cart_quantity">{{\Gloudemans\Shoppingcart\Facades\Cart::instance('wishlist')->count()}}</i></a>
+                            <div class="cart-area">
+                                <div class="cart--btn">
+                                    <a href="{{route('wishlist')}}">
+                                        <i class="icofont-heart"></i>
+                                        <span class="cart_quantity" id="wishlist_counter">{{\Gloudemans\Shoppingcart\Facades\Cart::instance('wishlist')->count()}}</span>
+                                    </a>
+                                </div>
                             </div>
-                            {{-- <div class="cart-area">
-                                <div class="cart--btn"><a href="{{route('wishlist')}}" id="wishlist_counter"><i class="icofont-heart"></i><span class="cart_quantity">{{\Gloudemans\Shoppingcart\Facades\Cart::instance('wishlist')->count()}}</span></a></div>
-                            </div>--}}
+                            <div class="cart-area">
+                                <div class="cart--btn">
+                                    <a href="{{route('compare')}}" >
+                                        <i class="icofont-exchange"></i>
+                                        <span class="cart_quantity" id="compare_counter">{{\Gloudemans\Shoppingcart\Facades\Cart::instance('compare')->count()}}</span>
+                                    </a>
+                                </div>
+                            </div>
 
                             <!-- Cart -->
                             <div class="cart-area">
-                                <div class="cart--btn"><i class="icofont-cart"></i> <span class="cart_quantity">{{\Gloudemans\Shoppingcart\Facades\Cart::instance('shopping')->count()}}</span></div>
+                                <div class="cart--btn">
+                                    <i class="icofont-cart"></i>
+                                    <span class="cart_quantity">{{\Gloudemans\Shoppingcart\Facades\Cart::instance('shopping')->count()}}</span>
+                                </div>
 
                                 <!-- Cart Dropdown Content -->
                                 <div class="cart-dropdown-content">
@@ -174,7 +170,7 @@
                                                     </a>
                                                     <div>
                                                         <a href="{{route('product.detail',$item->model->slug)}}">{{$item->name}}</a>
-                                                        <p>{{$item->qty}} x - <span class="price">${{number_format($item->price,2)}}</span></p>
+                                                        <p>{{$item->qty}} x - <span class="price">{{Helper::currency_converter($item->price)}}</span></p>
                                                     </div>
                                                 </div>
                                                 <span class="dropdown-product-remove cart_delete" data-id="{{$item->rowId}}"><i class="icofont-bin"></i></span>
@@ -185,18 +181,18 @@
                                         <ul>
                                             <li>
                                                 <span>Sub Total:</span>
-                                                <span>$ {{\Gloudemans\Shoppingcart\Facades\Cart::subtotal()}}</span>
+                                                <span>{{Helper::currency_converter(\Gloudemans\Shoppingcart\Facades\Cart::subtotal())}}</span>
                                             </li>
                                             {{-- <li>
                                                 <span>Shipping:</span>
-                                                <span>$ {{\Gloudemans\Shoppingcart\Facades\Cart::subtotal()}}</span>
+                                                <span>{{Helper::currency_converter(\Gloudemans\Shoppingcart\Facades\Cart::subtotal())}}</span>
                                             </li> --}}
                                             <li>
                                                 <span>Total:</span>
                                                 @if(session()->has('coupon'))
-                                                    <span>$ {{number_format((float) str_replace(',','',\Gloudemans\Shoppingcart\Facades\Cart::subtotal())-\Illuminate\Support\Facades\Session::get('coupon')['value'],2)}}</span>
+                                                    <span>{{Helper::currency_converter((float) str_replace(',','',\Gloudemans\Shoppingcart\Facades\Cart::subtotal())-\Illuminate\Support\Facades\Session::get('coupon')['value'])}}</span>
                                                 @else
-                                                    <span>$ {{\Gloudemans\Shoppingcart\Facades\Cart::total()}}</span>
+                                                    <span>{{Helper::currency_converter(\Gloudemans\Shoppingcart\Facades\Cart::total())}}</span>
                                                 @endif
                                             </li>
                                         </ul>
@@ -213,12 +209,12 @@
                                 <div class="user-thumbnail">
                                     @auth
                                         @if(auth()->user()->photo)
-                                            <img src="{{auth()->user()->photo}}" alt="">
+                                            <img src="{{auth()->user()->photo}}" alt="user photo">
                                         @else
-                                            <img src="{{Helper::userDefaultImage()}}" alt="">
+                                            <img src="{{Helper::userDefaultImage()}}" alt="default user image">
                                         @endif
                                     @else
-                                        <img src="{{Helper::userDefaultImage()}}" alt="">
+                                        <img src="{{Helper::userDefaultImage()}}" alt="default user image">
                                     @endauth
                                 </div>
                                 <ul class="user-meta-dropdown">

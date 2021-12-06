@@ -25,7 +25,7 @@
                         </li>
                         <li class="breadcrumb-item">User</li>
                     </ul>
-                    <p class="float-right"> Total Users : {{\App\Models\User::count()}}</p>
+                    <p class="float-right"> Total Users : {{$users->count()}}</p>
                 </div>
             </div>
         </div>
@@ -72,7 +72,7 @@
                                         <tr>
                                             <th>{{$loop->iteration}}</th>
                                             <td style="text-align: center;">
-                                                <img src="{{$item->photo }}" alt="user img" style="border-radius: 50%; height: 60px; width: 60px;" class="profile">
+                                                <img src="{{$item->photo ==null ? Helper::userDefaultImage() : asset($item->photo)}}" alt="user img" style="border-radius: 50%; height: 60px; width: 60px;" class="profile">
                                                 {{-- ? \Storage::url($item->photo) : asset('assets/no-image.png') --}}
                                             </td>
                                             <td>{{$item->full_name}}</td>

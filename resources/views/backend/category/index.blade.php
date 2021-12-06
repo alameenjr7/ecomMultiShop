@@ -23,7 +23,7 @@
                         </li>
                         <li class="breadcrumb-item">Category</li>
                     </ul>
-                    <p class="float-right"> Total Categories : {{\App\Models\Category::count()}}</p>
+                    <p class="float-right"> Total Categories : {{$categories->count()}}</p>
                 </div>
             </div>
         </div>
@@ -70,7 +70,7 @@
                                             <td>{{$item->title}}</td>
                                             {{-- <td>{!! html_entity_decode($item->summary) !!}</td> --}}
                                             <td style="text-align: center">
-                                                <img src="{{$item->photo}}" alt="category img" style="height: 60px; width: 60px;">
+                                                <img src="{{$item->photo ==null ? Helper::backDefaultImage() : asset($item->photo)}}" alt="category img" style="height: 60px; width: 60px;">
                                             </td>
                                             <td>
                                                 {{$item->is_parent === 1 ? 'Yes' : 'No'}}

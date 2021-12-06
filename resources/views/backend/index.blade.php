@@ -200,12 +200,12 @@
                                             <td>$ {{number_format($order->total_amount,2)}}</td>
                                             <td style="text-align: center;">
                                                 <div class="row">
-                                                    <a href="javascript:void(0);" data-toggle="modal" data-target="#userID{{$order->id}}" data-toggle="tooltip"
+                                                    <a href="{{route('order.show',$order->id)}}" data-target="#userID{{$order->id}}" data-toggle="tooltip"
                                                         title="view" class="float-left ml-1 btn btn-sm btn-outline-secondary"
                                                         data-placement="bottom"><i class="icon-eye"></i>
                                                     </a>
                                                     <form class="float-left ml-1"
-                                                        action="{{route('user.destroy', $order->id)}}" method="post">
+                                                        action="{{route('order.destroy', $order->id)}}" method="post">
                                                         @csrf
                                                         @method('delete')
                                                         <a href="" data-toggle="tooltip" title="delete"
@@ -318,5 +318,38 @@
 
     </div>
 </div>
+
+@endsection
+
+@section('scripts')
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $('.dltBtn').click(function(e) {
+        var form = $(this).closest('form');
+        var dataID = $(this).data('id');
+        e.preventDefault();
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this imaginary file",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((willDelete)=>{
+            if(willDelete){
+                form.submit();
+                swal("Poof! Your imaginary file has been deleted!", {
+                    icon: "success"
+                });
+            } else {
+                swal("Your imaginary file is safe!");
+            }
+        });
+    });
+</script>
 
 @endsection

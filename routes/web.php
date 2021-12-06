@@ -22,4 +22,9 @@ require __DIR__ . '/frontend.php';
 
 require __DIR__ . '/backend.php';
 
+require __DIR__ . '/seller.php';
+
+
+Route::post('currency_load',[\App\Http\Controllers\CurrencyController::class, 'currencyLoad'])->name('currency.load');
+
 Auth::routes(['register'=>false]);

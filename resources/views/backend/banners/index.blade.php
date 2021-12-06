@@ -23,7 +23,7 @@
                         </li>
                         <li class="breadcrumb-item">Banner</li>
                     </ul>
-                    <p class="float-right"> Total Banners : {{\App\Models\Banner::count()}}</p>
+                    <p class="float-right"> Total Banners : {{$banners->count()}}</p>
                 </div>
             </div>
         </div>
@@ -73,7 +73,7 @@
                                             <td>{{$item->slug}}</td>
                                             <td>{!! html_entity_decode($item->description) !!}</td>
                                             <td style="text-align: center">
-                                                <img src="{{$item->photo}}" alt="banner img"
+                                                <img src="{{$item->photo ==null ? Helper::backDefaultImage() : asset($item->photo)}}" alt="banner img"
                                                 style="height: 60px; width: 60px;">
                                             </td>
                                             <td>

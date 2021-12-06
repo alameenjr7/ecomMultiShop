@@ -25,7 +25,7 @@
     <a class="active" href="{{route('checkout1')}}"><i class="icofont-check-circled"></i> Billing</a>
     <a href="{{route('checkout2')}}"><i class="icofont-check-circled"></i> Shipping</a>
     <a href="{{route('checkout3')}}"><i class="icofont-check-circled"></i> Payment</a>
-    <a href="checkout-5.html"><i class="icofont-check-circled"></i> Review</a>
+    <a href="{{route('checkout4',$user->id)}}"><i class="icofont-check-circled"></i> Review</a>
 </div>
 
 <!-- Checkout Area -->

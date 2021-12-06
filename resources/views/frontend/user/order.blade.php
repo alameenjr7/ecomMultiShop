@@ -58,66 +58,6 @@
                                                 <a href="#" class="m-2 btn btn-primary btn-sm">Pay</a>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <th scope="row">
-                                                #2256
-                                            </th>
-                                            <td>
-                                                28 August 2019
-                                            </td>
-                                            <td>
-                                                Completed
-                                            </td>
-                                            <td>$11</td>
-                                            <td>
-                                                <a href="#" class="m-2 btn btn-primary btn-sm">View</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">
-                                                #2255
-                                            </th>
-                                            <td>
-                                                27 August 2019
-                                            </td>
-                                            <td>
-                                                Completed
-                                            </td>
-                                            <td>$6</td>
-                                            <td>
-                                                <a href="#" class="m-2 btn btn-primary btn-sm">View</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">
-                                                #2254
-                                            </th>
-                                            <td>
-                                                25 August 2019
-                                            </td>
-                                            <td>
-                                                Completed
-                                            </td>
-                                            <td>$17</td>
-                                            <td>
-                                                <a href="#" class="m-2 btn btn-primary btn-sm">View</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">
-                                                #2253
-                                            </th>
-                                            <td>
-                                                22 August 2019
-                                            </td>
-                                            <td>
-                                                Cancelled
-                                            </td>
-                                            <td>$13</td>
-                                            <td>
-                                                <a href="#" class="m-2 btn btn-primary btn-sm">View</a>
-                                            </td>
-                                        </tr>
                                     </tbody>
                                 </table>
                             </div>

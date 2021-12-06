@@ -9,7 +9,7 @@
                 <div class="col-12">
                     <h5>Blog Details</h5>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
                         <li class="breadcrumb-item active">Blog Details</li>
                     </ol>
                 </div>
@@ -26,7 +26,7 @@
                     <!-- Blog Details Area -->
                     <div class="blog-details-area mb-50">
                         <!-- Image -->
-                        <img class="mb-30" src="img/bg-img/blog-3.jpg" alt="blog-img">
+                        <img class="mb-30" src="{{asset('frontend/assets/img/bg-img/blog-3.jpg')}}" alt="blog-img">
 
                         <!-- Blog Title -->
                         <h3 class="mb-30">Top 10 Handbags in 2019</h3>
@@ -49,7 +49,7 @@
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. In architecto rem omnis quia ipsa. Nulla sapiente aut illum error modi, repellendus temporibus non ipsum alias recusandae ex hic veritatis cum.</p>
                             </div>
                             <div class="col-12 col-lg-5">
-                                <img class="mb-3" src="img/bg-img/blog-1.jpg" alt="">
+                                <img class="mb-3" src="{{asset('frontend/assets/img/bg-img/blog-1.jpg')}}" alt="">
                             </div>
                         </div>
 
@@ -59,7 +59,7 @@
 
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias corporis itaque qui expedita eligendi error asperiores tempore voluptates officia. Cum inventore laborum ipsum eum harum? Obcaecati tenetur facere sint officiis voluptate quam quidem magnam quibusdam praesentium asperiores accusantium et sed reprehenderit animi, tempora unde necessitatibus ad ut accusamus repudiandae inventore hic, velit distinctio. Voluptatem, quo, nesciunt. Ipsam ducimus illo et nihil unde, non numquam tenetur est dicta eveniet iusto cum recusandae voluptatem hic tempora ad laborum quasi qui.</p>
 
-                        <img class="mb-3" src="img/bg-img/blog-5.jpg" alt="">
+                        <img class="mb-3" src="{{asset('frontend/assets/img/bg-img/blog-5.jpg')}}" alt="">
 
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est veritatis, aspernatur amet modi et, atque, molestiae impedit facilis non aliquid adipisci perferendis eius quas saepe. Optio sapiente temporibus rerum, est quasi similique voluptatibus officia laudantium ducimus alias, deleniti repellat nesciunt repudiandae autem.</p>
                     </div>
@@ -74,7 +74,7 @@
                                     <div class="clearfix comment-wrapper">
                                         <div class="comment-meta">
                                             <div class="comment-author-img">
-                                                <img class="img-circle" src="img/partner-img/tes-1.png" alt="">
+                                                <img class="img-circle" src="{{asset('frontend/assets/img/partner-img/tes-1.png')}}" alt="">
                                             </div>
                                         </div>
                                         <div class="comment-content">
@@ -88,7 +88,7 @@
                                             <div class="clearfix comment-wrapper">
                                                 <div class="comment-meta">
                                                     <div class="comment-author-img">
-                                                        <img class="img-circle" src="img/partner-img/tes-2.png" alt="">
+                                                        <img class="img-circle" src="{{asset('frontend/assets/img/partner-img/tes-2.png')}}" alt="">
                                                     </div>
                                                 </div>
                                                 <div class="comment-content">
@@ -105,7 +105,7 @@
                                     <div class="clearfix comment-wrapper d-flex">
                                         <div class="comment-meta">
                                             <div class="comment-author-img">
-                                                <img class="img-circle" src="img/partner-img/tes-3.png" alt="">
+                                                <img class="img-circle" src="{{asset('frontend/assets/img/partner-img/tes-3.png')}}" alt="">
                                             </div>
                                         </div>
                                         <div class="comment-content">
@@ -119,7 +119,7 @@
                                             <div class="clearfix comment-wrapper">
                                                 <div class="comment-meta">
                                                     <div class="comment-author-img">
-                                                        <img class="img-circle" src="img/partner-img/tes-2.png" alt="">
+                                                        <img class="img-circle" src="{{asset('frontend/assets/img/partner-img/tes-2.png')}}" alt="">
                                                     </div>
                                                 </div>
                                                 <div class="comment-content">
@@ -186,7 +186,7 @@
                             <!-- Recent Post -->
                             <div class="single_latest_post">
                                 <div class="post-thumbnail">
-                                    <img src="img/bg-img/lp-1.jpg" alt="">
+                                    <img src="{{asset('frontend/assets/img/bg-img/lp-1.jpg')}}" alt="">
                                 </div>
                                 <div class="post-content">
                                     <a href="#">7 Quick Ways to Make a Great Event Successful</a>
@@ -197,7 +197,7 @@
                             <!-- Recent Post -->
                             <div class="single_latest_post">
                                 <div class="post-thumbnail">
-                                    <img src="img/bg-img/lp-2.jpg" alt="">
+                                    <img src="{{asset('frontend/assets/img/bg-img/lp-2.jpg')}}" alt="">
                                 </div>
                                 <div class="post-content">
                                     <a href="#">7 Quick Ways to Make a Great Event Successful</a>
@@ -208,7 +208,7 @@
                             <!-- Recent Post -->
                             <div class="single_latest_post">
                                 <div class="post-thumbnail">
-                                    <img src="img/bg-img/lp-3.jpg" alt="">
+                                    <img src="{{asset('frontend/assets/img/bg-img/lp-3.jpg')}}" alt="">
                                 </div>
                                 <div class="post-content">
                                     <a href="#">7 Quick Ways to Make a Great Event Successful</a>

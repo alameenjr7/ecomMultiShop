@@ -24,14 +24,14 @@
                             <td>
                                 <a href="{{route('product.detail',$item->model->slug)}}">{{$item->name}}</a>
                             </td>
-                            <td>${{$item->price}}</td>
+                            <td>{{Helper::currency_converter($item->price)}}</td>
                             <td>
                                 <div class="quantity">
-                                    <input type="number" data-id="{{$item->rowId}}" class="qty-text" id="qty-input-{{$item->rowId}}" step="1" min="1" max="99" name="quantity" value="{{$item->qty}}">
+                                    <input type="number" data-id="{{$item->rowId}}" class="qty-text" id="qty-input-{{$item->rowId}}" step="1" min="1" max="10" name="quantity" value="{{$item->qty}}">
                                     <input type="hidden" data-id="{{$item->rowId}}" data-product-quantity="{{$item->model->stock}}" id="update-cart-{{$item->rowId}}">
                                 </div>
                             </td>
-                            <td>${{$item->subtotal()}}</td>
+                            <td>{{Helper::currency_converter($item->subtotal())}}</td>
                         </tr>
                     @endforeach
                 </tbody>
@@ -63,12 +63,12 @@
                 <tbody>
                     <tr>
                         <td>Sub Total</td>
-                        <td>$ {{\Gloudemans\Shoppingcart\Facades\Cart::subtotal()}}</td>
+                        <td>{{Helper::currency_converter(\Gloudemans\Shoppingcart\Facades\Cart::subtotal())}}</td>
                     </tr>
                     @if(\Illuminate\Support\Facades\Session::has('coupon'))
                         <tr>
                             <td>Save Amount</td>
-                            <td>$ {{number_format(\Illuminate\Support\Facades\Session::get('coupon')['value'])}}
+                            <td>{{Helper::currency_converter(\Illuminate\Support\Facades\Session::get('coupon')['value'])}}
 
                             </td>
                         </tr>
@@ -78,13 +78,13 @@
                         <td>$5.60</td>
                     </tr> --}}
                     @if (\Illuminate\Support\Facades\Session::has('coupon'))
-                    <tr>
-                        <td>Total</td>
-                            <td>$ {{number_format(
-                                (float) str_replace(',','',\Gloudemans\Shoppingcart\Facades\Cart::subtotal())-\Illuminate\Support\Facades\Session::get('coupon')['value'],2
-                            )}}
-                        </td>
-                    </tr>
+                        <tr>
+                            <td>Total</td>
+                                <td>{{Helper::currency_converter(
+                                    (float) str_replace(',','',\Gloudemans\Shoppingcart\Facades\Cart::subtotal())-\Illuminate\Support\Facades\Session::get('coupon')['value']
+                                )}}
+                            </td>
+                        </tr>
                     @endif
                 </tbody>
             </table>

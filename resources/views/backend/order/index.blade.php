@@ -16,7 +16,7 @@
                         <li class="breadcrumb-item">Order</li>
                         {{-- <li class="breadcrumb-item active">Add users</li> --}}
                     </ul>
-                    <p class="float-right"> Total Orders : {{\App\Models\Order::count()}}</p>
+                    <p class="float-right"> Total Orders : {{$orders->count()}}</p>
                 </div>
             </div>
         </div>
@@ -72,13 +72,13 @@
                                                         <td style="text-align: center;">
                                                             <div class="row">
                                                                 <a href="{{route('order.show',$order->id)}}" data-target="#userID{{$order->id}}" data-toggle="tooltip"
-                                                                    title="view" class="float-left ml-1 btn btn-sm btn-outline-secondary"
+                                                                    title="view" class="float-left ml-1 btn btn-sm btn-outline-warning"
                                                                     data-placement="bottom"><i class="icon-eye"></i>
                                                                 </a>
                                                                 <form class="float-left ml-1"
                                                                     action="{{route('order.destroy', $order->id)}}" method="post">
                                                                     @csrf
-                                                                    @method('delete')
+                                                                    @method('order.delete')
                                                                     <a href="" data-toggle="tooltip" title="delete"
                                                                         data-id="{{$order->id}}"
                                                                         class="dltBtn btn btn-sm btn-outline-danger"
@@ -88,7 +88,7 @@
                                                         </td>
                                                 </tr>
                                                 @empty
-                                                    <td colspan="6" class="text-center">No orders</td>
+                                                    <td colspan="8" class="text-center">No orders</td>
                                                 @endforelse
                                             </tbody>
                                         </table>

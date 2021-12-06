@@ -3,13 +3,16 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Models\User;
+use App\Models\Brand;
+use App\Models\Order;
 use App\Models\Banner;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\URL;
 use App\Http\Controllers\Controller;
-use App\Models\Brand;
+use App\Models\AboutUs;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
@@ -22,10 +25,74 @@ class IndexController extends Controller
         $banners=Banner::where(['status'=>'active','condition'=>'banner'])
             ->orderBy('id','desc')->limit('5')
             ->get();
+        $promo_banner=Banner::where(['status'=>'active','condition'=>'promo'])
+            ->orderBy('id','desc')
+            ->first();
         $categories=Category::where(['status'=>'active','is_parent'=>1])
             ->orderBy('id','desc')->limit('3')
             ->get();
-        return view('frontend.index', compact(['banners', 'categories']));
+        $new_products=Product::where(['status'=>'active','conditions'=>'new'])
+            ->orderBy('id','DESC')
+            ->limit('10')
+            ->get();
+        $featured_products=Product::where(['status'=>'active','is_featured'=>1])
+            ->orderBy('id','DESC')
+            ->limit('8')
+            ->get();
+        $brands=Brand::where('status','active')->orderBy('id','DESC')->get();
+
+        //Best selling product
+        $items=DB::table('product_orders')
+            ->select('product_id',DB::raw('COUNT(product_id) as count'))
+            ->groupBy('product_id')
+            ->orderBy('count','desc')
+            ->paginate(6);
+        $product_ids=[];
+        foreach($items as $item){
+            array_push($product_ids,$item->product_id);
+        }
+        $idsImplodedSelling=implode(',',array_fill(0, count($product_ids), '?'));
+
+        $best_sellings=Product::whereIn('id',$product_ids)->get();
+        // $best_sellings=Product::whereIn('id',$product_ids)->orderByRaw('"field(id,{$idsImplodedSelling})"', $product_ids)->get();
+
+
+        // Top rated products
+        $items_rated=DB::table('product_reviews')
+            ->select('product_id',DB::raw('AVG(rate) as count'))
+            ->groupBy('product_id')
+            ->orderBy("count",'desc')
+            ->paginate(6);
+        $product_ids=[];
+
+        foreach($items_rated as $item){
+            array_push($product_ids,$item->product_id);
+        }
+        $idsImploded=implode(',',array_fill(0, count($product_ids), '?'));
+
+        $best_rated=Product::whereIn('id',$product_ids)->get();
+        // $best_rated=Product::whereIn('id',$product_ids)->orderByRaw("field(id,{$idsImploded})", $product_ids)->get();
+
+        // // return $best_rated;
+        return view('frontend.index', compact(
+            [
+                'banners',
+                'categories',
+                'new_products',
+                'featured_products',
+                'promo_banner',
+                'brands',
+                'best_sellings',
+                'best_rated'
+            ]
+        ));
+    }
+
+    public function aboutUs()
+    {
+        $about=AboutUs::first();
+        $brands=Brand::where('status','active')->orderBy('id','DESC')->get();
+        return view('frontend.pages.about.index',compact('about','brands'));
     }
 
     //Shop
@@ -243,7 +310,20 @@ class IndexController extends Controller
             return view('frontend.pages.product.product-detail',compact('product'));
         }
         else{
-            return 'Product detail not found';
+            return view('errors.404');
+        }
+    }
+
+    //Product detail modal
+    public function productDetail1($id)
+    {
+        $product=Product::find($id);
+        return $product;
+        if($product){
+            return view('frontend.unuses._modal',compact('product'));
+        }
+        else{
+            return view('errors.404');
         }
     }
 

@@ -17,32 +17,11 @@ class UserTableSeeder extends Seeder
     {
         //Costumers
         DB::table('users')->insert([
-            //Admin
-            // [
-            //     'full_name'=>'Baba ADMIN',
-            //     'username'=>'admin',
-            //     'email'=>'admin@gmail.com',
-            //     'password'=>Hash::make('ALAMEENjr@7'),
-            //     // 'role'=>'admin',
-            //     'status'=>'active',
-            // ],
-
-            // //Vendor
-            // [
-            //     'full_name'=>'Baba SELLER',
-            //     'username'=>'seller',
-            //     'email'=>'seller@gmail.com',
-            //     'password'=>Hash::make('12345678'),
-            //     'role'=>'seller',
-            //     'status'=>'active',
-            // ],
-
             [
                 'full_name'=>'Baba CUSTOMER',
                 'username'=>'customer',
                 'email'=>'customer@gmail.com',
                 'password'=>Hash::make('12345678'),
-                // 'role'=>'customer',
                 'status'=>'active',
             ],
         ]);
@@ -52,6 +31,20 @@ class UserTableSeeder extends Seeder
             'full_name'=>'Baba ADMIN',
             'email'=>'admin@gmail.com',
             'password'=>Hash::make('ALAMEENjr@7'),
+            'photo'=>'/backend/assets/images/user.JPG',
+            'status'=>'active',
+        ]);
+
+        //seller
+        DB::table('sellers')->insert([
+            'full_name'=>'Baba SELLER',
+            'username'=>'sellers',
+            'email'=>'seller@gmail.com',
+            'address'=>'Liberte 6 Ext., Dakar',
+            'phone'=>'221 774834251',
+            'password'=>Hash::make('ALAMEENjr@7'),
+            'photo'=>'/frontend/assets/img/no-image.png',
+            'is_verified'=>0,
             'status'=>'active',
         ]);
 

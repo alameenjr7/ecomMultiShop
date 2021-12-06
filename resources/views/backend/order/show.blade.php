@@ -86,21 +86,16 @@
                                             <td>$ {{ number_format($order->total_amount, 2) }}</td>
                                             <td style="text-align: center;">
                                                 <div class="row">
-                                                    <a href="{{ route('order.show', $order->id) }}"
+                                                    <a href="{{ route('order.facture',$order->id) }}"
                                                         data-target="#userID{{ $order->id }}" data-toggle="tooltip"
-                                                        title="view"
+                                                        title="View facture"
                                                         class="float-left ml-1 btn btn-sm btn-outline-secondary"
+                                                        data-placement="bottom"><i class="icon-eye"></i>
+                                                    </a>
+                                                    <a href="{{route('order.show',$order->id)}}" data-target="#userID{{$order->id}}" data-toggle="tooltip"
+                                                        title="Download facture" class="float-left ml-1 btn btn-sm btn-outline-warning"
                                                         data-placement="bottom"><i class="fa fa-download"></i>
                                                     </a>
-                                                    <form class="float-left ml-1"
-                                                        action="{{ route('order.destroy', $order->id) }}" method="post">
-                                                        @csrf
-                                                        @method('delete')
-                                                        <a href="" data-toggle="tooltip" title="delete"
-                                                            data-id="{{ $order->id }}"
-                                                            class="dltBtn btn btn-sm btn-outline-danger"
-                                                            data-placement="bottom"><i class="icon-trash"></i></a>
-                                                    </form>
                                                 </div>
                                             </td>
                                         </tr>
@@ -218,20 +213,20 @@
                                                             <select name="condition" class="form-control" id="">
                                                                 <option value="pending"
                                                                     {{ $order->condition == 'delivered' || $order->condition == 'cancellation' ? 'disabled' : '' }}
-                                                                    {{ $order->condition == 'pending' ? 'selected' : '' }}>
-                                                                    Pending</option>
+                                                                    {{ $order->condition == 'pending' ? 'selected' : '' }}>Pending
+                                                                </option>
                                                                 <option value="processing"
                                                                     {{ $order->condition == 'delivered' || $order->condition == 'cancellation' ? 'disabled' : '' }}
-                                                                    {{ $order->condition == 'processing' ? 'selected' : '' }}>
-                                                                    Processing</option>
+                                                                    {{ $order->condition == 'processing' ? 'selected' : '' }}>Processing
+                                                                </option>
                                                                 <option value="delivered"
                                                                     {{ $order->condition == 'cancellation' ? 'disabled' : '' }}
-                                                                    {{ $order->condition == 'delivered' ? 'selected' : '' }}>
-                                                                    Delivered</option>
+                                                                    {{ $order->condition == 'delivered' ? 'selected' : '' }}>Delivered
+                                                                </option>
                                                                 <option value="cancellation"
                                                                     {{ $order->condition == 'delivered' ? 'disabled' : '' }}
-                                                                    {{ $order->condition == 'cancellation' ? 'selected' : '' }}>
-                                                                    Cancellation</option>
+                                                                    {{ $order->condition == 'cancellation' ? 'selected' : '' }}>Cancellation
+                                                                </option>
                                                             </select>
                                                         </td>
                                                     </tr>

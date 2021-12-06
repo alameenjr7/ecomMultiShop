@@ -76,6 +76,9 @@ class ProductController extends Controller
         }
         $data['slug']=$slug;
 
+        // $data['added_by']='admin';
+        // $data['user_id']=auth('admin')->user()->id;
+
         $data['offer_price']=($request->price-(($request->price*$request->discount)/100));
 
         // return $data;

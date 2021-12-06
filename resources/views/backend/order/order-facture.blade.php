@@ -74,8 +74,8 @@
                                                         <div class="date">Due Date: {{\Carbon\Carbon::now()->format(' d/m/y')}}</div>
                                                     </div>
                                                 </div>
-                                                <table style="border:0" cellspacing="0" cellpadding="0">
-                                                    <thead>
+                                                <table class="border cellspacing=0 cellpadding=0">
+                                                    <thead class="table-border">
                                                         <tr>
                                                             <th>#</th>
                                                             <th class="text-left">DESCRIPTION</th>

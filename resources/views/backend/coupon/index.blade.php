@@ -15,7 +15,7 @@
                         <li class="breadcrumb-item">Coupon</li>
                         {{-- <li class="breadcrumb-item active">Add users</li> --}}
                     </ul>
-                    <p class="float-right"> Total Coupons : {{\App\Models\Coupon::count()}}</p>
+                    <p class="float-right"> Total Coupons : {{$coupons->count()}}</p>
                 </div>
             </div>
         </div>

@@ -91,8 +91,9 @@
         })
     })
 </script>
+{{-- End move cart--}}
 
-{{-- move wishlist--}}
+{{-- delete wishlist--}}
 <script>
     $('.wishlist_delete').on('click',function(e){
         e.preventDefault();
@@ -112,12 +113,13 @@
                     $('body #cart_counter').html(data['cart_count']);
                     $('body #wishlist_list').html(data['wishlist_list']);
                     $('body #header-ajax').html(data['header']);
-                    swal({
-                        title: "Success !",
-                        text: data['message'],
-                        icon: "success",
-                        button: "OK !",
-                    });
+                    // swal({
+                    //     title: "Success !",
+                    //     text: data['message'],
+                    //     icon: "success",
+                    //     button: "OK !",
+                    // });
+                    window.location.href=window.location.href;
                 }
                 else{
                     swal({
@@ -139,5 +141,6 @@
         })
     })
 </script>
+{{--End  delete wishlist--}}
 
 @endsection

@@ -23,7 +23,7 @@
                         </li>
                         <li class="breadcrumb-item">Brand</li>
                     </ul>
-                    <p class="float-right"> Total Brands : {{\App\Models\Brand::count()}}</p>
+                    <p class="float-right"> Total Brands : {{$brands->count()}}</p>
                 </div>
             </div>
         </div>
@@ -67,7 +67,7 @@
                                             <th>{{$loop->iteration}}</th>
                                             <td>{{$item->title}}</td>
                                             <td>{{$item->slug}}</td>
-                                            <td style="text-align: center"><img src="{{$item->photo}}" alt="brand img"
+                                            <td style="text-align: center"><img src="{{$item->photo ==null ? Helper::backDefaultImage() : asset($item->photo)}}" alt="brand img"
                                                 style="height: 60px; width: 60px;">
                                             </td>
 

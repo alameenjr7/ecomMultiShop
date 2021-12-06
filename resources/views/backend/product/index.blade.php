@@ -22,7 +22,7 @@
                         </li>
                         <li class="breadcrumb-item">Product</li>
                     </ul>
-                    <p class="float-right"> Total Products : {{\App\Models\Product::count()}}</p>
+                    <p class="float-right"> Total Products : {{$products->count()}}</p>
                 </div>
             </div>
         </div>
@@ -77,7 +77,7 @@
                                             <th>{{$loop->iteration}}</th>
                                             <td>{{$item->title}}</td>
                                             <td style="text-align: center">
-                                                <img src="{{$photo[0]}}" alt="banner img" style="height: 60px; width: 60px;">
+                                                <img src="{{$photo[0] ==null ? Helper::backDefaultImage() : asset($item->photo)}}" alt="banner img" style="height: 60px; width: 60px;">
                                             </td>
                                             <td>$ {{number_format($item->price,2)}}</td>
                                             <td style="text-align: center">{{$item->discount}} %</td>
