@@ -106,9 +106,9 @@
                                 <div class="row col-lg-12 col-md-12">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="">Year's Of Experience <span class="text-danger">*</span></label>
-                                            <input type="number" class="form-control" placeholder="Year's Of Experience" name="exp_years"
-                                                value="{{$setting->exp_years}}">
+                                            <label for="">Email<span class="text-danger">*</span></label>
+                                            <input type="email" class="form-control" placeholder="Email Address" name="email"
+                                                value="{{$setting->email}}">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -219,6 +219,13 @@
                                             <input type="text" class="form-control" placeholder="PlayStore URL" name="playStore_url"
                                                 value="{{$setting->playStore_url}}">
                                         </div>
+                                    </div>
+                                </div>
+								<div class="col-lg-12 col-md-12">
+                                    <div class="form-group">
+                                        <label for="">Map URL</label>
+                                        <input type="text" class="form-control" placeholder="Map URL " name="map_url"
+                                            value="{{$setting->map_url}}">
                                     </div>
                                 </div>
                             </div>

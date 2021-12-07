@@ -31,6 +31,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>['admin']], function(){
     Route::resource('/category', \App\Http\Controllers\CategoryController::class);
     Route::post('category_status', [\App\Http\Controllers\CategoryController::class, 'categoryStatus'])->name('category.status');
     Route::post('category/{id}/child', [\App\Http\Controllers\CategoryController::class, 'getChildByParentID']);
+	
     //Brand section
     Route::resource('/brand', \App\Http\Controllers\BrandController::class);
     Route::post('brand_status', [\App\Http\Controllers\BrandController::class, 'brandStatus'])->name('brand.status');
@@ -72,6 +73,11 @@ Route::group(['prefix'=>'admin', 'middleware'=>['admin']], function(){
     Route::resource('/seller', \App\Http\Controllers\SellerController::class);
     Route::post('seller_status', [\App\Http\Controllers\SellerController::class, 'sellerStatus'])->name('seller.status');
     Route::post('seller-verified', [\App\Http\Controllers\SellerController::class, 'sellerVerified'])->name('seller.verified');
+
+	//SMTP section
+	Route::get('smtp',[\App\Http\Controllers\SettingController::class, 'smtp'])->name('smtp.index');
+	Route::post('smtp-update',[\App\Http\Controllers\SettingController::class, 'smtpUpdate'])->name('smtp.update');
+
 
 });
 

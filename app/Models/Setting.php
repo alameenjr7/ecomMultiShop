@@ -30,5 +30,6 @@ class Setting extends Model
         'playStore_url',
         'appStore_url',
         'youtube_url',
+		'map_url',
     ];
 }

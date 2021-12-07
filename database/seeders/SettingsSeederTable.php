@@ -20,10 +20,10 @@ class SettingsSeederTable extends Seeder
             'meta_description'=>'Kaay-Deals online Ecom',
             'meta_keywords'=>'Kaay-Deals, Online Ecommerce, Ecommerce website',
             'logo'=>'/frontend/assets/img/core-img/logo.png',
-            'favicon'=>'',
+            'favicon'=>'/frontend/assets/img/core-img/logo.png',
             'email'=>'babangom673@gmail.com',
-            'phone'=>'+221772050626',
-            'fax'=>'00221 67884 768900',
+            'phone'=>'221772050626',
+            'fax'=>'0067884768900',
             'address'=>'Liberte 6 Ext.',
             'footer'=>'AmeenTech',
             'facebook_url'=>'',
@@ -35,6 +35,7 @@ class SettingsSeederTable extends Seeder
             'playStore_url'=>'',
             'appStore_url'=>'',
             'youtube_url'=>'',
+			'map_url'=>'',
         ]);
 
         //home Banner

@@ -87,7 +87,7 @@
                                     </li>
                                     <li><a href="{{route('blog.detail')}}">Blog</a>
                                     </li>
-                                    <li><a href="#">Elements</a>
+                                    {{-- <li><a href="#">Elements</a>
                                         <div class="megamenu">
                                             <ul class="single-mega cn-col-4">
                                                 <li><a href="accordian.html">- Accordions</a></li>
@@ -114,8 +114,8 @@
                                                 <li><a href="tables.html">- Tables</a></li>
                                             </ul>
                                         </div>
-                                    </li>
-                                    <li><a href="{{route('contact.detail')}}">Contact</a></li>
+                                    </li> --}}
+                                    <li><a href="{{route('contact.us')}}">Contact</a></li>
                                 </ul>
                             </div>
                         </div>

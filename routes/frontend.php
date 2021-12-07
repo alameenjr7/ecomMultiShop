@@ -15,6 +15,10 @@ Route::get('/', [\App\Http\Controllers\Frontend\IndexController::class, 'home'])
 //About US
 Route::get('/about-us', [\App\Http\Controllers\Frontend\IndexController::class, 'aboutUs'])->name('about.us');
 
+//Contact US
+Route::get('/contact-us', [\App\Http\Controllers\Frontend\IndexController::class, 'contactUs'])->name('contact.us');
+Route::post('/contact-submit', [\App\Http\Controllers\Frontend\IndexController::class, 'contactSubmit'])->name('contact.submit');
+
 //Product category
 Route::get('product-category/{slug}/', [\App\Http\Controllers\Frontend\IndexController::class, 'productCategory'])->name('product.category');
 
@@ -27,10 +31,6 @@ Route::post('product-review/{slug}', [\App\Http\Controllers\ProductReviewControl
 
 //Blog
 Route::get('/blog', [\App\Http\Controllers\Frontend\IndexController::class, 'blogDetail'])->name('blog.detail');
-
-//Blog
-Route::get('/contact', [\App\Http\Controllers\Frontend\IndexController::class, 'contacts'])->name('contact.detail');
-
 
 //Cart section
 Route::get('cart', [\App\Http\Controllers\Frontend\CartController::class, 'cart'])->name('cart');

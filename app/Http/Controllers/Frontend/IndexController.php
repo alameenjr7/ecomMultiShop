@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\URL;
 use App\Http\Controllers\Controller;
 use App\Models\AboutUs;
+use App\Mail\Contact;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
@@ -73,7 +75,6 @@ class IndexController extends Controller
         $best_rated=Product::whereIn('id',$product_ids)->get();
         // $best_rated=Product::whereIn('id',$product_ids)->orderByRaw("field(id,{$idsImploded})", $product_ids)->get();
 
-        // // return $best_rated;
         return view('frontend.index', compact(
             [
                 'banners',
@@ -88,12 +89,39 @@ class IndexController extends Controller
         ));
     }
 
+	//about us
     public function aboutUs()
     {
         $about=AboutUs::first();
         $brands=Brand::where('status','active')->orderBy('id','DESC')->get();
         return view('frontend.pages.about.index',compact('about','brands'));
     }
+
+	//contact us
+	public function contactUs()
+    {
+        $user=Auth::user();
+        // dd($user);
+        return view('frontend.pages.contact.contact',compact('user'));
+    }
+
+	//Contact submit
+	public function contactSubmit(Request $request)
+	{
+		$this->validate($request,[
+			'f_name'=>'string|required',
+			'l_name'=>'string|required',
+			'email'=>'string|required',
+			'subject'=>'min:4|string|required',
+			'message'=>'string|required|max:200',
+		]);
+
+		$data=$request->all();
+// 		dd($data=$request->all());
+		Mail::to('babangom673@gmail.com')->send(new Contact($data));
+
+		return back()->with('success','Successfully send your enquiry');
+	}
 
     //Shop
     public function shop(Request $request)
@@ -430,13 +458,6 @@ class IndexController extends Controller
         $user=Auth::user();
         // dd($user);
         return view('frontend.pages.blog.single-blog',compact('user'));
-    }
-
-    public function contacts()
-    {
-        $user=Auth::user();
-        // dd($user);
-        return view('frontend.pages.contact.contact',compact('user'));
     }
 
     public function billingAddress(Request $request,$id)

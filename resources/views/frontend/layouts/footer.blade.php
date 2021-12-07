@@ -36,7 +36,7 @@
                             <li><a href="{{route('user.account')}}"><i class="icofont-rounded-right"></i> Account</a></li>
                             <li><a href="{{route('user.order')}}"><i class="icofont-rounded-right"></i> Shop</a></li>
                             <li><a href="{{route('blog.detail')}}"><i class="icofont-rounded-right"></i> Blog</a></li>
-                            <li><a href="{{route('contact.detail')}}"><i class="icofont-rounded-right"></i> Contact</a></li>
+                            <li><a href="{{route('contact.us')}}"><i class="icofont-rounded-right"></i> Contact</a></li>
                             <li><a href="{{route('home')}}"><i class="icofont-rounded-right"></i> Home</a></li>
                         </ul>
                     </div>

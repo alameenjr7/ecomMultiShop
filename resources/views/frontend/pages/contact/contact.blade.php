@@ -34,56 +34,67 @@
                 <div class="col-12 col-lg-4">
                     <div class="single-contact-info mb-30">
                         <i class="icofont-phone"></i>
-                        <p>+00 88 1125263 <br> +00 88 1125264</p>
+                        <p>{{get_setting('phone')}} <br> </p>
                     </div>
                 </div>
                 <div class="col-12 col-lg-4">
                     <div class="single-contact-info mb-30">
                         <i class="icofont-ui-email"></i>
-                        <p>support@example.com <br> help@example.com</p>
+                        <p>{{get_setting('email')}} <br> </p>
                     </div>
                 </div>
                 <div class="col-12 col-lg-4">
                     <div class="single-contact-info mb-30">
-                        <i class="icofont-fax"></i>
-                        <p>+00 88 96874 <br> +00 88 96875</p>
+                        <i class="icofont-location-pin"></i>
+                        <p>{{get_setting('address')}} <br> </p>
                     </div>
                 </div>
 
                 <div class="col-12">
                     <div class="contact_from mb-50">
-                        <form action="mail.php" method="post" id="main_contact_form">
+                        <form action="{{route('contact.submit')}}" method="post" id="main_contact_form">
+							@csrf
                             <div class="contact_input_area">
                                 <div id="success_fail_info"></div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <input type="text" class="form-control" name="f_name" id="f-name" placeholder="First Name" required>
+                                            <input type="text" class="form-control" name="f_name" id="f-name" placeholder="First Name" required value="{{old('f_name')}}">
+											@error('f_name')
+												<p class="text-danger">{{$message}}</p>
+											@enderror
+										</div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="l_name" id="l-name" placeholder="Last Name" required value="{{old('l_name')}}">
+											@error('l_name')
+												<p class="text-danger">{{$message}}</p>
+											@enderror
+										</div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="email" class="form-control" name="email" id="email" placeholder="Your E-mail" required value="{{old('email')}}">
+											@error('email')
+												<p class="text-danger">{{$message}}</p>
+											@enderror
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <input type="text" class="form-control" name="l_name" id="l-name" placeholder="Last Name" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <input type="email" class="form-control" name="email" id="email" placeholder="Your E-mail" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <select class="custom-select form-control w-100">
-                                                <option selected>Subject</option>
-                                                <option value="1">Delivery Info</option>
-                                                <option value="2">Payment Process</option>
-                                                <option value="3">Quality Issues</option>
-                                            </select>
+                                            <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required value="{{old('subject')}}">
+											@error('subject')
+												<p class="text-danger">{{$message}}</p>
+											@enderror
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
-                                            <textarea name="message" class="form-control" id="message" cols="30" rows="10" placeholder="Your Message *" required></textarea>
+                                            <textarea name="message" class="form-control" id="message" cols="30" rows="10" placeholder="Your Message *" required>{{old('message')}}</textarea>
+											@error('message')
+												<p class="text-danger">{{$message}}</p>
+											@enderror
                                         </div>
                                     </div>
                                     <div class="text-center col-12">
@@ -97,7 +108,7 @@
 
                 <div class="col-12">
                     <div class="google-map">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d158858.4733933767!2d-0.24167960602552738!3d51.52855824355498!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a00baf21de75%3A0x52963a5addd52a99!2sLondon%2C+UK!5e0!3m2!1sen!2sbd!4v1565062036569!5m2!1sen!2sbd" allowfullscreen></iframe>
+                        <iframe src="{{get_setting('map_url')}}" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>

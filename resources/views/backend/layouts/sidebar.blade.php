@@ -152,8 +152,14 @@
                             </ul>
                         </li>
                         <li class="desactive"><a href="{{route('about.index')}}"><i class="icon-user-following"></i> <span>About Us</span></a>
-                        <li class="desactive"><a href="{{route('settings')}}"><i class="icon-settings"></i>Settings</a></li>
-
+                        {{-- <li class="desactive"><a href="{{route('settings')}}"><i class="icon-settings"></i>Settings</a></li> --}}
+						<li class="desactive">
+                            <a href="javascript:void(0);" class="has-arrow"><i class="icon-settings"></i> <span>General Settings</span></a>
+                            <ul>
+                                <li><a href="{{route('settings')}}">Settings</a></li>
+                                <li><a href="{{route('smtp.index')}}">SMTP Settings</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </nav>
             </div>
