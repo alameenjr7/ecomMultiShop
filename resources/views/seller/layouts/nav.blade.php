@@ -18,19 +18,19 @@
             <div id="navbar-menu">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="file-dashboard.html" class="icon-menu d-none d-sm-block d-md-none d-lg-block"><i
+                        <a href="{{route('seller')}}" class="icon-menu d-none d-sm-block d-md-none d-lg-block"><i
                                 class="fa fa-folder-open-o"></i></a>
                     </li>
                     <li>
-                        <a href="app-calendar.html" class="icon-menu d-none d-sm-block d-md-none d-lg-block">
+                        <a href="{{route('seller.calendar')}}" class="icon-menu d-none d-sm-block d-md-none d-lg-block">
                             <i class="icon-calendar"></i>
                         </a>
                     </li>
-                    <li>
+                    {{-- <li>
                         <a href="app-chat.html" class="icon-menu d-none d-sm-block"><i class="icon-bubbles"></i></a>
-                    </li>
+                    </li> --}}
                     <li>
-                        <a href="app-inbox.html" class="icon-menu d-none d-sm-block"><i class="icon-envelope"></i><span
+                        <a href="{{route('seller.messages')}}" class="icon-menu d-none d-sm-block"><i class="icon-envelope"></i><span
                                 class="notification-dot"></span></a>
                     </li>
                     <li class="dropdown">
@@ -103,20 +103,27 @@
                                 class="icon-equalizer"></i></a>
                         <ul class="dropdown-menu user-menu menu-icon">
                             <li class="menu-heading">ACCOUNT SETTINGS</li>
-                            <li><a href="javascript:void(0);"><i class="icon-note"></i> <span>Basic</span></a></li>
-                            <li><a href="javascript:void(0);"><i class="icon-equalizer"></i>
-                                    <span>Preferences</span></a></li>
-                            <li><a href="javascript:void(0);"><i class="icon-lock"></i> <span>Privacy</span></a></li>
-                            <li><a href="javascript:void(0);"><i class="icon-bell"></i> <span>Notifications</span></a>
-                            </li>
-                            <li class="menu-heading">BILLING</li>
-                            <li><a href="javascript:void(0);"><i class="icon-credit-card"></i> <span>Payments</span></a>
-                            </li>
-                            <li><a href="javascript:void(0);"><i class="icon-printer"></i> <span>Invoices</span></a>
-                            </li>
-                            <li><a href="javascript:void(0);"><i class="icon-refresh"></i> <span>Renewals</span></a>
-                            </li>
+                            <li><a href="{{route('seller.profile')}}"><i class="icon-note"></i> <span>Profile</span></a></li>
                         </ul>
+                    </li>
+                    <li class="dropdown currency-dropdown">
+                        @php
+                            Helper::currency_load();
+                            $currency_code=session('currency_code');
+                            $currency_symbol=session('currency_symbol');
+                            if($currency_symbol==""){
+                                $system_default_currency_info=session('system_default_currency_info');
+                                $currency_symbol=$system_default_currency_info->symbol;
+                                $currency_code=$system_default_currency_info->code;
+                            }
+                        @endphp
+                        <a href="javascript:void(0);" class="dropdown-toggle btn-outline-dark" role="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown">{{$currency_symbol}} {{$currency_code}}</a>
+
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu2">
+                            @foreach (App\Models\Currency::where('status','active')->get() as $currency)
+                                <a class="dropdown-item" href="javascript:;" onclick="currency_change('{{$currency['code']}}')">{{$currency->symbol}} {{Illuminate\Support\Str::upper($currency->code)}}</a>
+                            @endforeach
+                        </div>
                     </li>
                     <li>
                         {{-- <a href="page-login.html" class="icon-menu"><i class="icon-login"></i></a> --}}

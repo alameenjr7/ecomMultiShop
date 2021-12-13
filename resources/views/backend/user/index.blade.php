@@ -50,7 +50,7 @@
                                             <th>Full Name</th>
                                             <th>Email</th>
                                             <th>Phone</th>
-                                            <th>Role</th>
+                                            <th>Address</th>
                                             <th>Status</th>
                                             <th>Actions</th>
                                         </tr>
@@ -62,7 +62,7 @@
                                             <th>Full Name</th>
                                             <th>Email</th>
                                             <th>Phone</th>
-                                            <th>Role</th>
+                                            <th>Address</th>
                                             <th>Status</th>
                                             <th>Actions</th>
                                         </tr>
@@ -78,7 +78,7 @@
                                             <td>{{$item->full_name}}</td>
                                             <td>{{$item->email}}</td>
                                             <td>{{$item->phone}}</td>
-                                            <td style="text-align: center;">{{$item->role}}</td>
+                                            <td style="text-align: center;">{{$item->address}}</td>
 
                                             <td style="text-align: center;">
                                                 <input type="checkbox" name="toogle" value="{{$item->id}}"

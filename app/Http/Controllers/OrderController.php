@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
-
+use PDF;
 class OrderController extends Controller
 {
     /**
@@ -142,5 +142,13 @@ class OrderController extends Controller
         else{
             return back()->with('error', 'Data not found');
         }
+    }
+
+    public function orderPDF(Request $request)
+    {
+        // $order=Order::getAllOrder($request->id);
+        // $file_name=$order->order_number.'-'.$order->first_name.'.pdf';
+        // $pdf=PDF::loadview('backend.order.pdf',compact('order'));
+        // return $pdf->download($file_name);
     }
 }

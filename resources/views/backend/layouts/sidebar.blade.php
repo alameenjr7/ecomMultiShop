@@ -6,9 +6,9 @@
                 <span>Welcome,</span>
                 <a href="javascript:void(0);" class="dropdown-toggle user-name" data-toggle="dropdown"><strong>{{ucfirst(auth('admin')->user()->full_name)}}</strong></a>
                 <ul class="dropdown-menu dropdown-menu-right account">
-                    <li><a href="page-profile2.html"><i class="icon-user"></i>My Profile</a></li>
-                    <li><a href="app-inbox.html"><i class="icon-envelope-open"></i>Messages</a></li>
-                    <li><a href="javascript:void(0);"><i class="icon-settings"></i>Settings</a></li>
+                    <li><a href="{{route('profile')}}"><i class="icon-user"></i>My Profile</a></li>
+                    <li><a href="{{route('messages')}}"><i class="icon-envelope-open"></i>Messages</a></li>
+                    <li><a href="{{route('settings')}}"><i class="icon-settings"></i>Settings</a></li>
                     <li class="divider"></li>
                     <li>
                         <a href="{{ route('logout') }}" onclick="event.preventDefault();
@@ -21,26 +21,24 @@
             </div>
             <hr>
             <ul class="row list-unstyled">
-                <li class="col-4">
+                <li class="col-3">
                     <small>Sales</small>
-                    <h6>456</h6>
+                    <h6>{{number_format(App\Models\Order::where('condition','delivered')->count(),2)}}</h6>
                 </li>
-                <li class="col-4">
+                <li class="col-3">
                     <small>Order</small>
-                    <h6>1350</h6>
+                    <h6>{{number_format(App\Models\Order::where('condition','pending')->count(),2)}}</h6>
                 </li>
-                <li class="col-4">
+                <li class="col-5">
                     <small>Revenue</small>
-                    <h6>$2.13B</h6>
+                    <h6>{{Helper::currency_converter(App\Models\Order::where('payment_status','paid')->sum('total_amount'))}}</h6>
                 </li>
             </ul>
         </div>
         <!-- Nav tabs -->
         <ul class="nav nav-tabs">
             <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#menu">Menu</a></li>
-            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#Chat"><i class="icon-book-open"></i></a></li>
-            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#setting"><i class="icon-settings"></i></a></li>
-            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#question"><i class="icon-question"></i></a></li>
+            {{-- <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#setting"><i class="icon-settings"></i></a></li> --}}
         </ul>
 
         <!-- Tab panes -->
@@ -152,168 +150,25 @@
                             </ul>
                         </li>
                         <li class="desactive"><a href="{{route('about.index')}}"><i class="icon-user-following"></i> <span>About Us</span></a>
-                        {{-- <li class="desactive"><a href="{{route('settings')}}"><i class="icon-settings"></i>Settings</a></li> --}}
-						<li class="desactive">
-                            <a href="javascript:void(0);" class="has-arrow"><i class="icon-settings"></i> <span>General Settings</span></a>
-                            <ul>
-                                <li><a href="{{route('settings')}}">Settings</a></li>
-                                <li><a href="{{route('smtp.index')}}">SMTP Settings</a></li>
-                            </ul>
-                        </li>
                     </ul>
                 </nav>
             </div>
-            <div class="tab-pane p-l-15 p-r-15" id="Chat">
-                <form>
-                    <div class="input-group m-b-20">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="icon-magnifier"></i></span>
-                        </div>
-                        <input type="text" class="form-control" placeholder="Search...">
-                    </div>
-                </form>
-                <ul class="right_chat list-unstyled">
-                    <li class="online">
-                        <a href="javascript:void(0);">
-                            <div class="media">
-                                <img class="media-object " src="{{asset('backend/assets/images/xs/avatar4.jpg')}}" alt="">
-                                <div class="media-body">
-                                    <span class="name">Chris Fox</span>
-                                    <span class="message">Designer, Blogger</span>
-                                    <span class="badge badge-outline status"></span>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="online">
-                        <a href="javascript:void(0);">
-                            <div class="media">
-                                <img class="media-object " src="{{asset('backend/assets/images/xs/avatar5.jpg')}}" alt="">
-                                <div class="media-body">
-                                    <span class="name">Joge Lucky</span>
-                                    <span class="message">Java Developer</span>
-                                    <span class="badge badge-outline status"></span>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="offline">
-                        <a href="javascript:void(0);">
-                            <div class="media">
-                                <img class="media-object " src="{{asset('backend/assets/images/xs/avatar2.jpg')}}" alt="">
-                                <div class="media-body">
-                                    <span class="name">Isabella</span>
-                                    <span class="message">CEO, Thememakker</span>
-                                    <span class="badge badge-outline status"></span>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="offline">
-                        <a href="javascript:void(0);">
-                            <div class="media">
-                                <img class="media-object " src="{{asset('backend/assets/images/xs/avatar1.jpg')}}" alt="">
-                                <div class="media-body">
-                                    <span class="name">Folisise Chosielie</span>
-                                    <span class="message">Art director, Movie Cut</span>
-                                    <span class="badge badge-outline status"></span>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="online">
-                        <a href="javascript:void(0);">
-                            <div class="media">
-                                <img class="media-object " src="{{asset('backend/assets/images/xs/avatar3.jpg')}}" alt="">
-                                <div class="media-body">
-                                    <span class="name">Alexander</span>
-                                    <span class="message">Writter, Mag Editor</span>
-                                    <span class="badge badge-outline status"></span>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div class="tab-pane p-l-15 p-r-15" id="setting">
-                <h6>Choose Skin</h6>
-                <ul class="choose-skin list-unstyled">
-                    <li data-theme="purple">
-                        <div class="purple"></div>
-                        <span>Purple</span>
-                    </li>
-                    <li data-theme="blue">
-                        <div class="blue"></div>
-                        <span>Blue</span>
-                    </li>
-                    <li data-theme="cyan" class="active">
-                        <div class="cyan"></div>
-                        <span>Cyan</span>
-                    </li>
-                    <li data-theme="green">
-                        <div class="green"></div>
-                        <span>Green</span>
-                    </li>
-                    <li data-theme="orange">
-                        <div class="orange"></div>
-                        <span>Orange</span>
-                    </li>
-                    <li data-theme="blush">
-                        <div class="blush"></div>
-                        <span>Blush</span>
-                    </li>
-                </ul>
-                <hr>
-                <h6>General Settings</h6>
-                <ul class="setting-list list-unstyled">
-                    <li>
-                        <label class="fancy-checkbox">
-                            <input type="checkbox" name="checkbox">
-                            <span>Report Panel Usag</span>
-                        </label>
-                    </li>
-                    <li>
-                        <label class="fancy-checkbox">
-                            <input type="checkbox" name="checkbox" checked>
-                            <span>Email Redirect</span>
-                        </label>
-                    </li>
-                    <li>
-                        <label class="fancy-checkbox">
-                            <input type="checkbox" name="checkbox" checked>
-                            <span>Notifications</span>
-                        </label>
-                    </li>
-                    <li>
-                        <label class="fancy-checkbox">
-                            <input type="checkbox" name="checkbox">
-                            <span>Auto Updates</span>
-                        </label>
-                    </li>
-                    <li>
-                        <label class="fancy-checkbox">
-                            <input type="checkbox" name="checkbox">
-                            <span>Offline</span>
-                        </label>
-                    </li>
-                    <li>
-                        <label class="fancy-checkbox">
-                            <input type="checkbox" name="checkbox">
-                            <span>Location Permission</span>
-                        </label>
-                    </li>
-                </ul>
-            </div>
-            <div class="tab-pane p-l-15 p-r-15" id="question">
-                <form>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="icon-magnifier"></i></span>
-                        </div>
-                        <input type="text" class="form-control" placeholder="Search...">
-                    </div>
-                </form>
-            </div>
+
+                {{-- <div class="tab-pane active" id="menu">
+                    <nav id="left-sidebar-nav" class="sidebar-nav">
+                        <ul id="main-setting" class="metismenu">
+                            <li class="desactive">
+                                <a href="javascript:void(0);" class="has-arrow"><i class="icon-settings"></i> <span>General Settings</span></a>
+                                <ul>
+                                    <li><a href="{{route('settings')}}">Settings</a></li>
+                                    <li><a href="{{route('payment')}}">Payment Settings</a></li>
+                                    <li><a href="{{route('smtp')}}">SMTP Settings</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                </div> --}}
+
         </div>
     </div>
 </div>

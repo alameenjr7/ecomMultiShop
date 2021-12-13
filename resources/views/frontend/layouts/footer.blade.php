@@ -10,7 +10,7 @@
                         </div>
                         <ul class="footer_content">
                             <li><span>Address:</span> {{App\Models\Setting::value('address')}}</li>
-                            <li><span>Phone:</span> {{App\Models\Setting::value('phone')}}</li>
+                            <li><span>Phone:</span>+ {{App\Models\Setting::value('phone')}}</li>
                             <li><span>FAX:</span> {{App\Models\Setting::value('fax')}}</li>
                             <li><span>Email:</span> {{App\Models\Setting::value('email')}}</li>
                         </ul>

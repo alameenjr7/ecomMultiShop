@@ -175,8 +175,8 @@
                         </div>
                     </div>
                 </div>
-                <input type="hidden" name="sub_total" value="{{(float)str_replace(',','',\Gloudemans\Shoppingcart\Facades\Cart::instance('shopping')->subtotal())}}">
-                <input type="hidden" name="total_amount" value="{{(float)str_replace(',','',\Gloudemans\Shoppingcart\Facades\Cart::instance('shopping')->subtotal())}}">
+                <input type="hidden" name="sub_total" value="{{Helper::currency_converter((float)str_replace(',','',\Gloudemans\Shoppingcart\Facades\Cart::instance('shopping')->subtotal()))}}">
+                <input type="hidden" name="total_amount" value="{{Helper::currency_converter((float)str_replace(',','',\Gloudemans\Shoppingcart\Facades\Cart::instance('shopping')->subtotal()))}}">
                 {{-- @foreach (\Gloudemans\Shoppingcart\Facades\Cart::instance('shopping')->content() as $item)
                 <input type="hidden" name="quantity" value="{{$item->qty}}">
                 @endforeach --}}

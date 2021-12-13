@@ -47,7 +47,6 @@
                                             <th>Photo</th>
                                             <th>Price</th>
                                             <th>Discount</th>
-                                            <th>Size</th>
                                             <th>Offer Price</th>
                                             <th>Conditions</th>
                                             <th>Status</th>
@@ -61,7 +60,6 @@
                                             <th>Photo</th>
                                             <th>Price</th>
                                             <th>Discount</th>
-                                            <th>Size</th>
                                             <th>Offer Price</th>
                                             <th>Conditions</th>
                                             <th>Status</th>
@@ -79,10 +77,9 @@
                                             <td style="text-align: center">
                                                 <img src="{{$photo[0] ==null ? Helper::backDefaultImage() : asset($item->photo)}}" alt="banner img" style="height: 60px; width: 60px;">
                                             </td>
-                                            <td>$ {{number_format($item->price,2)}}</td>
+                                            <td>{{Helper::currency_converter($item->price)}}</td>
                                             <td style="text-align: center">{{$item->discount}} %</td>
-                                            <td>{{$item->size}}</td>
-                                            <td>$ {{$item->offer_price}}</td>
+                                            <td>{{Helper::currency_converter($item->offer_price)}}</td>
                                             <td style="text-align: center">
                                                 @if ($item->conditions == 'new')
                                                     <span class="badge badge-success">
@@ -144,19 +141,19 @@
                                                         </div>
                                                         <div class="modal-body">
                                                             <strong>Summary:</strong>
-                                                            <p>{{$product->summary}}</p>
+                                                            <p>{!! html_entity_decode($product->summary) !!}</p>
 
                                                             <strong>Description:</strong>
-                                                            <p>{{$product->description}}</p>
+                                                            <p>{!! html_entity_decode($product->description) !!}</p>
 
                                                             <div class="row">
                                                                 <div class="col-md-4">
                                                                     <strong>Price:</strong>
-                                                                    <p>${{$product->price}}</p>
+                                                                    <p>{{Helper::currency_converter($product->price)}}</p>
                                                                 </div>
                                                                 <div class="col-md-4">
                                                                     <strong>Offer Price:</strong>
-                                                                    <p>${{$product->offer_price}}</p>
+                                                                    <p>{{Helper::currency_converter($product->offer_price)}}</p>
                                                                 </div>
                                                                 <div class="col-md-4">
                                                                     <strong>Stock:</strong>

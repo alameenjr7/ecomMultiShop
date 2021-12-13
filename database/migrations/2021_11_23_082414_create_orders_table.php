@@ -47,6 +47,8 @@ class CreateOrdersTable extends Migration
             $table->string('n_state')->nullable();
             $table->string('n_postcode')->nullable();
             $table->string('n_apartment')->nullable();
+
+            $table->text('payment_details')->nullable();
             $table->timestamps();
         });
     }

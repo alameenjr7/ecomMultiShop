@@ -23,6 +23,11 @@ class CreateSellersTable extends Migration
             $table->string('photo')->nullable();
             $table->string('phone')->nullable();
             $table->text('address')->nullable();
+            $table->string('date_of_birth')->nullable();
+            $table->string('genre')->nullable();
+            $table->string('city')->nullable();
+            $table->string('state')->nullable();
+            $table->string('country')->nullable();
             $table->boolean('is_verified')->default(0);
             $table->enum('status', ['active', 'inactive'])->default('active');
 

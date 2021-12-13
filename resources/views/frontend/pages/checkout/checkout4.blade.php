@@ -58,11 +58,11 @@
                                             <td>
                                                 <a href="{{'product.detail',$item->model->slug}}">{{$item->name}}</a>
                                             </td>
-                                            <td>$ {{number_format($item->price,2)}}</td>
+                                            <td>{{Helper::currency_converter($item->price)}}</td>
                                             <td>
                                                 {{$item->qty}}
                                             </td>
-                                            <td>$ {{$item->subtotal()}}</td>
+                                            <td>{{Helper::currency_converter($item->subtotal())}}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -80,28 +80,28 @@
                             <tbody>
                                 <tr>
                                     <td>Sub Total</td>
-                                    <td>$ {{\Gloudemans\Shoppingcart\Facades\Cart::subtotal()}}</td>
+                                    <td>{{Helper::currency_converter(\Gloudemans\Shoppingcart\Facades\Cart::subtotal())}}</td>
                                 </tr>
                                 <tr>
                                     <td>Shipping</td>
-                                    <td>$ {{number_format(\Illuminate\Support\Facades\Session::get('checkout')[0]['delivery_charge'],2)}}</td>
+                                    <td>{{Helper::currency_converter(\Illuminate\Support\Facades\Session::get('checkout')[0]['delivery_charge'])}}</td>
                                 </tr>
                                 @if (\Illuminate\Support\Facades\Session::has('coupon'))
                                     <tr>
                                         <td>Coupon</td>
-                                        <td>$ {{number_format(\Illuminate\Support\Facades\Session::get('coupon')['value'],2)}}</td>
+                                        <td>{{Helper::currency_converter(\Illuminate\Support\Facades\Session::get('coupon')['value'])}}</td>
                                     </tr>
                                 @endif
                                 <tr>
                                     <td>Total</td>
                                     @if (\Illuminate\Support\Facades\Session::has('coupon') && \Illuminate\Support\Facades\Session::has('checkout'))
-                                        <td>$ {{number_format((float)str_replace(',','',\Gloudemans\Shoppingcart\Facades\Cart::subtotal())+\Illuminate\Support\Facades\Session::get('checkout')[0]['delivery_charge']-\Illuminate\Support\Facades\Session::get('coupon')['value'],2)}}</td>
+                                        <td>{{Helper::currency_converter((float)str_replace(',','',\Gloudemans\Shoppingcart\Facades\Cart::subtotal())+\Illuminate\Support\Facades\Session::get('checkout')[0]['delivery_charge']-\Illuminate\Support\Facades\Session::get('coupon')['value'])}}</td>
                                     @elseif (\Illuminate\Support\Facades\Session::has('coupon'))
-                                        <td>$ {{number_format((float)str_replace(',','',\Gloudemans\Shoppingcart\Facades\Cart::subtotal())-\Illuminate\Support\Facades\Session::get('coupon')['value'],2)}}</td>
+                                        <td>{{Helper::currency_converter((float)str_replace(',','',\Gloudemans\Shoppingcart\Facades\Cart::subtotal())-\Illuminate\Support\Facades\Session::get('coupon')['value'])}}</td>
                                     @elseif (\Illuminate\Support\Facades\Session::has('checkout'))
-                                        <td>$ {{number_format((float)str_replace(',','',\Gloudemans\Shoppingcart\Facades\Cart::subtotal())+\Illuminate\Support\Facades\Session::get('checkout')[0]['delivery_charge'],2)}}</td>
+                                        <td>{{Helper::currency_converter((float)str_replace(',','',\Gloudemans\Shoppingcart\Facades\Cart::subtotal())+\Illuminate\Support\Facades\Session::get('checkout')[0]['delivery_charge'])}}</td>
                                     @else
-                                        <td>$ {{number_format((float)str_replace(',','',\Gloudemans\Shoppingcart\Facades\Cart::subtotal()))}}</td>
+                                        <td>{{Helper::currency_converter((float)str_replace(',','',\Gloudemans\Shoppingcart\Facades\Cart::subtotal()))}}</td>
                                     @endif
                                 </tr>
                             </tbody>

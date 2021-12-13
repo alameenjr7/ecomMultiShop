@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Seller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class SellerController extends Controller
 {
@@ -46,7 +48,7 @@ class SellerController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.seller.create');
     }
 
     /**
@@ -57,7 +59,36 @@ class SellerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'full_name'=>'string|required',
+            'username'=>'string|nullable|unique:sellers,username',
+            'email'=>'email|required|unique:sellers,email',
+            'password'=>'min:8|required',
+            'phone'=>'string|nullable',
+            'address'=>'string|nullable',
+            'date_of_birth'=>'string|nullable',
+            'genre'=>'string|nullable',
+            'city'=>'string|nullable',
+            'state'=>'string|nullable',
+            'country'=>'string|nullable',
+            'photo'=>'required',
+            'status'=>'required|in:active,inactive',
+        ]);
+        $data=$request->all();
+
+        $data['password']=Hash::make($request->password);
+        // return $data;
+
+        if ($request->hasFile('photo')) {
+            $validated['photo'] = $request->file('photo')->store('public/photo');
+        }
+
+        $status=Seller::create($data);
+        if($status){
+            return redirect()->route('seller.index')->with('success', 'Seller successfully created');
+        } else {
+            return back()->while('error', 'Something went wrong!');
+        }
     }
 
     /**
@@ -79,7 +110,13 @@ class SellerController extends Controller
      */
     public function edit($id)
     {
-        //
+        $seller=Seller::find($id);
+        if($seller){
+            return view('backend.seller.edit',compact(['seller']));
+        }
+        else {
+            return back()->with('error', 'Seller not found');
+        }
     }
 
     /**
@@ -91,7 +128,43 @@ class SellerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $seller=Seller::find($id);
+        if($seller){
+            $this->validate($request, [
+                'full_name'=>'string|required',
+                'username'=>'string|nullable|exists:sellers,username',
+                'email'=>'email|required|exists:sellers,email',
+                'phone'=>'string|nullable',
+                'address'=>'string|nullable',
+                'photo'=>'required',
+                'date_of_birth'=>'string|nullable',
+                'genre'=>'string|nullable',
+                'city'=>'string|nullable',
+                'state'=>'string|nullable',
+                'country'=>'string|nullable',
+                'status'=>'nullable|in:active,inactive',
+            ]);
+
+            $data=$request->all();
+
+            if ($request->hasFile('photo')) {
+                if ($seller->photo) {
+                    Storage::delete($seller->photo);
+                }
+
+                $validated['photo'] = $request->file('photo')->store('public');
+            }
+
+            $status=$seller->fill($data)->save();
+            if($status){
+                return redirect()->route('seller.index')->with('success', 'Seller successfully updated');
+            } else {
+                return back()->while('error', 'Something went wrong!');
+            }
+        }
+        else {
+            return back()->with('error', 'Seller not found');
+        }
     }
 
     /**
@@ -102,6 +175,18 @@ class SellerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $seller=Seller::find($id);
+        if($seller){
+            $status = $seller->delete();
+            if($status){
+                return redirect()->route('seller.index')->with('success', 'Seller successfully deleted');
+            }
+            else {
+                return back()->with('error', 'Something went wrong');
+            }
+        }
+        else{
+            return back()->with('error', 'Data not found');
+        }
     }
 }

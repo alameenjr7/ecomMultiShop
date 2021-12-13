@@ -28,3 +28,13 @@
 <!-- MAIN CSS -->
 <link rel="stylesheet" href="{{asset('backend/assets/css/main.css')}}">
 <link rel="stylesheet" href="{{asset('backend/assets/css/color_skins.css')}}">
+<link rel="stylesheet" href="{{asset('backend/assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker3.min.css')}}">
+
+
+{{-- calendar --}}
+<link rel="stylesheet" href="{{asset('backend/assets/vendor/fullcalendar/fullcalendar.min.css')}}">
+
+
+<!-- MAIN inbox CSS -->
+<link rel="stylesheet" href="{{asset('backend/assets/css/inbox.css')}}">
+<link rel="stylesheet" href="{{asset('backend/assets/css/blog.css')}}">

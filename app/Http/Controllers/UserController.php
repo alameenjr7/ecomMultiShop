@@ -118,13 +118,13 @@ class UserController extends Controller
         if($user){
             $this->validate($request, [
                 'full_name'=>'string|required',
-                'username'=>'username|nullable|exists:users,username',
+                'username'=>'string|nullable|exists:users,username',
                 'email'=>'email|required|exists:users,email',
                 'phone'=>'string|nullable',
                 'address'=>'string|nullable',
                 'photo'=>'required',
                 // 'role'=>'required|in:admin,vendor,customer',
-                'status'=>'required|in:active,inactive',
+                'status'=>'nullable|in:active,inactive',
             ]);
 
             $data=$request->all();

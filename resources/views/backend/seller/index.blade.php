@@ -38,8 +38,6 @@
                                             <th>S. N.</th>
                                             <th>Photo</th>
                                             <th>Full Name</th>
-                                            <th>Username</th>
-                                            <th>Address</th>
                                             <th>Email</th>
                                             <th>Phone</th>
                                             <th>Is Verified</th>
@@ -52,8 +50,6 @@
                                             <th>S. N.</th>
                                             <th>Photo</th>
                                             <th>Full Name</th>
-                                            <th>Username</th>
-                                            <th>Address</th>
                                             <th>Email</th>
                                             <th>Phone</th>
                                             <th>Is Verified</th>
@@ -66,11 +62,9 @@
                                         <tr>
                                             <th>{{$loop->iteration}}</th>
                                             <td style="text-align: center">
-                                                <img src="{{$item->photo ==null ? Helper::backDefaultImage() : asset($item->photo)}}" alt="banner img" style="height: 60px; width: 60px;">
+                                                <img src="{{$item->photo ==null ? Helper::userDefaultImage() : asset($item->photo)}}" alt="seller img" style="border-radius: 50%; height: 60px; width: 60px;" class="profile">
                                             </td>
                                             <td>{{$item->full_name}}</td>
-                                            <td>{{$item->username}}</td>
-                                            <td>{{$item->address}}</td>
                                             <td>{{$item->email}}</td>
                                             <td>{{$item->phone}}</td>
                                             <td style="text-align: center;">
@@ -90,10 +84,15 @@
                                             </td>
                                             <td>
                                                 <div class="row">
+                                                    <a href="javascript:void(0);" data-toggle="modal" data-target="#userID{{$item->id}}" data-toggle="tooltip"
+                                                        title="view" class="float-left ml-1 btn btn-sm btn-outline-secondary"
+                                                        data-placement="bottom"><i class="icon-eye"></i>
+                                                    </a>
                                                     <a href="{{route('seller.edit', $item->id)}}" data-toggle="tooltip"
                                                         title="edit" class="float-left ml-1 btn btn-sm btn-outline-warning"
-                                                        data-placement="bottom"><i class="icon-note"></i></a>
-                                                    <form class="float-left ml-1"
+                                                        data-placement="bottom"><i class="icon-note"></i>
+                                                    </a>
+                                                    <form class="ml-1 "
                                                         action="{{route('seller.destroy', $item->id)}}" method="post">
                                                         @csrf
                                                         @method('delete')
@@ -104,6 +103,100 @@
                                                     </form>
                                                 </div>
                                             </td>
+                                            {{-- modal --}}
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="userID{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    @php
+                                                        $seller=\App\Models\Seller::where('id',$item->id)->first();
+                                                    @endphp
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            {{-- <h5 class="modal-title" id="exampleModalLongTitle">{{$user->full_name}}</h5> --}}
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="text-center">
+                                                            <img src="{{$seller->photo !=null ? asset($seller->photo) : Helper::userDefaultImage()}}" style="height: 70px; width: 70px; border-radius: 50%; margin: 2% 0" alt="">
+
+                                                            <div class="text-center">
+                                                                <p><strong>{{$seller->username}}</strong></p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <strong>Full Name:</strong>
+                                                                    <p>{{$seller->full_name}}</p>
+                                                                </div>
+
+                                                                <div class="col-md-6">
+                                                                    <strong>Email:</strong>
+                                                                    <p>{{$seller->email}}</p>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <strong>Phone N.:</strong>
+                                                                    <p>{{$seller->phone}}</p>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <strong>Address:</strong>
+                                                                    <p>{{$seller->address}}</p>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <strong>Date of Birth:</strong>
+                                                                    <p>{{$seller->date_of_birth}}</p>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <strong>Country:</strong>
+                                                                    <p>{{$seller->country}}</p>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <strong>City:</strong>
+                                                                    <p>{{$seller->city}}</p>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <strong>State:</strong>
+                                                                    <p>{{$seller->state}}</p>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <strong>Is Verified:</strong>
+                                                                    @if($seller->is_verified=='1')
+                                                                        <p class="badge badge-success">{{$seller->is_verified}}</p>
+                                                                    @else
+                                                                        <p class="badge badge-danger">{{$seller->is_verified}}</p>
+                                                                    @endif
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <strong>Status:</strong>
+                                                                    @if ($seller->status=='active')
+                                                                        <p class="badge badge-success">{{$seller->status}}</p>
+                                                                    @else
+                                                                        <p class="badge badge-danger">{{$seller->status}}</p>
+                                                                    @endif
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            <button type="button" class="btn btn-primary" data-dismiss="modal">Save Change</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </tr>
                                         @endforeach
                                     </tbody>

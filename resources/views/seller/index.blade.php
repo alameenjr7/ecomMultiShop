@@ -68,7 +68,7 @@
             <div class="col-lg-3 col-md-6">
                 <div class="card overflowhidden">
                     <div class="body">
-                        <h3>{{number_format(App\Models\Product::where('status','active')->sum('offer_price'),2)}} <i class="float-right fa fa-dollar"></i></h3>
+                        <h3>{{Helper::currency_converter(App\Models\Product::where('status','active')->sum('offer_price'))}} <i class="float-right"></i></h3>
                         <span>Total product active</span>
                     </div>
                     <div class="progress progress-xs progress-transparent custom-color-blue m-b-0">
@@ -79,7 +79,7 @@
             <div class="col-lg-3 col-md-6">
                 <div class="card overflowhidden">
                     <div class="body">
-                        <h3>{{App\Models\Order::where('payment_status','paid')->sum('total_amount')}}<i class="float-right fa fa-money"></i></h3>
+                        <h3>{{Helper::currency_converter(App\Models\Order::where('payment_status','paid')->sum('total_amount'))}}<i class="float-right"></i></h3>
                         <span>Total Product Paid</span>
                     </div>
                     <div class="progress progress-xs progress-transparent custom-color-green m-b-0">

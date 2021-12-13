@@ -42,6 +42,7 @@ class Order extends Model
         'payment_status',
         'payment_method',
         'condition',
+        'payment_details'
     ];
 
     public function products(){

@@ -139,7 +139,7 @@
                             <input data-id="{{$product->id}}" type="number" class="qty-text form-control" id="qty2" step="1" min="1" max="12"
                                 name="quantity" value="1">
                         </div>
-                        <button type="button" name="addtocart" data-product_id="{{$product->id}}" data-quantity="1" data-price="{{$product->offer_price}}" id="add_to_cart_button_details_{{$product->id}}" value="5"
+                        <button type="button" name="addtocart" data-product_id="{{$product->id}}" data-quantity="1" data-price="{{Helper::currency_converter($product->offer_price)}}" id="add_to_cart_button_details_{{$product->id}}" value="5"
                             class="mt-1 ml-1 add_to_cart_button_details btn btn-primary mt-md-0 ml-md-3">Add to cart
                         </button>
                     </form>

@@ -7,12 +7,14 @@ use Illuminate\Http\Request;
 
 class SettingController extends Controller
 {
-    public function settings(){
+    public function settings()
+    {
         $setting=Setting::first();
         return view('backend.settings.settings',compact('setting'));
     }
 
-    public function settingsUpdate(Request $request){
+    public function settingsUpdate(Request $request)
+    {
         $setting=Setting::first();
         $status=$setting->update([
             'title'=>$request->title,
@@ -74,4 +76,29 @@ class SettingController extends Controller
 			}
 		}
 	}
+
+    public function payment()
+    {
+        return view('backend.settings.payment');
+    }
+
+    //paypal
+    public function paypalUpdate(Request $request)
+    {
+        foreach($request->types as $key=>$type){
+            $this->overWriteEnvFile($type,$request[$type]);
+        }
+
+        $settings=Setting::first();
+        if($request->has('paypal_sandbox')){
+            $settings->paypal_sandbox=1;
+            $settings->save();
+        }
+        else{
+            $settings->paypal_sandbox=0;
+            $settings->save();
+        }
+
+        return back()->with('success','Payment setting updated successfully');
+    }
 }

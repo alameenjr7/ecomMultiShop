@@ -70,6 +70,14 @@ Route::get('checkout-store', [\App\Http\Controllers\Frontend\CheckoutController:
 Route::get('checkout-complete/{order}', [\App\Http\Controllers\Frontend\CheckoutController::class, 'checkoutComplete'])->name('checkout.complete');
 
 
+//Paypal
+Route::get('paypal/payment/cancel',[\App\Http\Controllers\PaypalController::class,'getCancel']);
+Route::get('paypal/payment/done',[\App\Http\Controllers\PaypalController::class,'getDone']);
+
+//razor
+Route::get('razor/payment',[\App\Http\Controllers\RazorpayController::class,'razorPayment'])->name('razor.payment');
+
+
 //Shop Section
 Route::get('shop', [\App\Http\Controllers\Frontend\IndexController::class, 'shop'])->name('shop');
 Route::post('shop-filter', [\App\Http\Controllers\Frontend\IndexController::class, 'shopFilter'])->name('shop.filter');

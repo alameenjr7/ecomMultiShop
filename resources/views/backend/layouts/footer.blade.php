@@ -25,6 +25,17 @@
 <script src="{{asset('backend/assets/bundles/mainscripts.bundle.js')}}"></script>
 <script src="{{asset('backend/assets/js/index8.js')}}"></script>
 
+<script src="{{asset('backend/assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>
+
+
+{{-- calendar --}}
+<script src="{{asset('backend/assets/bundles/fullcalendarscripts.bundle.js')}}"></script><!--/ calender javascripts -->
+<script src="{{asset('backend/assets/vendor/fullcalendar/fullcalendar.js')}}"></script><!--/ calender javascripts -->
+<script src="{{asset('backend/assets/js/pages/calendar.js')}}"></script>
+
+<!-- Javascript -->
+<script src="{{asset('backend/assets/js/pages/ui/dialogs.js')}}"></script>
+
 @yield('scripts')
 
 

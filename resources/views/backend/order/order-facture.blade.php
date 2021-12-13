@@ -26,8 +26,8 @@
                     <div class="card" style="min-width: 135%">
                         <div class="body" >
                             <div class="table-responsive">
-                                <div>
-                                    <div class="toolbar hidden-print">
+                                <div id="invoice">
+                                    {{-- <div class="toolbar hidden-print">
                                         <div class="text-right">
                                             <button id="printInvoice" class="btn btn-info"><i class="fa fa-print"></i>
                                                 Print</button>
@@ -35,7 +35,7 @@
                                                 PDF</button>
                                         </div>
                                         <hr>
-                                    </div>
+                                    </div> --}}
                                     <div class="overflow-auto invoice" id="invoice">
                                         <div style="min-width: 600px">
                                             <header>
@@ -78,8 +78,8 @@
                                                     <thead class="table-border">
                                                         <tr>
                                                             <th>#</th>
-                                                            <th class="text-left">DESCRIPTION</th>
-                                                            <th class="text-left">TITLE</th>
+                                                            {{-- <th class="text-left">DESCRIPTION</th> --}}
+                                                            <th colspan="2" class="text-left">TITLE</th>
                                                             <th class="text-right">Unit PRICE</th>
                                                             <th class="text-right">QUANTITY</th>
                                                             <th class="text-right">TOTAL</th>
@@ -89,16 +89,16 @@
                                                         @foreach ($order->products as $item)
                                                             <tr>
                                                                 <td class="no">{{$loop->iteration}}</td>
-                                                                <td class="text-left">
+                                                                {{-- <td class="text-left">
                                                                     <a target="_blank"
                                                                         href="#">
                                                                         <img src="{{$item->photo}}" alt="" style="width: 60px;heigth:60px;">
                                                                     </a>
-                                                                </td>
-                                                                <td>{{$item->title}}</td>
-                                                                <td class="unit">${{$item->offer_price}}</td>
+                                                                </td> --}}
+                                                                <td colspan="2">{{$item->title}}</td>
+                                                                <td class="unit">{{Helper::currency_converter($item->offer_price)}}</td>
                                                                 <td class="qty">{{$item->pivot->quantity}}</td>
-                                                                <td class="total">${{$item->offer_price * $item->pivot->quantity}}</td>
+                                                                <td class="total">{{Helper::currency_converter($item->offer_price * $item->pivot->quantity)}}</td>
                                                             </tr>
                                                         @endforeach
                                                     </tbody>
@@ -106,26 +106,26 @@
                                                         <tr>
                                                             <td colspan="3"></td>
                                                             <td colspan="2">SUBTOTAL</td>
-                                                            <td>${{number_format($order->sub_total,2)}}</td>
+                                                            <td>{{Helper::currency_converter($order->sub_total)}}</td>
                                                         </tr>
                                                         @if ($order->delivery_charge>0)
                                                             <tr>
                                                                 <td colspan="3"></td>
                                                                 <td colspan="2">DELIVERY CHARGE</td>
-                                                                <td>${{number_format($order->delivery_charge,2)}}</td>
+                                                                <td>{{Helper::currency_converter($order->delivery_charge)}}</td>
                                                             </tr>
                                                         @endif
                                                         @if ($order->coupon>0)
                                                             <tr>
                                                                 <td colspan="3"></td>
                                                                 <td colspan="2">COUPON</td>
-                                                                <td>${{number_format($order->coupon,2)}}</td>
+                                                                <td>{{Helper::currency_converter($order->coupon)}}</td>
                                                             </tr>
                                                         @endif
                                                         <tr>
                                                             <td colspan="3"></td>
                                                             <td colspan="2">GRAND TOTAL</td>
-                                                            <td>${{number_format($order->total_amount,2)}}</td>
+                                                            <td>{{Helper::currency_converter($order->total_amount)}}</td>
                                                         </tr>
                                                     </tfoot>
                                                 </table>

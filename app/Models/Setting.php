@@ -31,5 +31,6 @@ class Setting extends Model
         'appStore_url',
         'youtube_url',
 		'map_url',
+        'paypal_sandbox'
     ];
 }

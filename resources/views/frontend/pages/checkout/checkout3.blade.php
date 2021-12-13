@@ -51,7 +51,7 @@
                                         role="tabpanel" aria-labelledby="five">
                                         <div class="panel-body">
                                             <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" required name="payment_method" value="cod" class="custom-control-input" id="customCheck2">
+                                                <input type="radio" required name="payment_method" value="cod" class="custom-control-input" id="customCheck2">
                                                 <label class="custom-control-label" for="customCheck2">Cash on
                                                     Delivery</label>
                                             </div>
@@ -63,6 +63,52 @@
 
                                 <!-- Single Payment Method -->
                                 <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="five">
+                                        <h6 class="panel-title">
+                                            <a class="collapsed" role="button" data-toggle="collapse"
+                                                data-parent="#accordion" href="#collapse_five" aria-expanded="false"
+                                                aria-controls="collapse_five"><i
+                                                    class="icofont-paypal-alt"></i> Pay with PayPal
+                                            </a>
+                                        </h6>
+                                    </div>
+                                    <div aria-expanded="false" id="collapse_five" class="panel-collapse collapse show"
+                                        role="tabpanel" aria-labelledby="five">
+                                        <div class="panel-body">
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="radio" required name="payment_method" value="paypal" class="custom-control-input" id="customCheck3">
+                                                <label class="custom-control-label" for="customCheck3">Pay with
+                                                    PayPal</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Single Payment Method -->
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="five">
+                                        <h6 class="panel-title">
+                                            <a class="collapsed" role="button" data-toggle="collapse"
+                                                data-parent="#accordion" href="#collapse_five" aria-expanded="false"
+                                                aria-controls="collapse_five"><i
+                                                    class="icofont-razor"></i> Pay with Razor
+                                            </a>
+                                        </h6>
+                                    </div>
+                                    <div aria-expanded="false" id="collapse_five" class="panel-collapse collapse show"
+                                        role="tabpanel" aria-labelledby="five">
+                                        <div class="panel-body">
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="radio" required name="payment_method" value="razor" class="custom-control-input" id="customCheck4">
+                                                <label class="custom-control-label" for="customCheck4">Pay with
+                                                    Razor</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Single Payment Method -->
+                                {{-- <div class="panel panel-default">
                                     <div class="panel-heading" role="tab" id="one">
                                         <h6 class="panel-title">
                                             <a class="collapsed" role="button" data-toggle="collapse"
@@ -118,10 +164,10 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
 
                                 <!-- Single Payment Method -->
-                                <div class="panel panel-default">
+                                {{-- <div class="panel panel-default">
                                     <div class="panel-heading" role="tab" id="two">
                                         <h6 class="panel-title">
                                             <a class="collapsed" role="button" data-toggle="collapse"
@@ -162,10 +208,10 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
 
                                 <!-- Single Payment Method -->
-                                <div class="panel panel-default">
+                                {{-- <div class="panel panel-default">
                                     <div class="panel-heading" role="tab" id="three">
                                         <h6 class="panel-title">
                                             <a class="collapsed" role="button" data-toggle="collapse"
@@ -182,10 +228,10 @@
                                                 have cleared in our account.</p>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
 
                                 <!-- Single Payment Method -->
-                                <div class="panel panel-default">
+                                {{-- <div class="panel panel-default">
                                     <div class="panel-heading" role="tab" id="four">
                                         <h6 class="panel-title">
                                             <a class="collapsed" role="button" data-toggle="collapse"
@@ -202,7 +248,7 @@
                                                 State / County, Store Postcode.</p>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>

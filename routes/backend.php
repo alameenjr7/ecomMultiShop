@@ -31,7 +31,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>['admin']], function(){
     Route::resource('/category', \App\Http\Controllers\CategoryController::class);
     Route::post('category_status', [\App\Http\Controllers\CategoryController::class, 'categoryStatus'])->name('category.status');
     Route::post('category/{id}/child', [\App\Http\Controllers\CategoryController::class, 'getChildByParentID']);
-	
+
     //Brand section
     Route::resource('/brand', \App\Http\Controllers\BrandController::class);
     Route::post('brand_status', [\App\Http\Controllers\BrandController::class, 'brandStatus'])->name('brand.status');
@@ -46,6 +46,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>['admin']], function(){
     Route::resource('/order', \App\Http\Controllers\OrderController::class);
     Route::post('order-status', [\App\Http\Controllers\OrderController::class, 'orderStatus'])->name('order.status');
     Route::get('order-facture/{id}', [\App\Http\Controllers\OrderController::class, 'showFacture'])->name('order.facture');
+    Route::get('order-PDF/{id}', [\App\Http\Controllers\OrderController::class, 'orderPDF'])->name('order.pdf');
 
 
     //User section
@@ -69,18 +70,33 @@ Route::group(['prefix'=>'admin', 'middleware'=>['admin']], function(){
     Route::get('settings', [\App\Http\Controllers\SettingController::class, 'settings'])->name('settings');
     Route::put('settings', [\App\Http\Controllers\SettingController::class, 'settingsUpdate'])->name('settings.update');
 
-    //Currency section
+    //seller section
     Route::resource('/seller', \App\Http\Controllers\SellerController::class);
     Route::post('seller_status', [\App\Http\Controllers\SellerController::class, 'sellerStatus'])->name('seller.status');
     Route::post('seller-verified', [\App\Http\Controllers\SellerController::class, 'sellerVerified'])->name('seller.verified');
 
 	//SMTP section
-	Route::get('smtp',[\App\Http\Controllers\SettingController::class, 'smtp'])->name('smtp.index');
+	Route::get('smtp',[\App\Http\Controllers\SettingController::class, 'smtp'])->name('smtp');
 	Route::post('smtp-update',[\App\Http\Controllers\SettingController::class, 'smtpUpdate'])->name('smtp.update');
 
 
+    //Payment section
+    Route::get('payment', [\App\Http\Controllers\SettingController::class, 'payment'])->name('payment');
+
+    //Paypal
+    Route::patch('paypal-settings-update', [\App\Http\Controllers\SettingController::class, 'paypalUpdate'])->name('paypal.setting.update');
+
+
+    //calendar
+    Route::get('calendar', [\App\Http\Controllers\Backend\IndexController::class, 'calendar'])->name('calendar');
+
+    //messages
+    Route::get('messages', [\App\Http\Controllers\Backend\IndexController::class, 'messages'])->name('messages');
+
+    //profile
+    Route::get('profile', [\App\Http\Controllers\Backend\IndexController::class, 'profile'])->name('profile');
+    Route::put('profile-update', [\App\Http\Controllers\Backend\IndexController::class, 'profileUpdate'])->name('profile.update');
+
 });
 
-Route::group(['prefix'=>'filemanager', 'middleware'=>['web','auth:admin']], function () {
-    \UniSharp\LaravelFilemanager\Lfm::routes();
-});
+

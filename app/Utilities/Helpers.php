@@ -1,9 +1,11 @@
 <?php
 
-use App\Models\Currency;
 use App\Models\Product;
 use App\Models\Setting;
+use App\Models\Currency;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use phpDocumentor\Reflection\DocBlock\Tags\See;
 
 class Helper{
@@ -17,6 +19,15 @@ class Helper{
     {
         return asset('backend/assets/images/no-image.png');
     }
+
+    //cart count
+    // public static function cartCount($user_id='')
+    // {
+    //     if(Auth::check()){
+    //         if($user_id=="") $user_id=auth()->user()->id;
+    //         return Cart::where('user_id',$user_id)->where('order_id',null)->sum('quantity');
+    //     }
+    // }
 
     //Price
     public static function minPrice()
@@ -63,6 +74,8 @@ if(!function_exists('convert_price'))
 
     }
 }
+
+
 
 //convert symbol
 if(!function_exists('currency_symbol'))

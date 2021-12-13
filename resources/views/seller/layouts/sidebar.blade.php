@@ -15,9 +15,7 @@
                     </span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right account">
-                    <li><a href="page-profile2.html"><i class="icon-user"></i>My Profile</a></li>
-                    <li><a href="app-inbox.html"><i class="icon-envelope-open"></i>Messages</a></li>
-                    <li><a href="javascript:void(0);"><i class="icon-settings"></i>Settings</a></li>
+                    <li><a href="{{route('seller.profile')}}"><i class="icon-user"></i>My Profile</a></li>
                     <li class="divider"></li>
                     <li>
                         <a href="{{ route('logout') }}" onclick="event.preventDefault();
@@ -47,9 +45,6 @@
         <!-- Nav tabs -->
         <ul class="nav nav-tabs">
             <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#menu">Menu</a></li>
-            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#Chat"><i class="icon-book-open"></i></a></li>
-            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#setting"><i class="icon-settings"></i></a></li>
-            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#question"><i class="icon-question"></i></a></li>
         </ul>
 
         <!-- Tab panes -->
@@ -59,7 +54,7 @@
                     <ul id="main-menu" class="metismenu">
                         <li class="active"><a href="{{route('seller')}}"><i class="icon-speedometer"></i> <span>Dashboard</span></a>
 
-                        <li class="active">
+                        <li class="desactive">
                             <a href="javascript:void(0);" class="has-arrow"><i class="icon-briefcase"></i> <span>Products Managements</span></a>
                             <ul>
                                 <li><a href="{{route('seller-product.index')}}">All Products</a></li>

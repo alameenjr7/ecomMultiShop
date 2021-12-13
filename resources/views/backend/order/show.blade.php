@@ -83,7 +83,7 @@
                                                         class="badge badge-danger">{{ ucfirst($order->payment_status) }}</span>
                                                 </td>
                                             @endif
-                                            <td>$ {{ number_format($order->total_amount, 2) }}</td>
+                                            <td>{{ Helper::currency_converter($order->total_amount) }}</td>
                                             <td style="text-align: center;">
                                                 <div class="row">
                                                     <a href="{{ route('order.facture',$order->id) }}"
@@ -92,9 +92,10 @@
                                                         class="float-left ml-1 btn btn-sm btn-outline-secondary"
                                                         data-placement="bottom"><i class="icon-eye"></i>
                                                     </a>
-                                                    <a href="{{route('order.show',$order->id)}}" data-target="#userID{{$order->id}}" data-toggle="tooltip"
-                                                        title="Download facture" class="float-left ml-1 btn btn-sm btn-outline-warning"
-                                                        data-placement="bottom"><i class="fa fa-download"></i>
+                                                    <a href="{{route('order.pdf',$order->id)}}" title="Download facture"
+                                                        class="float-left ml-1 btn btn-sm btn-outline-warning"
+                                                        data-placement="bottom">
+                                                        <i class="fa fa-download"></i>
                                                     </a>
                                                 </div>
                                             </td>
@@ -124,9 +125,9 @@
                                                     <img src="{{ $item->photo }}" style="max-width:100px;">
                                                 </td>
                                                 <td>{{ $item->title }}</td>
-                                                <td>${{ $item->offer_price }}</td>
+                                                <td>{{ Helper::currency_converter($item->offer_price) }}</td>
                                                 <td>{{ $item->pivot->quantity }}</td>
-                                                <td>${{ $item->offer_price * $item->pivot->quantity }}</td>
+                                                <td>{{ Helper::currency_converter($item->offer_price * $item->pivot->quantity) }}</td>
                                             </tr>
                                         @empty
                                             <td colspan="6" class="text-center">No orders</td>
@@ -183,23 +184,23 @@
                                             <tbody>
                                                 <tr>
                                                     <td>Sub Total</td>
-                                                    <td>$ {{ number_format($order->sub_total, 2) }}</td>
+                                                    <td>{{ Helper::currency_converter($order->sub_total) }}</td>
                                                 </tr>
                                                 @if ($order->delivery_charge > 0)
                                                     <tr>
                                                         <td>Delivery Charge</td>
-                                                        <td>$ {{ number_format($order->delivery_charge, 2) }}</td>
+                                                        <td>{{ Helper::currency_converter($order->delivery_charge) }}</td>
                                                     </tr>
                                                 @endif
                                                 @if ($order->coupon > 0)
                                                     <tr>
                                                         <td>Coupon</td>
-                                                        <td>$ {{ number_format($order->coupon, 2) }}</td>
+                                                        <td>{{ Helper::currency_converter($order->coupon) }}</td>
                                                     </tr>
                                                 @endif
                                                 <tr>
                                                     <td>Total</td>
-                                                    <td>$ {{ number_format($order->sub_total, 2) }}</td>
+                                                    <td>{{ Helper::currency_converter($order->sub_total) }}</td>
                                                 </tr>
                                             </tbody>
                                             <tbody>

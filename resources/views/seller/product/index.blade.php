@@ -144,10 +144,10 @@
                                                         </div>
                                                         <div class="modal-body">
                                                             <strong>Summary:</strong>
-                                                            <p>{{$product->summary}}</p>
+                                                            <p>{!! html_entity_decode($product->summary) !!}</p>
 
                                                             <strong>Description:</strong>
-                                                            <p>{{$product->description}}</p>
+                                                            <p>{!! html_entity_decode($product->description) !!}</p>
 
                                                             <div class="row">
                                                                 <div class="col-md-4">

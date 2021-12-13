@@ -59,7 +59,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="">Email <span class="text-danger">*</span></label>
-                                            <input type="email" class="form-control" placeholder="Email" name="email"
+                                            <input type="email" readonly class="form-control" placeholder="Email" name="email"
                                                 value="{{$user->email}}">
                                         </div>
                                     </div>
@@ -95,31 +95,6 @@
                                             <input id="thumbnail" class="form-control" type="text" name="photo" value="{{$user->photo}}">
                                         </div>
                                         <div id="holder" style="margin-top:15px; max-height:100px;"></div>
-                                    </div>
-                                </div>
-
-                                <div class="row col-lg-12 col-md-12 col-sm-12">
-                                    {{-- <div class="col-md-6">
-                                        <label for="">Role <span class="text-danger">*</span></label>
-                                        <select name="role" class="form-control show-tick">
-                                            <option value="">-- Role --</option>
-                                            <option value="admin" {{$user->role=='admin' ? 'selected' : '' }}>Admin
-                                            </option>
-                                            <option value="customer" {{$user->role=='customer' ? 'selected' : '' }}>Customer
-                                            </option>
-                                            <option value="vendor" {{$user->role=='vendor' ? 'selected' : '' }}>Vendor
-                                            </option>
-                                        </select>
-                                    </div> --}}
-                                    <div class="col-md-6">
-                                        <label for="">Status <span class="text-danger">*</span></label>
-                                        <select name="status" class="form-control show-tick">
-                                            <option value="">-- Status --</option>
-                                            <option value="active" {{$user->status=='active' ? 'selected' : '' }}>Active
-                                            </option>
-                                            <option value="inactive" {{$user->status=='inactive' ? 'selected' : '' }}>Inactive
-                                            </option>
-                                        </select>
                                     </div>
                                 </div>
                             </div>

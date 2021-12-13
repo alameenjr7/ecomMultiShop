@@ -55,7 +55,7 @@
                                         <tr>
                                             <th scope="row">{{$item->shipping_address}}</th>
                                             <td>{{$item->delivery_time}}</td>
-                                            <td>$ {{number_format($item->delivery_charge)}}</td>
+                                            <td>{{Helper::currency_converter($item->delivery_charge)}}</td>
                                             <td>
                                                 <div class="custom-control custom-radio">
                                                     <input type="radio" id="customRadio{{$key}}" name="delivery_charge"

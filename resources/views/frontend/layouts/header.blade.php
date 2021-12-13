@@ -192,7 +192,7 @@
                                                 @if(session()->has('coupon'))
                                                     <span>{{Helper::currency_converter((float) str_replace(',','',\Gloudemans\Shoppingcart\Facades\Cart::subtotal())-\Illuminate\Support\Facades\Session::get('coupon')['value'])}}</span>
                                                 @else
-                                                    <span>{{Helper::currency_converter(\Gloudemans\Shoppingcart\Facades\Cart::total())}}</span>
+                                                    <span>{{Helper::currency_converter(\Gloudemans\Shoppingcart\Facades\Cart::subtotal())}}</span>
                                                 @endif
                                             </li>
                                         </ul>

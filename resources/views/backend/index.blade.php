@@ -64,7 +64,7 @@
             <div class="col-lg-3 col-md-6">
                 <div class="card overflowhidden">
                     <div class="body">
-                        <h3>{{number_format(App\Models\Product::where('status','active')->sum('offer_price'),2)}} <i class="float-right fa fa-dollar"></i></h3>
+                        <h3>{{Helper::currency_converter(App\Models\Product::where('status','active')->sum('offer_price'))}} <i class="float-right fa fa-dollar"></i></h3>
                         <span>Total product active</span>
                     </div>
                     <div class="progress progress-xs progress-transparent custom-color-blue m-b-0">
@@ -75,7 +75,7 @@
             <div class="col-lg-3 col-md-6">
                 <div class="card overflowhidden">
                     <div class="body">
-                        <h3>{{App\Models\Order::where('payment_status','paid')->sum('total_amount')}}<i class="float-right fa fa-money"></i></h3>
+                        <h3>{{Helper::currency_converter(App\Models\Order::where('payment_status','paid')->sum('total_amount'))}}<i class="float-right fa fa-money"></i></h3>
                         <span>Total Product Paid</span>
                     </div>
                     <div class="progress progress-xs progress-transparent custom-color-green m-b-0">
@@ -105,11 +105,11 @@
                         <div class="clearfix row">
                             <div class="col-lg-4 col-md-4 col-sm-4">
                                 <span class="text-muted">Sales Report</span>
-                                <h3 class="text-warning">$4,516</h3>
+                                <h3 class="text-warning">{{Helper::currency_converter($order_sales['total'])}}</h3>
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-4">
                                 <span class="text-muted">Annual Revenue </span>
-                                <h3 class="text-info">$6,481</h3>
+                                <h3 class="text-info">{{Helper::currency_converter(App\Models\Order::where('payment_status','paid')->sum('total_amount'))}}</h3>
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-4">
                                 <span class="text-muted">Total Profit</span>
@@ -197,7 +197,7 @@
                                             @else
                                                 <td><span class="badge badge-danger">{{ucfirst($order->payment_status)}}</span></td>
                                             @endif
-                                            <td>$ {{number_format($order->total_amount,2)}}</td>
+                                            <td>{{Helper::currency_converter(($order->total_amount))}}</td>
                                             <td style="text-align: center;">
                                                 <div class="row">
                                                     <a href="{{route('order.show',$order->id)}}" data-target="#userID{{$order->id}}" data-toggle="tooltip"

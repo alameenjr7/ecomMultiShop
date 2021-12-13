@@ -107,13 +107,20 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        $product=Product::find($id);
-        $productattribute=ProductAttributes::where('product_id',$id)->orderBy('id','DESC')->get();
-        if($product){
-            return view('seller.product.product-attribute',compact(['product','productattribute']));
+        if(auth('seller')->user()->is_verified)
+        {
+            $product=Product::find($id);
+            $productattribute=ProductAttributes::where('product_id',$id)->orderBy('id','DESC')->get();
+            if($product){
+                return view('seller.product.product-attribute',compact(['product','productattribute']));
+            }
+            else {
+                return back()->with('error', 'Product not found');
+            }
         }
-        else {
-            return back()->with('error', 'Product not found');
+        else
+        {
+            return back()->with('error','You need verified your account');
         }
     }
 
@@ -125,12 +132,19 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $product=Product::find($id);
-        if($product){
-            return view('seller.product.edit',compact(['product']));
+        if(auth('seller')->user()->is_verified)
+        {
+            $product=Product::find($id);
+            if($product){
+                return view('seller.product.edit',compact(['product']));
+            }
+            else {
+                return back()->with('error', 'Product not found');
+            }
         }
-        else {
-            return back()->with('error', 'Product not found');
+        else
+        {
+            return back()->with('error','You need verified your account');
         }
     }
 
@@ -194,18 +208,25 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        $product=Product::find($id);
-        if($product){
-            $status = $product->delete();
-            if($status){
-                return redirect()->route('seller-product.index')->with('success', 'Product successfully deleted');
+        if(auth('seller')->user()->is_verified)
+        {
+            $product=Product::find($id);
+            if($product){
+                $status = $product->delete();
+                if($status){
+                    return redirect()->route('seller-product.index')->with('success', 'Product successfully deleted');
+                }
+                else {
+                    return back()->with('error', 'Something went wrong');
+                }
             }
-            else {
-                return back()->with('error', 'Something went wrong');
+            else{
+                return back()->with('error', 'Data not found');
             }
         }
-        else{
-            return back()->with('error', 'Data not found');
+        else
+        {
+            return back()->with('error','You need verified your account');
         }
     }
 

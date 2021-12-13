@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -32,6 +33,8 @@ class UserTableSeeder extends Seeder
             'email'=>'admin@gmail.com',
             'password'=>Hash::make('ALAMEENjr@7'),
             'photo'=>'/backend/assets/images/user.JPG',
+            'phone'=>'221772050626',
+            'address'=>'Liberte 6 Ext.',
             'status'=>'active',
         ]);
 
@@ -44,6 +47,11 @@ class UserTableSeeder extends Seeder
             'phone'=>'221 774834251',
             'password'=>Hash::make('ALAMEENjr@7'),
             'photo'=>'/frontend/assets/img/no-image.png',
+            'date_of_birth'=>Carbon::now(),
+            'genre'=>'Homme',
+            'city'=>'Dakar',
+            'state'=>'Senegal',
+            'country'=>'Senegal',
             'is_verified'=>0,
             'status'=>'active',
         ]);

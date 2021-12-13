@@ -7,6 +7,8 @@ use App\Models\Shipping;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\PaypalController;
+use App\Http\Controllers\RazorpayController;
 use App\Mail\OrderMail;
 use App\Models\Product;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -178,6 +180,10 @@ class CheckoutController extends Controller
 
         $status=$order->save();
 
+        if($status){
+            session()->put('order_id',$order->id);
+        }
+
         foreach(Cart::instance('shopping')->content() as $item)
         {
             $product_id[]=$item->id;
@@ -186,8 +192,19 @@ class CheckoutController extends Controller
             $order->products()->attach($product,['quantity'=>$quantity]);
         }
 
+        if($order['payment_method']=='paypal')
+        {
+            $paypal=new PaypalController;
+            return $paypal->getCheckout();
+        }
+        elseif($order['payment_method']=='razor')
+        {
+            $razor=new RazorpayController;
+            return $razor->razorpay();
+        }
+
         if($status){
-            // Mail::to($order['email'])->bcc($order['n_email'])->cc('ngomalameen90@gmail.com')->send(new OrderMail($order));
+            Mail::to($order['email'])->bcc($order['n_email'])->cc('ngomalameen90@gmail.com')->send(new OrderMail($order));
             Cart::instance('shopping')->destroy();
             Session::forget('coupon');
             Session::forget('checkout');
@@ -195,6 +212,36 @@ class CheckoutController extends Controller
         }
         else{
             return redirect()->route('checkout1')->with('error','Please try again');
+        }
+    }
+
+    public function checkout_done($order_id,$payment)
+    {
+        $order=Order::findOrFail($order_id);
+        $order->payment_status='paid';
+        $order->payment_details=$payment;
+        $status=$order->save();
+        if($status){
+            Mail::to($order['email'])->bcc($order['n_email'])->cc('babangom673@gmail.com')->send(new OrderMail($order));
+            Cart::instance('shopping')->destroy();
+            Session::forget('coupon');
+            Session::forget('checkout');
+            return redirect()->route('checkout.complete',$order['order_number'])->with('success','Successfully completed order - Can you verified your email address');
+        }
+    }
+
+    public function razorPaymentDone($order_id,$payment)
+    {
+        $order=Order::findOrFail($order_id);
+        $order->payment_status='paid';
+        $order->payment_details=$payment;
+        $status=$order->save();
+        if($status){
+            Mail::to($order['email'])->bcc($order['n_email'])->cc('babangom673@gmail.com')->send(new OrderMail($order));
+            Cart::instance('shopping')->destroy();
+            Session::forget('coupon');
+            Session::forget('checkout');
+            return redirect()->route('checkout.complete',$order['order_number'])->with('success','Successfully completed order - Can you verified your email address');
         }
     }
 }

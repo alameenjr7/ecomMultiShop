@@ -9,7 +9,7 @@
     <!-- Page Loader -->
 <div class="page-loader-wrapper">
     <div class="loader">
-        <div class="m-t-30"><img src="{{asset('backend/assets/images/logo-icon.svg')}}" width="48" height="48" alt="Kaay-Deals"></div>
+        <div class="m-t-30"><img src="{{asset(get_setting('logo'))}}" width="48" height="48" alt="Kaay-Deals"></div>
         <p>Please wait...</p>
     </div>
 </div>
@@ -25,5 +25,28 @@
 
 </div>
     @include('backend.layouts.footer')
+
+    {{-- Change currency--}}
+    <script>
+        function currency_change(currency_code){
+            $.ajax({
+                type:'POST',
+                url:'{{route('currency.load')}}',
+                data:{
+                    currency_code:currency_code,
+                    _token:'{{csrf_token()}}',
+                },
+                success:function(response){
+                    if(response['status']){
+                        location.reload();
+                    }
+                    else{
+                        alert('server error');
+                    }
+                }
+            });
+        }
+    </script>
+    {{-- End Change currency--}}
 </body>
 </html>
