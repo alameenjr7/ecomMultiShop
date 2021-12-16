@@ -81,16 +81,36 @@
 
                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                     <label for="">Condition </label>
-                                    <select name="condition" class="form-control show-tick">
+                                    <select id="condition" name="condition" class="form-control show-tick" onchange="yesnoCheck(this)">
                                         <option value="banner" {{$banner->condition=='banner' ? 'selected' : '' }}>Banner
                                         </option>
                                         <option value="promo" {{$banner->condition=='promo' ? 'selected' : '' }}>Promote
                                         </option>
                                     </select>
                                 </div>
+
+                                <div id="open" class="mt-3 row col-lg-12 col-md-12 col-sm-12" style="display: none">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="">Percent </label>
+                                            <input type="number" class="form-control" placeholder="Percent"
+                                                name="percent" value="{{$banner->percent}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="">Is Active </label>
+                                        <select name="is_active" class="form-control show-tick">
+                                            <option value="ON" {{$banner->is_active=='ON' ? 'selected' : '' }}>ON
+                                            </option>
+                                            <option value="OFF" {{$banner->is_active=='OFF' ? 'selected' : '' }}>OFF
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+
                             </div>
 
-                            <div class="col-sm-12">
+                            <div class="py-3">
                                 <button type="submit" class="btn btn-primary">Update</button>
                                 <button type="submit" class="btn btn-outline-secondary">Cancel</button>
                             </div>
@@ -114,5 +134,15 @@
     $(document).ready(function() {
             $('#description').summernote();
         });
+</script>
+
+<script>
+    function yesnoCheck(that) {
+        if (that.value == "promo") {
+            document.getElementById("open").style.display = "block";
+        } else {
+            document.getElementById("open").style.display = "none";
+        }
+    }
 </script>
 @endsection

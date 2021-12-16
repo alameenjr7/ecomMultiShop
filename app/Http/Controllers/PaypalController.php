@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use Illuminate\Http\Request;
+use PayPalHttp\HttpException;
 use Illuminate\Support\Facades\Redirect;
 use PayPalCheckoutSdk\Core\PayPalHttpClient;
 use PayPalCheckoutSdk\Core\SandboxEnvironment;
@@ -11,7 +12,6 @@ use PayPalCheckoutSdk\Core\ProductionEnvironment;
 use PayPalCheckoutSdk\Orders\OrdersCreateRequest;
 use PayPalCheckoutSdk\Orders\OrdersCaptureRequest;
 use App\Http\Controllers\Frontend\CheckoutController;
-use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class PaypalController extends Controller
 {
@@ -59,6 +59,7 @@ class PaypalController extends Controller
         }
         catch(HttpException $ex){
             dd($ex);
+            // print($ex);
         }
     }
 

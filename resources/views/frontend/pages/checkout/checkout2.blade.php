@@ -44,8 +44,8 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">Method</th>
-                                            <th scope="col">Delivery Time</th>
-                                            <th scope="col">Price</th>
+                                            <th scope="col">Zone</th>
+                                            {{-- <th scope="col">Price</th> --}}
                                             <th scope="col">Choose</th>
                                         </tr>
                                     </thead>
@@ -55,7 +55,7 @@
                                         <tr>
                                             <th scope="row">{{$item->shipping_address}}</th>
                                             <td>{{$item->delivery_time}}</td>
-                                            <td>{{Helper::currency_converter($item->delivery_charge)}}</td>
+                                            {{-- <td>{{Helper::currency_converter($item->delivery_charge)}}</td> --}}
                                             <td>
                                                 <div class="custom-control custom-radio">
                                                     <input type="radio" id="customRadio{{$key}}" name="delivery_charge"
@@ -68,7 +68,7 @@
                                         @endforeach
                                         @else
                                         <tr>
-                                            <td colspan="4">No Shipping method found!</td>
+                                            <td colspan="3">No Shipping method found!</td>
                                         </tr>
                                         @endif
                                     </tbody>

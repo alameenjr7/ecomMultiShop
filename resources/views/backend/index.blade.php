@@ -42,22 +42,22 @@
             <div class="col-lg-3 col-md-6">
                 <div class="card overflowhidden">
                     <div class="body">
-                        <h3>{{App\Models\Product::where('status','active')->where('created_at','>',now()->subDays(30)->endOfDay())->count()}} <i class="float-right icon-briefcase"></i></h3>
-                        <span>Total products: {{App\Models\Product::where('status','active')->count()}}</span>
+                        <h3>{{$total_productMonth}} <i class="float-right icon-briefcase"></i></h3>
+                        <span>Total products</span>
                     </div>
                     <div class="progress progress-xs progress-transparent custom-color-yellow m-b-0">
-                        <div class="progress-bar" data-transitiongoal="89"></div>
+                        <div class="progress-bar" data-transitiongoal="{{$total_productMonth/$total_product*100}}"></div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">
                 <div class="card overflowhidden">
                     <div class="body">
-                        <h3>{{App\Models\User::where('status','active')->where('created_at','>',now()->subDays(30)->endOfDay())->count()}} <i class="float-right icon-user-follow"></i></h3>
+                        <h3>{{$lastCustomer}} <i class="float-right icon-user-follow"></i></h3>
                         <span>New Customers (last month)</span>
                     </div>
                     <div class="progress progress-xs progress-transparent custom-color-purple m-b-0">
-                        <div class="progress-bar" data-transitiongoal="67"></div>
+                        <div class="progress-bar" data-transitiongoal="{{$lastCustomer/$totalCustomer*100}}"></div>
                     </div>
                 </div>
             </div>
@@ -90,7 +90,7 @@
                 <div class="card">
                     <div class="header">
                         <h2>Annual Report <small>Description text here...</small></h2>
-                        <ul class="header-dropdown">
+                        {{-- <ul class="header-dropdown">
                             <li class="dropdown">
                                 <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
                                 <ul class="dropdown-menu dropdown-menu-right">
@@ -99,21 +99,21 @@
                                     <li><a href="javascript:void(0);">Something else</a></li>
                                 </ul>
                             </li>
-                        </ul>
+                        </ul> --}}
                     </div>
                     <div class="body">
                         <div class="clearfix row">
                             <div class="col-lg-4 col-md-4 col-sm-4">
                                 <span class="text-muted">Sales Report</span>
-                                <h3 class="text-warning">{{Helper::currency_converter($order_sales['total'])}}</h3>
+                                <h3 class="text-warning">{{Helper::currency_converter($chartData1)}}</h3>
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-4">
                                 <span class="text-muted">Annual Revenue </span>
-                                <h3 class="text-info">{{Helper::currency_converter(App\Models\Order::where('payment_status','paid')->sum('total_amount'))}}</h3>
+                                <h3 class="text-info">{{Helper::currency_converter($annuals_revenues)}}</h3>
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-4">
                                 <span class="text-muted">Total Profit</span>
-                                <h3 class="text-success">$3,915</h3>
+                                <h3 class="text-success">{{Helper::currency_converter($annuals_revenues - number_format((float) str_replace(',','',$chartData1),2))}}</h3>
                             </div>
                         </div>
                         <div id="area_chart" class="graph"></div>
@@ -123,10 +123,10 @@
             <div class="col-lg-4 col-md-12">
                 <div class="card">
                     <div class="header">
-                        <h2>Income Analysis<small>8% High then last month</small></h2>
+                        <h2>Income Analysis<small>{{$diff_percent}}% High then last month</small></h2>
                     </div>
                     <div class="body">
-                        <div class="text-center sparkline-pie">6,4,8</div>
+                        <div class="text-center sparkline-pie">{{$chartData}}</div>
                     </div>
                 </div>
                 <div class="card">
@@ -134,7 +134,7 @@
                         <h2>Sales Income</h2>
                     </div>
                     <div class="body">
-                        <h6>Overall <b class="text-success">7,000</b></h6>
+                        <h6>Overall <b class="text-success">{{Helper::currency_converter($chartData4)}}</b></h6>
                         <div class="sparkline" data-type="line" data-spot-Radius="2" data-highlight-Spot-Color="#445771" data-highlight-Line-Color="#222"
                             data-min-Spot-Color="#445771" data-max-Spot-Color="#445771" data-spot-Color="#445771"
                             data-offset="90" data-width="100%" data-height="95px" data-line-Width="1" data-line-Color="#ffcd55"
@@ -255,40 +255,6 @@
                                     </td>
                                     <td>$ 356</td>
                                 </tr>
-                                <tr>
-                                    <td>02</td>
-                                    <td>NOKIA-8</td>
-                                    <td>
-                                        <ul class="list-unstyled team-info margin-0">
-                                            <li><img src="{{asset('backend/assets/images/xs/avatar1.jpg')}}" title="Avatar" alt="Avatar"></li>
-                                            <li><img src="{{asset('backend/assets/images/xs/avatar5.jpg')}}" title="Avatar" alt="Avatar"></li>
-                                            <li><img src="{{asset('backend/assets/images/xs/avatar9.jpg')}}" title="Avatar" alt="Avatar"></li>
-                                        </ul>
-                                    </td>
-                                    <td>$ 542</td>
-                                </tr>
-                                <tr>
-                                    <td>01</td>
-                                    <td>IPONE-7</td>
-                                    <td>
-                                        <ul class="list-unstyled team-info margin-0">
-                                            <li><img src="{{asset('backend/assets/images/xs/avatar5.jpg')}}" title="Avatar" alt="Avatar"></li>
-                                        </ul>
-                                    </td>
-                                    <td>$ 356</td>
-                                </tr>
-                                <tr>
-                                    <td>02</td>
-                                    <td>NOKIA-8</td>
-                                    <td>
-                                        <ul class="list-unstyled team-info margin-0">
-                                            <li><img src="{{asset('backend/assets/images/xs/avatar3.jpg')}}" title="Avatar" alt="Avatar"></li>
-                                            <li><img src="{{asset('backend/assets/images/xs/avatar2.jpg')}}" title="Avatar" alt="Avatar"></li>
-                                        </ul>
-                                    </td>
-                                    <td>$ 542</td>
-                                </tr>
-
                             </tbody>
                         </table>
                     </div>
@@ -352,4 +318,113 @@
     });
 </script>
 
+<script>
+    $(function() {
+        "use strict";
+        MorrisArea();
+    });
+    //======
+    function MorrisArea() {
+
+
+        Morris.Area({
+            element: 'area_chart',
+            data: {!! $json !!},
+        lineColors: ['#ffc107', '#17a2b8', '#28a745'],
+        xkey: 'year',
+        ykeys: ['total','revenue'],
+        labels: ['Sales', 'Revenue', 'Profit'],
+        pointSize: 2,
+        lineWidth: 1,
+        resize: true,
+        fillOpacity: 0.5,
+        behaveLikeLine: true,
+        gridLineColor: '#e0e0e0',
+        hideHover: 'auto'
+        });
+
+    }
+
+    $(function() {
+        "use strict";
+        var mapData = {
+                "US": 298,
+                "AU": 760,
+                "CA": 870,
+                "SN": 2000000,
+                "GB": 120,
+            };
+
+        if( $('#world-map-markers').length > 0 ){
+            $('#world-map-markers').vectorMap(
+            {
+                map: 'world_mill_en',
+                backgroundColor: 'transparent',
+                borderColor: '#fff',
+                borderOpacity: 0.25,
+                borderWidth: 0,
+                color: '#e6e6e6',
+                regionStyle : {
+                    initial : {
+                    fill : '#ebebeb'
+                    }
+                },
+
+                markerStyle: {
+                    initial: {
+                                r: 5,
+                                'fill': '#fff',
+                                'fill-opacity':1,
+                                'stroke': '#000',
+                                'stroke-width' : 1,
+                                'stroke-opacity': 0.4
+                            },
+                    },
+
+                markers: [
+                    { latLng: [37.09,-95.71], name: 'America' },
+                    { latLng: [-25.27, 133.77], name: 'Australia' },
+                    { latLng: [56.13,-106.34], name: 'Canada' },
+                    { latLng: [14.497401,-14.452362], name: 'Senegal' },
+                    { latLng: [55.37,-3.43], name: 'United Kingdom' },
+                ],
+
+                series: {
+                    regions: [{
+                        values: {
+                            "US": '#bdf3f5',
+                            "AU": '#f9f1d8',
+                            "SN": '#40ff00',
+                            "GB": '#e0eff5',
+                            "CA": '#efebf4',
+                        },
+                        attribute: 'fill'
+                    }]
+                },
+                hoverOpacity: null,
+                normalizeFunction: 'linear',
+                zoomOnScroll: false,
+                scaleColors: ['#000000', '#000000'],
+                selectedColor: '#000000',
+                selectedRegions: [],
+                enableZoom: false,
+                hoverColor: '#fff',
+            });
+        }
+    });
+    // progress bars
+    $('.progress .progress-bar').progressbar({
+        display_text: 'none'
+    });
+
+    $('.sparkline-pie').sparkline('html', {
+        type: 'pie',
+        offset: 90,
+        width: '155px',
+        height: '155px',
+        sliceColors: ['#02b5b2', '#445771', '#ffcd55', '#40ff00', '#0040ff']
+    })
+
+    $('.sparkbar').sparkline('html', { type: 'bar' });
+</script>
 @endsection

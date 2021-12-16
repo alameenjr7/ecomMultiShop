@@ -82,10 +82,12 @@
                                     <td>Sub Total</td>
                                     <td>{{Helper::currency_converter(\Gloudemans\Shoppingcart\Facades\Cart::subtotal())}}</td>
                                 </tr>
-                                <tr>
-                                    <td>Shipping</td>
-                                    <td>{{Helper::currency_converter(\Illuminate\Support\Facades\Session::get('checkout')[0]['delivery_charge'])}}</td>
-                                </tr>
+                                @if (\Illuminate\Support\Facades\Session::get('checkout')[0]['delivery_charge'])
+                                    <tr>
+                                        <td>Shipping</td>
+                                        <td>{{Helper::currency_converter(\Illuminate\Support\Facades\Session::get('checkout')[0]['delivery_charge'])}}</td>
+                                    </tr>
+                                @endif
                                 @if (\Illuminate\Support\Facades\Session::has('coupon'))
                                     <tr>
                                         <td>Coupon</td>

@@ -52,8 +52,10 @@ class BannerController extends Controller
             'title'=>'string|required',
             'slug'=>'string|nullable|unique:banners,slug',
             'description'=>'string|nullable',
+            'percent'=>'integer|nullable',
             'photo'=>'required',
             'condition'=>'nullable|in:banner,promo',
+            'is_active'=>'nullable|in:ON,OFF',
             'status'=>'nullable|in:active,inactive',
         ]);
         $data=$request->all();
@@ -109,8 +111,10 @@ class BannerController extends Controller
                 'title'=>'string|required',
                 'slug'=>'string|nullable|exists:banners,slug',
                 'description'=>'string|nullable',
+                'percent'=>'integer|nullable',
                 'photo'=>'required',
                 'condition'=>'nullable|in:banner,promo',
+                'is_active'=>'nullable|in:ON,OFF',
                 'status'=>'nullable|in:active,inactive',
             ]);
             $data=$request->all();

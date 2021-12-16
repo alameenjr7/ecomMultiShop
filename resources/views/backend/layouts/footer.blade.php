@@ -36,6 +36,8 @@
 <!-- Javascript -->
 <script src="{{asset('backend/assets/js/pages/ui/dialogs.js')}}"></script>
 
+{{-- <script src="{{asset('vendor/sweetalert/sweetalert.all.js')}}"></script> --}}
+
 @yield('scripts')
 
 

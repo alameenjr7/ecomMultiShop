@@ -23,13 +23,13 @@
         <div class="clearfix row">
             <div class="col-md-12">
                 @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{$error}}</li>
-                            @endforeach
-                        </ul>
-                    </div>
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                        <li>{{$error}}</li>
+                        @endforeach
+                    </ul>
+                </div>
                 @endif
             </div>
 
@@ -81,12 +81,34 @@
 
                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                     <label for="">Condition </label>
-                                    <select name="condition" class="form-control show-tick">
-                                        <option value="banner" {{old('condition')=='banner' ? 'selected' : '' }}>Banner
+                                    <select id="condition" name="condition" class="form-control show-tick"
+                                        onchange="yesnoCheck(this)">
+                                        <option id="banner" value="banner" {{old('condition')=='banner' ? 'selected'
+                                            : '' }}>Banner
                                         </option>
-                                        <option value="promo" {{old('condition')=='promo' ? 'selected' : '' }}>Promote
+                                        <option id="promo" value="promo" {{old('condition')=='promo' ? 'selected' : ''
+                                            }}>Promote
                                         </option>
                                     </select>
+                                </div>
+
+                                <div id="open" class="mt-3 row col-lg-12 col-md-12 col-sm-12" style="display: none">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="">Percent </label>
+                                            <input type="number" class="form-control" placeholder="Percent"
+                                                name="percent" value="{{old('percent')}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="">Is Active </label>
+                                        <select name="is_active" class="form-control show-tick">
+                                            <option value="ON" {{old('is_active')=='ON' ? 'selected' : '' }}>ON
+                                            </option>
+                                            <option value="OFF" {{old('is_active')=='OFF' ? 'selected' : '' }}>OFF
+                                            </option>
+                                        </select>
+                                    </div>
                                 </div>
 
                                 <div class="col-lg-12 col-md-12 col-sm-12">
@@ -94,13 +116,14 @@
                                     <select name="status" class="form-control show-tick">
                                         <option value="active" {{old('status')=='active' ? 'selected' : '' }}>Active
                                         </option>
-                                        <option value="inactive" {{old('status')=='inactive' ? 'selected' : '' }}>Inactive
+                                        <option value="inactive" {{old('status')=='inactive' ? 'selected' : '' }}>
+                                            Inactive
                                         </option>
                                     </select>
                                 </div>
                             </div>
 
-                            <div class="col-sm-12">
+                            <div class="py-3">
                                 <button type="submit" class="btn btn-primary">Submit</button>
                                 <button type="submit" class="btn btn-outline-secondary">Cancel</button>
                             </div>
@@ -163,16 +186,17 @@
                                         <option value="">-- Status --</option>
                                         <option value="active" {{old('status')=='active' ? 'selected' : '' }}>Active
                                         </option>
-                                        <option value="inactive" {{old('status')=='inactive' ? 'selected' : '' }}>Inactive
+                                        <option value="inactive" {{old('status')=='inactive' ? 'selected' : '' }}>
+                                            Inactive
                                         </option>
                                     </select>
                                 </div>
 
                             </div>
-                                <div class="col-sm-12">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                    <button type="submit" class="btn btn-outline-secondary">Cancel</button>
-                                </div>
+                            <div class="col-sm-12">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-outline-secondary">Cancel</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -193,5 +217,17 @@
     $(document).ready(function() {
             $('#description').summernote();
         });
+</script>
+
+<script>
+    function yesnoCheck(that) {
+        if (that.value == "promo") {
+            document.getElementById("open").style.display = "block";
+            // document.getElementById("open1").style.display = "block";
+        } else {
+            document.getElementById("open").style.display = "none";
+            // document.getElementById("open1").style.display = "none";
+        }
+    }
 </script>
 @endsection

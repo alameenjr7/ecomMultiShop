@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Models\Product;
+use Barryvdh\DomPDF\PDF;
 use Illuminate\Http\Request;
-use PDF;
 class OrderController extends Controller
 {
     /**
@@ -144,11 +144,12 @@ class OrderController extends Controller
         }
     }
 
-    public function orderPDF(Request $request)
+    public function orderPDF($id)
     {
-        // $order=Order::getAllOrder($request->id);
-        // $file_name=$order->order_number.'-'.$order->first_name.'.pdf';
-        // $pdf=PDF::loadview('backend.order.pdf',compact('order'));
-        // return $pdf->download($file_name);
+        $order=Order::find($id);
+        $file_name=$order->order_number.'-'.$order->first_name.'.pdf';
+        $pdf=PDF::loadView("backend.order.pdf",compact('order'));
+
+        return $pdf->stream($file_name);
     }
 }

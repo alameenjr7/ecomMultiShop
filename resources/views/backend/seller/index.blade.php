@@ -213,8 +213,7 @@
 @endsection
 
 @section('scripts')
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
+{
 <script>
     $('input[name=toogle]').change(function(){
         var mode = $(this).prop('checked');

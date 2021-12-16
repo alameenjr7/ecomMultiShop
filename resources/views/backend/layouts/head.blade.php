@@ -19,7 +19,7 @@
 <link rel="stylesheet" href="{{asset('backend/assets/vendor/jquery-datatable/dataTables.bootstrap4.min.css')}}" />
 <link rel="stylesheet" href="{{asset('backend/assets/vendor/jquery-datatable/fixedeader/dataTables.fixedcolumns.bootstrap4.min.css')}}" />
 <link rel="stylesheet" href="{{asset('backend/assets/vendor/jquery-datatable/fixedeader/dataTables.fixedheader.bootstrap4.min.css')}}" />
-<link rel="stylesheet" href="{{asset('backend/assets/vendor/sweetalert/sweetalert.css')}}" />
+<link rel="stylesheet" href="{{asset('backend/assets/vendor/sweetalert/sweetalert.min.css')}}" />
 
 {{--summernote--}}
 <link rel="stylesheet" href="{{asset('backend/assets/vendor/summernote/summernote.css')}}">

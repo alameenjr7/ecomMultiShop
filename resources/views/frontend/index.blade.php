@@ -22,10 +22,12 @@
                                 </div>
                                 <div class="col-5 col-md-4">
                                     <div class="welcome_slide_image">
-                                        <img src="{{asset('frontend/assets/img/bg-img/slide-1.png')}}" alt="" data-animation="bounceInUp" data-delay="500ms">
-                                        <div class="discount_badge" data-animation="bounceInDown" data-delay="1.2s">
-                                            <span>30%<br>OFF</span>
-                                        </div>
+                                        @if ($promotion_banner)
+                                            <img src="{{asset($promotion_banner->photo)}}" alt="" data-animation="bounceInUp" data-delay="500ms">
+                                            <div class="discount_badge" data-animation="bounceInDown" data-delay="1.2s">
+                                                <span>{{$promotion_banner->percent}}%<br>{{$promotion_banner->is_active}}</span>
+                                            </div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -155,14 +157,16 @@
             <div class="row">
                 <!-- Featured Offer Area -->
                 <div class="col-12 col-lg-6">
-                    <div class="featured_offer_area d-flex align-items-center" style="background-image: url({{asset($promo_banner->photo)}});">
-                        <div class="featured_offer_text">
-                            <p>{{ucfirst($promo_banner->slug)}}</p>
-                            <h2>{!! nl2br($promo_banner->description) !!}</h2>
-                            <h4>{{$promo_banner->title}}</h4>
-                            <a href="{{$promo_banner->slug}}" class="mt-3 btn btn-primary btn-sm">Shop Now</a>
+                    @if ($promo_banner)
+                        <div class="featured_offer_area d-flex align-items-center" style="background-image: url({{asset($promo_banner->photo)}});">
+                            <div class="featured_offer_text">
+                                <p>{{ucfirst($promo_banner->slug)}}</p>
+                                <h2>{!! nl2br($promo_banner->description) !!}</h2>
+                                <h4>{{$promo_banner->title}}</h4>
+                                <a href="{{$promo_banner->slug}}" class="mt-3 btn btn-primary btn-sm">Shop Now</a>
+                            </div>
                         </div>
-                    </div>
+                    @endif
                 </div>
 
                 <!-- Featured Product Area -->

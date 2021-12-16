@@ -222,7 +222,7 @@ class CheckoutController extends Controller
         $order->payment_details=$payment;
         $status=$order->save();
         if($status){
-            Mail::to($order['email'])->bcc($order['n_email'])->cc('babangom673@gmail.com')->send(new OrderMail($order));
+            Mail::to($order['email'])->bcc($order['n_email'])->cc('ngomalameen90@gmail.com')->send(new OrderMail($order));
             Cart::instance('shopping')->destroy();
             Session::forget('coupon');
             Session::forget('checkout');

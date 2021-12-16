@@ -30,6 +30,9 @@ class IndexController extends Controller
         $promo_banner=Banner::where(['status'=>'active','condition'=>'promo'])
             ->orderBy('id','desc')
             ->first();
+        $promotion_banner=Banner::where(['status'=>'active','condition'=>'promo','is_active'=>'ON'])
+            ->orderBy('id','desc')
+            ->first();
         $categories=Category::where(['status'=>'active','is_parent'=>1])
             ->orderBy('id','desc')->limit('3')
             ->get();
@@ -82,6 +85,7 @@ class IndexController extends Controller
                 'new_products',
                 'featured_products',
                 'promo_banner',
+                'promotion_banner',
                 'brands',
                 'best_sellings',
                 'best_rated'
