@@ -125,7 +125,7 @@
 
                             <div class="py-3">
                                 <button type="submit" class="btn btn-primary">Submit</button>
-                                <button type="submit" class="btn btn-outline-secondary">Cancel</button>
+                                <button type="button" onclick="window.history.back();  class="btn btn-outline-secondary">Cancel</button>
                             </div>
                         </form>
                     </div>

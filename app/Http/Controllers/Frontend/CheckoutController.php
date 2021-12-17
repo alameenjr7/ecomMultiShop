@@ -208,7 +208,7 @@ class CheckoutController extends Controller
             Cart::instance('shopping')->destroy();
             Session::forget('coupon');
             Session::forget('checkout');
-            return redirect()->route('checkout.complete',$order['order_number'])->with('success','Successfully completed order - Can you verified your email address');
+            return redirect()->route('complete',$order['order_number'])->with('success','Successfully completed order - Can you verified your email address');
         }
         else{
             return redirect()->route('checkout1')->with('error','Please try again');
@@ -222,11 +222,11 @@ class CheckoutController extends Controller
         $order->payment_details=$payment;
         $status=$order->save();
         if($status){
-            Mail::to($order['email'])->bcc($order['n_email'])->cc('ngomalameen90@gmail.com')->send(new OrderMail($order));
+            Mail::to($order['email'])->bcc($order['n_email'])->cc('babangom673@gmail.com')->send(new OrderMail($order));
             Cart::instance('shopping')->destroy();
             Session::forget('coupon');
             Session::forget('checkout');
-            return redirect()->route('checkout.complete',$order['order_number'])->with('success','Successfully completed order - Can you verified your email address');
+            return redirect()->route('complete',$order['order_number'])->with('success','Successfully completed order - Can you verified your email address');
         }
     }
 
@@ -241,7 +241,15 @@ class CheckoutController extends Controller
             Cart::instance('shopping')->destroy();
             Session::forget('coupon');
             Session::forget('checkout');
-            return redirect()->route('checkout.complete',$order['order_number'])->with('success','Successfully completed order - Can you verified your email address');
+            return redirect()->route('complete',$order['order_number'])->with('success','Successfully completed order - Can you verified your email address');
         }
+        else{
+            return redirect()->route('checkout4')->with('error','Please try again');
+        }
+    }
+
+    public function complete($order){
+        $order=$order;
+        return view('frontend.pages.checkout.checkout-complete',compact('order'));
     }
 }

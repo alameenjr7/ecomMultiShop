@@ -20,10 +20,10 @@
 
 <!-- Checkout Steps Area -->
 <div class="checkout_steps_area">
-    <a class="complated" href="{{route('checkout1')}}"><i class="icofont-check-circled"></i> Billing</a>
-    <a class="active" href="{{route('checkout2')}}"><i class="icofont-check-circled"></i> Shipping</a>
-    <a href="{{route('checkout3')}}"><i class="icofont-check-circled"></i> Payment</a>
-    <a href="{{route('checkout4')}}"><i class="icofont-check-circled"></i> Review</a>
+    <a class="complated button" onclick="window.history.back();"><i class="icofont-check-circled"></i> Billing</a>
+    <a class="active button" onclick="window.history.back();><i class="icofont-check-circled"></i> Shipping</a>
+    <a href="#"><i class="icofont-check-circled"></i> Payment</a>
+    <a href="#"><i class="icofont-check-circled"></i> Review</a>
 </div>
 <!-- Checkout Steps Area -->
 
@@ -80,7 +80,7 @@
 
                 <div class="col-12">
                     <div class="clearfix mt-3 checkout_pagination d-flex justify-content-end">
-                        <a href="{{route('checkout1')}}" class="mt-2 ml-2 btn btn-primary">Go Back</a>
+                        <a onclick="window.history.back();" class="mt-2 ml-2 btn btn-primary">Go Back</a>
                         <button type="submit" class="mt-2 ml-2 btn btn-primary">Continue</button>
                     </div>
                 </div>

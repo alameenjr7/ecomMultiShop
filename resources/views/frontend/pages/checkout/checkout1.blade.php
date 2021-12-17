@@ -23,9 +23,9 @@
     {{-- {% comment %} <a class="complated" href="checkout-1.html"><i class="icofont-check-circled"></i> Login</a> {%
     endcomment %} --}}
     <a class="active" href="{{route('checkout1')}}"><i class="icofont-check-circled"></i> Billing</a>
-    <a href="{{route('checkout2')}}"><i class="icofont-check-circled"></i> Shipping</a>
-    <a href="{{route('checkout3')}}"><i class="icofont-check-circled"></i> Payment</a>
-    <a href="{{route('checkout4',$user->id)}}"><i class="icofont-check-circled"></i> Review</a>
+    <a href="#"><i class="icofont-check-circled"></i> Shipping</a>
+    <a href="#"><i class="icofont-check-circled"></i> Payment</a>
+    <a href="#"><i class="icofont-check-circled"></i> Review</a>
 </div>
 
 <!-- Checkout Area -->
@@ -182,7 +182,7 @@
                 @endforeach --}}
                 <div class="col-12">
                     <div class="checkout_pagination d-flex justify-content-end mt-50">
-                        <a href="{{route('cart')}}" class="mt-2 ml-2 btn btn-primary">Go Back</a>
+                        <a onclick="window.history.back();" class="mt-2 ml-2 btn btn-primary">Go Back</a>
                         <button type="submit" class="mt-2 ml-2 btn btn-primary">Continue</button>
                     </div>
                 </div>

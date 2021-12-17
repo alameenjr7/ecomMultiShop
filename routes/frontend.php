@@ -75,6 +75,7 @@ Route::get('paypal/payment/cancel',[\App\Http\Controllers\PaypalController::clas
 Route::get('paypal/payment/done',[\App\Http\Controllers\PaypalController::class,'getDone']);
 
 //razor
+// Route::get('razorpay', [\App\Http\Controllers\RazorpayController::class, 'razorpay'])->name('razorpay');
 Route::get('razor/payment',[\App\Http\Controllers\RazorpayController::class,'razorPayment'])->name('razor.payment');
 
 

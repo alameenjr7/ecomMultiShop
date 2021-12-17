@@ -25,13 +25,15 @@ class RazorpayController extends Controller
         if(count($input) && !empty($input['razorpay_payment_id'])){
             $payment_details=null;
             try{
-                $response=$api->payment->dba_fetch($input['razorpay_payment_id'])->capture(array('amount'=>$payment['amount']));
+                $response=$api->payment->fetch($input['razorpay_payment_id'])->capture(array('amount'=>$payment['amount']));
                 $payment_details=json_encode(array('id'=>$response['id'],'method'=>$response['method'],'amount'=>$response['amount'],'currency'=>$response['currency']));
             }
             catch(Exception $e){
+                return $e->getMessage();
                 return redirect()->back()->with('error',$e->getMessage());
             }
         }
+
         $checkoutController=new CheckoutController;
         return $checkoutController->razorPaymentDone(Session::get('order_id'),$payment_details);
     }

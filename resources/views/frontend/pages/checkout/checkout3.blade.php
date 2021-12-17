@@ -19,10 +19,10 @@
 <!-- Breadcumb Area -->
 
 <div class="checkout_steps_area">
-    <a class="complated" href="{{route('checkout1')}}"><i class="icofont-check-circled"></i> Billing</a>
-    <a class="complated" href="{{route('checkout2')}}"><i class="icofont-check-circled"></i> Shipping</a>
+    <a class="complated button" onclick="window.history.back();"><i class="icofont-check-circled"></i> Billing</a>
+    <a class="complated button" onclick="window.history.back();"><i class="icofont-check-circled"></i> Shipping</a>
     <a class="active" href="{{route('checkout3')}}"><i class="icofont-check-circled"></i> Payment</a>
-    <a href="{{route('checkout4')}}"><i class="icofont-check-circled"></i> Review</a>
+    <a href="#"><i class="icofont-check-circled"></i> Review</a>
 </div>
 
 <!-- Checkout Area -->
@@ -91,7 +91,7 @@
                                             <a class="collapsed" role="button" data-toggle="collapse"
                                                 data-parent="#accordion" href="#collapse_five" aria-expanded="false"
                                                 aria-controls="collapse_five"><i
-                                                    class="icofont-razor"></i> Pay with Razor
+                                                    class="fa fa-money"></i> Pay with Razor
                                             </a>
                                         </h6>
                                     </div>
@@ -256,7 +256,7 @@
 
                 <div class="col-12">
                     <div class="checkout_pagination d-flex justify-content-end mt-30">
-                        <a href="{{route('checkout2')}}" class="mt-2 ml-2 btn btn-primary">Go Back</a>
+                        <a onclick="window.history.back();" class="mt-2 ml-2 btn btn-primary">Go Back</a>
                         <button type="submit" class="mt-2 ml-2 btn btn-primary">Final Step</button>
                     </div>
                 </div>

@@ -21,10 +21,10 @@
 
 <!-- Checkout Step Area -->
 <div class="checkout_steps_area">
-    <a class="complated" href="{{route('checkout1')}}"><i class="icofont-check-circled"></i> Billing</a>
-    <a class="complated" href="{{route('checkout2')}}"><i class="icofont-check-circled"></i> Shipping</a>
-    <a class="complated" href="{{route('checkout3')}}"><i class="icofont-check-circled"></i> Payment</a>
-    <a class="active" href="{{route('checkout4')}}"><i class="icofont-check-circled"></i> Review</a>
+    <a class="complated button" onclick="window.history.back();"><i class="icofont-check-circled"></i> Billing</a>
+    <a class="complated button" onclick="window.history.back();"><i class="icofont-check-circled"></i> Shipping</a>
+    <a class="complated button" onclick="window.history.back();"><i class="icofont-check-circled"></i> Payment</a>
+    <a class="active " href="{{route('checkout4')}}"><i class="icofont-check-circled"></i> Review</a>
 </div>
 <!-- Checkout Step Area -->
 
@@ -110,7 +110,7 @@
                         </table>
                     </div>
                     <div class="mt-3 checkout_pagination d-flex justify-content-end">
-                        <a href="{{route('checkout3')}}" class="mt-2 ml-2 btn btn-primary d-none d-sm-inline-block">Go Back</a>
+                        <a onclick="window.history.back();" class="mt-2 ml-2 btn btn-primary d-none d-sm-inline-block">Go Back</a>
                         <a href="{{route('checkout.store')}}" class="mt-2 ml-2 btn btn-success">Confirm</a>
                     </div>
                 </div>

@@ -35,7 +35,7 @@
                             @foreach ($photos as $key=>$photo)
                             <div class="carousel-item {{$key==0 ? 'active' : ''}}">
                                 <a class="gallery_img" href="{{$photo}}" title="{{ucfirst($product->title)}}">
-                                    <img class="d-block w-100" src="{{$photo}}" alt="{{ucfirst($product->title)}}">
+                                    <img class="d-block w-100" src="{{asset($photo)}}" alt="{{ucfirst($product->title)}}">
                                 </a>
                                 <!-- Product Badge -->
                                 <div class="product_badge">
@@ -55,7 +55,7 @@
                             @endphp
                             @foreach ($photos as $key=>$photo)
                             <li class="{{$key==0 ? 'active' : ''}}" data-target="#product_details_slider"
-                                data-slide-to="{{$key}}" style="background-image: url({{$photo}});">
+                                data-slide-to="{{$key}}" style="background-image: url({{asset($photo)}});">
                             </li>
                             @endforeach
                         </ol>
@@ -162,10 +162,10 @@
                         <h6>Size Guide</h6>
                         <div class="size_guide_thumb d-flex">
                             @php
-                            $size_guide=explode(',',$product->size_guide);
+                                $size_guide=explode(',',$product->size_guide);
                             @endphp
                             @foreach ($size_guide as $sg)
-                            <a class="size_guide_img" href="{{$sg}}" style="background-image: url({{$sg}});">
+                            <a class="size_guide_img" href="{{$sg}}" style="background-image: url({{asset($sg)}});">
                             </a>
                             @endforeach
                         </div>
@@ -388,9 +388,9 @@
                         <div class="product_image">
                             <!-- Product Image -->
                             @php
-                            $photo=explode(',',$item->photo);
+                                $photo=explode(',',$item->photo);
                             @endphp
-                            <img class="normal_img" src="{{$photo[0]}}" alt="{{ucfirst($item->title)}}">
+                            <img class="normal_img" src="{{asset($photo[0])}}" alt="{{ucfirst($item->title)}}">
 
                             <!-- Product Badge -->
                             <div class="product_badge">

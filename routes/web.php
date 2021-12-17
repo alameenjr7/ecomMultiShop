@@ -24,7 +24,7 @@ require __DIR__ . '/backend.php';
 
 require __DIR__ . '/seller.php';
 
-Route::group(['prefix'=>'filemanager', 'middleware'=>['web','auth:admin']], function () {
+Route::group(['prefix'=>'filemanager', 'middleware'=>['web','auth']], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });
 

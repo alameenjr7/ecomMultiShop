@@ -22,6 +22,7 @@ class PaypalController extends Controller
 
         if(get_setting('paypal_sandbox')==1){
             $environment=new SandboxEnvironment($clientID,$clientSECRET);
+
         }
         else{
             $environment=new ProductionEnvironment($clientID,$clientSECRET);
@@ -35,20 +36,20 @@ class PaypalController extends Controller
 
         $request=new OrdersCreateRequest();
 
-        $request->prefer('return-representation');
+        $request->prefer('return=representation');
 
         $request->body=[
             "intent"=>"CAPTURE",
-            "purchase_units"=>[[
-                "reference_id"=>rand(00000,99999),
-                "amount"=>[
+            "purchase_units" => [[
+                "reference_id" => rand(00000,99999),
+                "amount" => [
                     "value"=>number_format($amount, 2, '.', ''),
                     "currency_code"=>session('system_default_currency_info')->code
                 ]
             ]],
-            "application_context"=>[
-                "cancel_url"=>url('paypal/payment/cancel'),
-                "return_url"=>url('paypal/payment/done')
+            "application_context" => [
+                "cancel_url" => url('paypal/payment/cancel'),
+                "return_url" => url('paypal/payment/done')
             ]
         ];
 
@@ -66,7 +67,7 @@ class PaypalController extends Controller
     public function getCancel(Request $request)
     {
         $request->session()->forget('order_id');
-        return redirect()->route('home')->with('error','Sorry Payment cancelled');
+        return \redirect()->route('home')->with('error','Sorry Payment cancelled');
     }
 
     public function getDone(Request $request)
@@ -82,6 +83,7 @@ class PaypalController extends Controller
         }
 
         $client=new PayPalHttpClient($environment);
+
         $orderCaptureRequest=new OrdersCaptureRequest($request->token);
         $orderCaptureRequest->prefer('return=representation');
 
