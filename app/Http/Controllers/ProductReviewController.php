@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ProductReview;
+use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\ProductReview;
+use Illuminate\Support\Facades\DB;
 
 class ProductReviewController extends Controller
 {
@@ -14,7 +16,18 @@ class ProductReviewController extends Controller
      */
     public function index()
     {
-        //
+
+        $productReview = ProductReview::orderBy('id', 'DESC')->get();
+        return view('backend.review.index', compact('productReview'));
+    }
+
+    public function reviewStatus(Request $request){
+        if($request->mode=='true'){
+            DB::table('product_reviews')->where('id', $request->id)->update(['status'=>'accept']);
+        }else{
+            DB::table('product_reviews')->where('id', $request->id)->update(['status'=>'reject']);
+        }
+        return response()->json(['msg'=> 'Successfully updated status', 'status'=>true]);
     }
 
 
@@ -100,6 +113,18 @@ class ProductReviewController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $reviews=ProductReview::find($id);
+        if($reviews){
+            $status = $reviews->delete();
+            if($status){
+                return redirect()->route('review.index')->with('success', 'Product review successfully deleted');
+            }
+            else {
+                return back()->with('error', 'Something went wrong');
+            }
+        }
+        else{
+            return back()->with('error', 'Data not found');
+        }
     }
 }

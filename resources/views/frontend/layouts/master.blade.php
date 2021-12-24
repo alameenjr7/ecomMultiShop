@@ -10,7 +10,7 @@
         <!-- Preloader -->
         <div id="preloader">
             <div class="spinner-grow" role="status">
-                <span class="sr-only">Loading...</span>
+                <span class="sr-only">{{__('messages.load')}}...</span>
             </div>
         </div>
 
@@ -70,8 +70,9 @@
                                 //     icon: "success",
                                 //     button: "OK !",
                                 // });
-                                // window.location.href=window.location.href;
                             }
+
+                            window.location.href=window.location.href;
                         },
                         error:function(err){
                             console.log(err);

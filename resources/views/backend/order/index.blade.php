@@ -90,7 +90,7 @@
                                                             data-placement="bottom"><i class="icon-eye"></i>
                                                         </a>
                                                         <form class="float-left ml-1"
-                                                            action="{{route('order.destroy', $order->id)}}"
+                                                            action="{{route('order.destroy',$order->id)}}"
                                                             method="post">
                                                             @csrf
                                                             @method('order.delete')

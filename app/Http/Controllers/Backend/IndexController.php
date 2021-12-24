@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Middleware\Admin;
 use App\Models\Admin as ModelsAdmin;
+use App\Models\Message;
 use Illuminate\Support\Facades\Auth;
 
 class IndexController extends Controller
@@ -20,7 +21,19 @@ class IndexController extends Controller
     public function messages()
     {
         $user=auth('admin')->user();
-        return view('backend.pages.messages',compact('user'));
+        $messages=Message::orderBy('id','DESC')->limit('5')->get();
+        return view('backend.pages.messages',compact('user','messages'));
+    }
+
+    public function messagesID($id)
+    {
+        $messages=Message::find($id);
+        if($messages){
+            return view('backend.pages.messages',compact('messages'));
+        }
+        else{
+            abort(404);
+        }
     }
 
     public function profile()

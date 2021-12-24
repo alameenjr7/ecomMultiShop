@@ -7,9 +7,9 @@
     <div class="container h-100">
         <div class="row h-100 align-items-center">
             <div class="col-12">
-                <h5>Shop Grid</h5>
+                <h5>{{__('messages.shop')}}</h5>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('home')}}">{{__('messages.home')}}</a></li>
                     <li class="breadcrumb-item active">{{$categories->title}}</li>
                 </ol>
             </div>

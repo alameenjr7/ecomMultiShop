@@ -9,7 +9,7 @@
                 <div class="col-12">
                     <h5>Login &amp; Register</h5>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('home')}}">{{__('messages.home')}}</a></li>
                         <li class="breadcrumb-item active">Login &amp; Register</li>
                     </ol>
                 </div>

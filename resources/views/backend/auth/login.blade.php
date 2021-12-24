@@ -37,20 +37,16 @@
                                 @csrf
                                 <div class="form-group">
                                     <label for="signin-email" class="sr-only control-label">Email</label>
-                                    <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus id="signin-email" placeholder="Email">
+                                    <input type="email" class="form-control @error('email') is-invalid @enderror" name="email"  value="{{ old('email') }}" required autocomplete="email" autofocus id="email" placeholder="Email">
                                     @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
+                                        <p class="text-danger">{{$message}}</p>
                                     @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="signin-password" class="sr-only control-label">Password</label>
-                                    <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" id="signin-password" placeholder="Password">
+                                    <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" id="password" placeholder="Password">
                                     @error('password')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
+                                        <p class="text-danger">{{$message}}</p>
                                     @enderror
                                 </div>
                                 <div class="clearfix form-group">

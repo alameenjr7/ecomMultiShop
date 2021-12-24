@@ -469,8 +469,11 @@ textarea:focus,
     transform: translate3d(0, 30px, 0); } }
 
 .header_area {
-  position: relative;
-  z-index: 500; }
+  position: fixed;
+  width: 100%;
+  top: 0%;
+  z-index: 500;
+}
   .header_area .bigshop-main-menu {
     -webkit-transition-duration: 500ms;
     -o-transition-duration: 500ms;

@@ -1,12 +1,12 @@
 
         <!-- Top Header Area -->
-        <div class="top-header-area">
+        <div class="top-header-area" style="background-color: #f8f8ff">
             <div class="container h-100">
                 <div class="row h-100 align-items-center">
                     <div class="col-6">
                         <div class="welcome-note">
-                            <span class="popover--text" data-toggle="popover" data-content="Welcome to Bigshop ecommerce template."><i class="icofont-info-square"></i></span>
-                            <span class="text">Welcome to {{get_setting('meta_keywords')}}</span>
+                            <span class="popover--text" data-toggle="popover" data-content="Welcome to kaayDeals ecommerce template."><i class="icofont-info-square"></i></span>
+                            <span class="text">{{__('messages.welcome')}} {{get_setting('meta_keywords')}}</span>
                         </div>
                     </div>
                     <div class="col-6">
@@ -15,11 +15,15 @@
                             <div class="language-dropdown">
                                 <div class="dropdown">
                                     <a class="btn btn-sm dropdown-toggle" href="#" role="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        English
+                                        <span class="flag-icon flag-icon-{{Config::get('languages')[App::getLocale()]['flag-icon']}}"></span>
+                                        {{ Config::get('languages')[App::getLocale()]['display'] }}
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
-                                        <a class="dropdown-item" href="#">Francais</a>
-                                        <a class="dropdown-item" href="#">Senegal</a>
+                                        @foreach (Config::get('languages') as $lang => $language)
+                                            @if ($lang != App::getLocale())
+                                                <a class="dropdown-item" href="{{route('lang.switch', $lang)}}"><span class="flag-icon flag-icon-{{$language['flag-icon']}}"></span> {{$language['display']}}</a>
+                                            @endif
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
@@ -59,13 +63,13 @@
                 <div class="classy-nav-container breakpoint-off">
                     <nav class="classy-navbar" id="bigshopNav">
 
-                        <!-- Nav Brand -->
-                        <a href="{{route('home')}}" class="nav-brand"><img src="{{asset(get_setting('logo'))}}" alt="logo"></a>
-
                         <!-- Toggler -->
                         <div class="classy-navbar-toggler">
                             <span class="navbarToggler"><span></span><span></span><span></span></span>
                         </div>
+
+                        <!-- Nav Brand -->
+                        <a href="{{route('home')}}" class="nav-brand"><img src="{{asset(get_setting('logo'))}}" alt="logo"></a>
 
                         <!-- Menu -->
                         <div class="classy-menu">
@@ -78,44 +82,16 @@
                             <div class="classynav">
                                 <ul>
                                     <li class="active">
-                                        <a href="{{route('home')}}">Home</a>
+                                        <a href="{{route('home')}}">{{__('messages.home')}}</a>
                                     </li>
-                                    <li><a href="{{route('about.us')}}">About Us</a>
+                                    <li><a href="{{route('about.us')}}">{{__('messages.about_us')}}</a>
                                     </li>
                                     <li>
-                                        <a href="{{route('shop')}}">Shop</a>
+                                        <a href="{{route('shop')}}">{{__('messages.shop')}}</a>
                                     </li>
-                                    <li><a href="{{route('blog.detail')}}">Blog</a>
+                                    <li><a href="{{route('blog.detail')}}">{{__('messages.blog')}}</a>
                                     </li>
-                                    {{-- <li><a href="#">Elements</a>
-                                        <div class="megamenu">
-                                            <ul class="single-mega cn-col-4">
-                                                <li><a href="accordian.html">- Accordions</a></li>
-                                                <li><a href="alerts.html">- Alerts</a></li>
-                                                <li><a href="badges.html">- Badges</a></li>
-                                                <li><a href="blockquotes.html">- Blockquotes</a></li>
-                                            </ul>
-                                            <ul class="single-mega cn-col-4">
-                                                <li><a href="breadcrumb.html">- Breadcrumbs</a></li>
-                                                <li><a href="buttons.html">- Buttons</a></li>
-                                                <li><a href="forms.html">- Forms</a></li>
-                                                <li><a href="gallery.html">- Gallery</a></li>
-                                            </ul>
-                                            <ul class="single-mega cn-col-4">
-                                                <li><a href="heading.html">- Headings</a></li>
-                                                <li><a href="icon-fontawesome.html">- Icon FontAwesome</a></li>
-                                                <li><a href="icon-icofont.html">- Icon Ico Font</a></li>
-                                                <li><a href="labels.html">- Labels</a></li>
-                                            </ul>
-                                            <ul class="single-mega cn-col-4">
-                                                <li><a href="modals.html">- Modals</a></li>
-                                                <li><a href="pagination.html">- Pagination</a></li>
-                                                <li><a href="progress-bars.html">- Progress Bars</a></li>
-                                                <li><a href="tables.html">- Tables</a></li>
-                                            </ul>
-                                        </div>
-                                    </li> --}}
-                                    <li><a href="{{route('contact.us')}}">Contact</a></li>
+                                    <li><a href="{{route('contact.us')}}">{{__('messages.contact')}}</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -180,13 +156,15 @@
                                     <div class="my-4 cart-pricing">
                                         <ul>
                                             <li>
-                                                <span>Sub Total:</span>
+                                                <span>{{__('messages.subTotal')}}:</span>
                                                 <span>{{Helper::currency_converter(\Gloudemans\Shoppingcart\Facades\Cart::subtotal())}}</span>
                                             </li>
-                                            {{-- <li>
-                                                <span>Shipping:</span>
-                                                <span>{{Helper::currency_converter(\Gloudemans\Shoppingcart\Facades\Cart::subtotal())}}</span>
-                                            </li> --}}
+                                            <li>
+                                                @if(session()->has('coupon'))
+                                                    <span>Coupon:</span>
+                                                    <span>{{Helper::currency_converter(\Illuminate\Support\Facades\Session::get('coupon')['value'])}}</span>
+                                                @endif
+                                            </li>
                                             <li>
                                                 <span>Total:</span>
                                                 @if(session()->has('coupon'))
@@ -198,8 +176,8 @@
                                         </ul>
                                     </div>
                                     <div class="cart-box row-cols-2 d-flex">
-                                        <a href="{{route('cart')}}" class="btn-sm btn btn-success">Cart</a>
-                                        <a href="{{route('checkout1')}}" class="ml-1 btn-sm btn btn-primary">Checkout</a>
+                                        <a href="{{route('cart')}}" class="btn-sm btn btn-success">{{__('messages.cart')}}</a>
+                                        <a href="{{route('checkout1')}}" class="ml-1 btn-sm btn btn-primary">{{__('messages.checkout')}}</a>
                                     </div>
                                 </div>
                             </div>
@@ -209,7 +187,7 @@
                                 <div class="user-thumbnail">
                                     @auth
                                         @if(auth()->user()->photo)
-                                            <img src="{{auth()->user()->photo}}" alt="user photo">
+                                            <img src="{{auth()->user()->photo}}" alt="">
                                         @else
                                             <img src="{{Helper::userDefaultImage()}}" alt="default user image">
                                         @endif
@@ -222,14 +200,14 @@
                                         @php
                                             $first_name=explode(' ',auth()->user()->full_name);
                                         @endphp
-                                        <li class="user-title"><span>Hello,</span> {{$first_name[0]}} !</li>
-                                        <li><a href="{{route('user.dashboard')}}">My Account</a></li>
-                                        <li><a href="{{route('user.order')}}">Orders List</a></li>
-                                        <li><a href="{{route('wishlist')}}">Wishlist</a></li>
-                                        <li><a href="{{route('user.logout')}}"><i class="icofont-logout"></i> Logout</a></li>
+                                        <li class="user-title"><span>{{__('messages.hello')}},</span> {{$first_name[0]}} !</li>
+                                        <li><a href="{{route('user.dashboard')}}">{{__('messages.account')}}</a></li>
+                                        <li><a href="{{route('user.order')}}">{{__('messages.ordersLists')}}</a></li>
+                                        <li><a href="{{route('wishlist')}}">{{__('messages.wishlist')}}</a></li>
+                                        <li><a href="{{route('user.logout')}}"><i class="icofont-logout"></i> {{__('messages.logout')}}</a></li>
 
                                     @else
-                                        <li><a href="{{route('user.auth')}}"><i class="fa fa-user"></i><span>  Login & Register</span></a></li>
+                                        <li><a href="{{route('user.auth')}}"><i class="fa fa-user"></i><span> {{__('messages.logRegister')}}</span></a></li>
 
                                     @endauth
                                 </ul>

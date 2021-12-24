@@ -9,7 +9,7 @@
                 <div class="col-12">
                     <h5>My Account</h5>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('home')}}">{{__('messages.home')}}</a></li>
                         <li class="breadcrumb-item active">My Account</li>
                     </ol>
                 </div>
@@ -30,7 +30,7 @@
                 <div class="col-12 col-lg-9">
                     <div class="my-account-content mb-50">
                         <p>Hello <strong>{{$user->full_name}} !</strong></p>
-                        <p>From your account dashboard you can view your recent orders, manage your shipping and billing addresses, and <a href="account-details.html">edit your password and account details</a>.</p>
+                        <p>From your account dashboard you can view your recent orders, manage your shipping and billing addresses, and <a href="{{route('user.account')}}">edit your password and account details</a>.</p>
                     </div>
                 </div>
             </div>

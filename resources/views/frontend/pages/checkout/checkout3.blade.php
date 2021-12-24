@@ -66,13 +66,13 @@
                                     <div class="panel-heading" role="tab" id="five">
                                         <h6 class="panel-title">
                                             <a class="collapsed" role="button" data-toggle="collapse"
-                                                data-parent="#accordion" href="#collapse_five" aria-expanded="false"
-                                                aria-controls="collapse_five"><i
+                                                data-parent="#accordion" href="#collapse_five1" aria-expanded="false"
+                                                aria-controls="collapse_five1"><i
                                                     class="icofont-paypal-alt"></i> Pay with PayPal
                                             </a>
                                         </h6>
                                     </div>
-                                    <div aria-expanded="false" id="collapse_five" class="panel-collapse collapse show"
+                                    <div aria-expanded="false" id="collapse_five1" class="panel-collapse collapse"
                                         role="tabpanel" aria-labelledby="five">
                                         <div class="panel-body">
                                             <div class="custom-control custom-checkbox">
@@ -89,13 +89,13 @@
                                     <div class="panel-heading" role="tab" id="five">
                                         <h6 class="panel-title">
                                             <a class="collapsed" role="button" data-toggle="collapse"
-                                                data-parent="#accordion" href="#collapse_five" aria-expanded="false"
-                                                aria-controls="collapse_five"><i
+                                                data-parent="#accordion" href="#collapse_five2" aria-expanded="false"
+                                                aria-controls="collapse_five2"><i
                                                     class="fa fa-money"></i> Pay with Razor
                                             </a>
                                         </h6>
                                     </div>
-                                    <div aria-expanded="false" id="collapse_five" class="panel-collapse collapse show"
+                                    <div aria-expanded="false" id="collapse_five2" class="panel-collapse collapse"
                                         role="tabpanel" aria-labelledby="five">
                                         <div class="panel-body">
                                             <div class="custom-control custom-checkbox">
@@ -107,6 +107,28 @@
                                     </div>
                                 </div>
 
+                                <!-- Single Payment Method -->
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="five">
+                                        <h6 class="panel-title">
+                                            <a class="collapsed" role="button" data-toggle="collapse"
+                                                data-parent="#accordion" href="#collapse_five3" aria-expanded="false"
+                                                aria-controls="collapse_five3"><i
+                                                    class="fa fa-money"></i> Pay with Orange Money
+                                            </a>
+                                        </h6>
+                                    </div>
+                                    <div aria-expanded="false" id="collapse_five3" class="panel-collapse collapse "
+                                        role="tabpanel" aria-labelledby="five">
+                                        <div class="panel-body">
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="radio" required name="payment_method" value="om" class="custom-control-input" id="customCheck5">
+                                                <label class="custom-control-label" for="customCheck5">Pay with
+                                                    Orange Money</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <!-- Single Payment Method -->
                                 {{-- <div class="panel panel-default">
                                     <div class="panel-heading" role="tab" id="one">

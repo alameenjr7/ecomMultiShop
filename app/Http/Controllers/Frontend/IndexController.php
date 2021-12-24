@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\URL;
 use App\Http\Controllers\Controller;
 use App\Models\AboutUs;
 use App\Mail\Contact;
+use App\Models\Message;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -78,6 +79,19 @@ class IndexController extends Controller
         $best_rated=Product::whereIn('id',$product_ids)->get();
         // $best_rated=Product::whereIn('id',$product_ids)->orderByRaw("field(id,{$idsImploded})", $product_ids)->get();
 
+        // dd($best_rated);
+        // Sale Order products
+        $sale_order=DB::select(DB::raw("select `id`, MIN(`offer_price`) FROM products WHERE `status`='active' GROUP BY `id` ORDER BY `offer_price` ASC LIMIT 6"));
+        $product_ids=[];
+        // dd($sale_order);
+        foreach($sale_order as $item){
+            array_push($product_ids,$item->id);
+        }
+        $idsImploded=implode(',',array_fill(0, count($product_ids), '?'));
+
+        $order_sales=Product::whereIn('id',$product_ids)->get();
+        // dd($order_sales);
+
         return view('frontend.index', compact(
             [
                 'banners',
@@ -88,7 +102,8 @@ class IndexController extends Controller
                 'promotion_banner',
                 'brands',
                 'best_sellings',
-                'best_rated'
+                'best_rated',
+                'order_sales'
             ]
         ));
     }
@@ -117,14 +132,20 @@ class IndexController extends Controller
 			'l_name'=>'string|required',
 			'email'=>'string|required',
 			'subject'=>'min:4|string|required',
-			'message'=>'string|required|max:200',
+			'message'=>'string|required|max:1000',
 		]);
 
 		$data=$request->all();
-// 		dd($data=$request->all());
-		Mail::to('babangom673@gmail.com')->send(new Contact($data));
 
-		return back()->with('success','Successfully send your enquiry');
+        $status=Message::create($data);
+
+        if($status){
+            Mail::to('babangom673@gmail.com')->send(new Contact($data));
+
+            return back()->with('success','Successfully send your enquiry');
+        } else {
+            return back()->while('error', 'Something went wrong!');
+        }
 	}
 
     //Shop

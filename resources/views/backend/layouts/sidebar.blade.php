@@ -93,18 +93,31 @@
                             <a href="{{route('order.index')}}" class="has-arrow"><i class="icon-layers"></i> <span>Order Managements</span></a>
                         </li>
                         <li class="desactive">
-                            <a href="javascript:void(0);" class="has-arrow"><i class="icon-vector"></i> <span>Post Category</span></a>
-                            <ul>
-                                {{-- <li><a href="{{route('post-category.index')}}">All Post Categories</a></li>
-                                <li><a href="{{route('post-category.create')}}">Add Post Category</a></li> --}}
-                            </ul>
-                        </li>
-
-                        <li class="desactive">
                             <a href="javascript:void(0);" class="has-arrow"><i class="icon-users"></i> <span>Seller Management</span></a>
                             <ul>
                                 <li><a href="{{route('seller.index')}}">All Seller</a></li>
                                 {{-- <li><a href="{{route('post-tag.create')}}">Add Post Tag</a></li> --}}
+                            </ul>
+                        </li>
+                        <li class="desactive">
+                            <a href="javascript:void(0);" class="has-arrow"><i class="icon-star"></i> <span>Review Management</span></a>
+                            <ul>
+                                <li><a href="{{route('review.index')}}">All Reviews</a></li>
+                                <li><a href="{{route('review.create')}}">Add Review</a></li>
+                            </ul>
+                        </li>
+                        <li class="desactive">
+                            <a href="javascript:void(0);" class="has-arrow"><i class="icon-check"></i> <span>Coupon Management</span></a>
+                            <ul>
+                                <li><a href="{{route('coupon.index')}}">All Coupons</a></li>
+                                <li><a href="{{route('coupon.create')}}">Add Coupon</a></li>
+                            </ul>
+                        </li>
+                        <li class="desactive">
+                            <a href="javascript:void(0);" class="has-arrow"><i class="icon-user"></i> <span>User Management</span></a>
+                            <ul>
+                                <li><a href="{{route('user.index')}}">Users</a></li>
+                                {{-- <li><a href="{{route('user.create')}}">Add User</a></li> --}}
                             </ul>
                         </li>
                         <li class="desactive">
@@ -122,24 +135,10 @@
                             </ul>
                         </li>
                         <li class="desactive">
-                            <a href="javascript:void(0);" class="has-arrow"><i class="icon-star"></i> <span>Review Management</span></a>
+                            <a href="javascript:void(0);" class="has-arrow"><i class="icon-vector"></i> <span>Post Category</span></a>
                             <ul>
-                                {{-- <li><a href="{{route('review.index')}}">All Reviews</a></li>
-                                <li><a href="{{route('review.create')}}">Add Review</a></li> --}}
-                            </ul>
-                        </li>
-                        <li class="desactive">
-                            <a href="javascript:void(0);" class="has-arrow"><i class="icon-check"></i> <span>Coupon Management</span></a>
-                            <ul>
-                                <li><a href="{{route('coupon.index')}}">All Coupons</a></li>
-                                <li><a href="{{route('coupon.create')}}">Add Coupon</a></li>
-                            </ul>
-                        </li>
-                        <li class="desactive">
-                            <a href="javascript:void(0);" class="has-arrow"><i class="icon-user"></i> <span>User Management</span></a>
-                            <ul>
-                                <li><a href="{{route('user.index')}}">Users</a></li>
-                                <li><a href="{{route('user.create')}}">Add User</a></li>
+                                {{-- <li><a href="{{route('post-category.index')}}">All Post Categories</a></li>
+                                <li><a href="{{route('post-category.create')}}">Add Post Category</a></li> --}}
                             </ul>
                         </li>
                         <li class="desactive">

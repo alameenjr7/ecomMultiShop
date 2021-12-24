@@ -9,7 +9,7 @@
                 <div class="col-12">
                     <h5>Contact</h5>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('home')}}">{{__('messages.home')}}</a></li>
                         <li class="breadcrumb-item active">Contact</li>
                     </ol>
                 </div>
@@ -24,7 +24,7 @@
             <div class="row justify-content-center">
                 <div class="col-12 col-lg-6">
                     <div class="text-center popular_section_heading mb-50">
-                        <h5 class="mb-3">Stay Conneted with us</h5>
+                        <h5 class="mb-3">{{__('messages.contact_sms')}}</h5>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                     </div>
                 </div>
@@ -98,7 +98,7 @@
                                         </div>
                                     </div>
                                     <div class="text-center col-12">
-                                        <button type="submit" class="btn btn-primary w-100">Send Message</button>
+                                        <button type="submit" class="btn btn-primary w-100">{{__('messages.send_mess')}}</button>
                                     </div>
                                 </div>
                             </div>

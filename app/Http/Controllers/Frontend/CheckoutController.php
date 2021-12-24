@@ -3,18 +3,19 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Models\Order;
+use App\Mail\OrderMail;
+use App\Models\Product;
 use App\Models\Shipping;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\APIPayment\OrangeMoney;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\PaypalController;
-use App\Http\Controllers\RazorpayController;
-use App\Mail\OrderMail;
-use App\Models\Product;
-use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
+use Gloudemans\Shoppingcart\Facades\Cart;
+use App\Http\Controllers\PaypalController;
+use App\Http\Controllers\RazorpayController;
 
 class CheckoutController extends Controller
 {
@@ -178,6 +179,8 @@ class CheckoutController extends Controller
         $order['n_apartment']=Session::get('checkout')['n_apartment'];
         $order['n_postcode']=Session::get('checkout')['n_postcode'];
 
+        // $data=$order->all();
+
         $status=$order->save();
 
         if($status){
@@ -202,13 +205,38 @@ class CheckoutController extends Controller
             $razor=new RazorpayController;
             return $razor->razorpay();
         }
+        elseif($order['payment_method']=='om')
+        {
+
+            // $payment = new OrangeMoney();
+
+            // $data = [
+            //     "merchant_key"=> '*********',
+            //     "currency"=> "OUV",
+            //     "order_id"=> "".time()."",
+            //     "amount" => 5000,
+            //     "return_url"=> 'http://www.your-website.com/callback/return',
+            //     "cancel_url"=> 'http://www.your-website.com/callback/cancel',
+            //     "notif_url"=>'http://www.your-website.com/callback/notif',
+            //     "lang"=> "fr",
+            //     "reference"=> "Your Website"
+            // ];
+
+            // $payment->webPayment($data);
+            $order = Order::findOrFail(session()->get('order_id'));
+            $amount=$order->total_amount;
+            $order = Str::random(4);
+            $orangeMoney = new OrangeMoney($amount, $order);
+            $orangePayment = $orangeMoney->getPayment(url('return_url_here'));
+            return redirect($orangePayment->payment_url);
+        }
 
         if($status){
             Mail::to($order['email'])->bcc($order['n_email'])->cc('ngomalameen90@gmail.com')->send(new OrderMail($order));
             Cart::instance('shopping')->destroy();
             Session::forget('coupon');
             Session::forget('checkout');
-            return redirect()->route('complete',$order['order_number'])->with('success','Successfully completed order - Can you verified your email address');
+            return redirect()->route('checkout.complete',$order['order_number'])->with('success','Successfully completed order - Can you verified your email address');
         }
         else{
             return redirect()->route('checkout1')->with('error','Please try again');
@@ -226,7 +254,7 @@ class CheckoutController extends Controller
             Cart::instance('shopping')->destroy();
             Session::forget('coupon');
             Session::forget('checkout');
-            return redirect()->route('complete',$order['order_number'])->with('success','Successfully completed order - Can you verified your email address');
+            return redirect()->route('checkout.complete',$order['order_number'])->with('success','Successfully completed order - Can you verified your email address');
         }
     }
 
@@ -241,7 +269,7 @@ class CheckoutController extends Controller
             Cart::instance('shopping')->destroy();
             Session::forget('coupon');
             Session::forget('checkout');
-            return redirect()->route('complete',$order['order_number'])->with('success','Successfully completed order - Can you verified your email address');
+            return redirect()->route('checkout.complete',$order['order_number'])->with('success','Successfully completed order - Can you verified your email address');
         }
         else{
             return redirect()->route('checkout4')->with('error','Please try again');

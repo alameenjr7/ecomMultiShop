@@ -64,7 +64,10 @@
             <div class="col-lg-3 col-md-6">
                 <div class="card overflowhidden">
                     <div class="body">
-                        <h3>{{Helper::currency_converter(App\Models\Product::where('status','active')->sum('offer_price'))}} <i class="float-right fa fa-dollar"></i></h3>
+                        @php
+                            $product=App\Models\Product::where('status','active')->sum('offer_price');
+                        @endphp
+                        <h3>{{Helper::currency_converter($product)}} <i class="float-right fa fa-dollar"></i></h3>
                         <span>Total product active</span>
                     </div>
                     <div class="progress progress-xs progress-transparent custom-color-blue m-b-0">
@@ -75,7 +78,10 @@
             <div class="col-lg-3 col-md-6">
                 <div class="card overflowhidden">
                     <div class="body">
-                        <h3>{{Helper::currency_converter(App\Models\Order::where('payment_status','paid')->sum('total_amount'))}}<i class="float-right fa fa-money"></i></h3>
+                        @php
+                            $order=App\Models\Order::where('payment_status','paid')->sum('total_amount');
+                        @endphp
+                        <h3>{{Helper::currency_converter($order)}}<i class="float-right fa fa-money"></i></h3>
                         <span>Total Product Paid</span>
                     </div>
                     <div class="progress progress-xs progress-transparent custom-color-green m-b-0">
@@ -105,15 +111,15 @@
                         <div class="clearfix row">
                             <div class="col-lg-4 col-md-4 col-sm-4">
                                 <span class="text-muted">Sales Report</span>
-                                <h3 class="text-warning">{{Helper::currency_converter($chartData1)}}</h3>
+                                <h3 class="text-warning">{{Helper::currency_converter((float) str_replace(',','',$chartData1))}}</h3>
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-4">
                                 <span class="text-muted">Annual Revenue </span>
-                                <h3 class="text-info">{{Helper::currency_converter($annuals_revenues)}}</h3>
+                                <h3 class="text-info">{{Helper::currency_converter((float) str_replace(',','',$annuals_revenues))}}</h3>
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-4">
                                 <span class="text-muted">Total Profit</span>
-                                <h3 class="text-success">{{Helper::currency_converter($annuals_revenues - number_format((float) str_replace(',','',$chartData1),2))}}</h3>
+                                <h3 class="text-success">{{Helper::currency_converter($annuals_revenues - (float) str_replace(',','',$chartData1))}}</h3>
                             </div>
                         </div>
                         <div id="area_chart" class="graph"></div>
@@ -138,7 +144,7 @@
                         <div class="sparkline" data-type="line" data-spot-Radius="2" data-highlight-Spot-Color="#445771" data-highlight-Line-Color="#222"
                             data-min-Spot-Color="#445771" data-max-Spot-Color="#445771" data-spot-Color="#445771"
                             data-offset="90" data-width="100%" data-height="95px" data-line-Width="1" data-line-Color="#ffcd55"
-                            data-fill-Color="#ffcd55">2,4,3,1,5,7,3,2
+                            data-fill-Color="#ffcd55">22,40,3,1,5,7,3,37
                         </div>
                     </div>
                 </div>
@@ -244,17 +250,30 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>01</td>
-                                    <td>IPONE-7</td>
-                                    <td>
-                                        <ul class="list-unstyled team-info margin-0">
-                                            <li><img src="{{asset('backend/assets/images/xs/avatar1.jpg')}}" title="Avatar" alt="Avatar"></li>
-                                            <li><img src="{{asset('backend/assets/images/xs/avatar6.jpg')}}" title="Avatar" alt="Avatar"></li>
-                                        </ul>
-                                    </td>
-                                    <td>$ 356</td>
-                                </tr>
+                                @if (count($new_orders)>0)
+                                @forelse ($new_orders as $key=>$new)
+                                    <tr>
+                                        <td>{{$new->count_product}}</td>
+                                        <td>
+                                            @php
+                                                $title_product=\App\Models\Product::where('id',$new->product_id)->first();
+                                            @endphp
+                                            {{$title_product->title}}
+                                        </td>
+                                        <td>
+                                            @php
+                                                $photo_user=\App\Models\User::where('id',$new->users_id)->first();
+                                            @endphp
+                                            <ul class="list-unstyled team-info margin-0">
+                                                <li><img src="{{asset($photo_user->photo)}}" title="Avatar" alt=""></li>
+                                            </ul>
+                                        </td>
+                                        <td>{{Helper::currency_converter($new->total)}}</td>
+                                    </tr>
+                                @empty
+                                    <td colspan="4" class="text-center">No orders</td>
+                                @endforelse
+                                @endif
                             </tbody>
                         </table>
                     </div>

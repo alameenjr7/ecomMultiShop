@@ -6,13 +6,13 @@
                 <div class="col-12 col-sm-6 col-md-5 col-lg-4 col-xl-3">
                     <div class="single_footer_area mb-100">
                         <div class="mb-4 footer_heading">
-                            <h6>Contact Us</h6>
+                            <h6>{{__('messages.contact_us')}}</h6>
                         </div>
                         <ul class="footer_content">
-                            <li><span>Address:</span> {{App\Models\Setting::value('address')}}</li>
-                            <li><span>Phone:</span>+ {{App\Models\Setting::value('phone')}}</li>
-                            <li><span>FAX:</span> {{App\Models\Setting::value('fax')}}</li>
-                            <li><span>Email:</span> {{App\Models\Setting::value('email')}}</li>
+                            <li><span>{{__('messages.address')}}:</span> {{App\Models\Setting::value('address')}}</li>
+                            <li><span>{{__('messages.phone')}}: </span>  +{{App\Models\Setting::value('phone')}}</li>
+                            <li><span>{{__('messages.fax')}}:</span> {{App\Models\Setting::value('fax')}}</li>
+                            <li><span>{{__('messages.email')}}:</span> {{App\Models\Setting::value('email')}}</li>
                         </ul>
                         <div class="footer_social_area mt-15">
                             <a href="{{App\Models\Setting::value('facebook_url')}}"><i class="fa fa-facebook" aria-hidden="true"></i></a>
@@ -33,11 +33,11 @@
                             <h6>Account</h6>
                         </div>
                         <ul class="footer_widget_menu">
-                            <li><a href="{{route('user.account')}}"><i class="icofont-rounded-right"></i> Account</a></li>
-                            <li><a href="{{route('user.order')}}"><i class="icofont-rounded-right"></i> Shop</a></li>
-                            <li><a href="{{route('blog.detail')}}"><i class="icofont-rounded-right"></i> Blog</a></li>
-                            <li><a href="{{route('contact.us')}}"><i class="icofont-rounded-right"></i> Contact</a></li>
-                            <li><a href="{{route('home')}}"><i class="icofont-rounded-right"></i> Home</a></li>
+                            <li><a href="{{route('user.account')}}"><i class="icofont-rounded-right"></i> {{__('messages.account')}}</a></li>
+                            <li><a href="{{route('user.order')}}"><i class="icofont-rounded-right"></i> {{__('messages.f_shop')}}</a></li>
+                            <li><a href="{{route('blog.detail')}}"><i class="icofont-rounded-right"></i> {{__('messages.f_blog')}}</a></li>
+                            <li><a href="{{route('contact.us')}}"><i class="icofont-rounded-right"></i> {{__('messages.f_contact')}}</a></li>
+                            <li><a href="{{route('home')}}"><i class="icofont-rounded-right"></i> {{__('messages.f_home')}}</a></li>
                         </ul>
                     </div>
                 </div>
@@ -46,7 +46,7 @@
                 <div class="col-12 col-sm-6 col-md col-lg-4 col-xl-2">
                     <div class="single_footer_area mb-100">
                         <div class="mb-4 footer_heading">
-                            <h6>Information</h6>
+                            <h6>{{__('messages.info')}}</h6>
                         </div>
                         <ul class="footer_widget_menu">
                             <li><a href="#"><i class="icofont-rounded-right"></i> Terms &amp; Conditions</a></li>
@@ -62,7 +62,7 @@
                 <div class="col-12 col-sm-6 col-md-5 col-lg-4 col-xl-2">
                     <div class="single_footer_area mb-100">
                         <div class="mb-4 footer_heading">
-                            <h6>Support</h6>
+                            <h6>{{__('messages.support')}}</h6>
                         </div>
                         <ul class="footer_widget_menu">
                             <li><a href="#"><i class="icofont-rounded-right"></i> Payment Method</a></li>
@@ -78,7 +78,7 @@
                 <div class="col-12 col-md-7 col-lg-8 col-xl-3">
                     <div class="single_footer_area mb-50">
                         <div class="mb-4 footer_heading">
-                            <h6>Join our mailing list</h6>
+                            <h6>{{__('messages.JOML')}}</h6>
                         </div>
                         <div class="subscribtion_form">
                             <form action="#" method="post">
@@ -89,7 +89,7 @@
                     </div>
                     <div class="single_footer_area mb-100">
                         <div class="mb-4 footer_heading">
-                            <h6>Download our Mobile Apps</h6>
+                            <h6>{{__('messages.DOMA')}}</h6>
                         </div>
                         <div class="apps_download">
                             <a href="{{App\Models\Setting::value('playStore_url')}}"><img src="{{asset('frontend/assets/img/core-img/play-store.png')}}" alt="Play Store"></a>
@@ -107,7 +107,7 @@
                     <!-- Copywrite -->
                     <div class="col-12 col-md-6">
                         <div class="copywrite_text">
-                            <p>Made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://ameentech.com/" target="_blank">{{App\Models\Setting::value('footer')}}</a></p>
+                            <p>{{__('messages.MW')}} <i class="fa fa-heart" aria-hidden="true"></i> {{__('messages.by')}} <a href="https://ameentech.com/" target="_blank">{{App\Models\Setting::value('footer')}}</a></p>
                         </div>
                     </div>
                     <!-- Payment Method -->

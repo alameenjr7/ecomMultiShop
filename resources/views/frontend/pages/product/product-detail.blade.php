@@ -7,11 +7,11 @@
     <div class="container h-100">
         <div class="row h-100 align-items-center">
             <div class="col-12">
-                <h5>Product Details</h5>
+                <h5>{{__('messages.product_details')}}</h5>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#">Shop</a></li>
-                    <li class="breadcrumb-item active">Product Details</li>
+                    <li class="breadcrumb-item"><a href="{{route('home')}}">{{__('messages.home')}}</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('shop')}}">{{__('messages.shop')}}</a></li>
+                    <li class="breadcrumb-item active">{{__('messages.product_details')}}</li>
                 </ol>
             </div>
         </div>
@@ -72,7 +72,7 @@
                                 @if (round($product->reviews->avg('rate'))>$i)
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                 @else
-                                    <i class="far fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star-o" aria-hidden="true"></i>
                                 @endif
                             @endfor
                         </div>
@@ -87,7 +87,7 @@
 
                     <!-- Overview -->
                     <div class="mb-4 short_overview">
-                        <h6>Overview</h6>
+                        <h6>{{__('messages.override')}}</h6>
                         <p>{!! html_entity_decode($product->summary) !!}</p>
                     </div>
 
@@ -120,7 +120,7 @@
 
                     <!-- Size Option -->
                     <div class="p-0 mb-3 widget size">
-                        <h6 class="widget-title">Size</h6>
+                        <h6 class="widget-title">{{__('messages.size')}}</h6>
                         <div class="widget-desc">
                             @php
                                 $product_attri=App\Models\ProductAttributes::where('product_id',$product->id)->get()
@@ -140,7 +140,7 @@
                                 name="quantity" value="1">
                         </div>
                         <button type="button" name="addtocart" data-product_id="{{$product->id}}" data-quantity="1" data-price="{{Helper::currency_converter($product->offer_price)}}" id="add_to_cart_button_details_{{$product->id}}" value="5"
-                            class="mt-1 ml-1 add_to_cart_button_details btn btn-primary mt-md-0 ml-md-3">Add to cart
+                            class="mt-1 ml-1 add_to_cart_button_details btn btn-primary mt-md-0 ml-md-3">{{__('messages.addToCart')}}
                         </button>
                     </form>
 
@@ -149,17 +149,16 @@
                         <a href="javascript:void(0);" class="add_to_wishlist" data-quantity="1"
                             data-id="{{$product->id}}" id="add_to_wishlist_{{$product->id}}">
                             <i class="fa fa-heart" aria-hidden="true"></i>
-                            WISHLIST
+                            {{__('messages.wishlists')}}
                         </a>
                         <a class="add_to_compare" href="javascript:void(0);" data-id="{{$product->id}}" id="add_to_compare_{{$product->id}}"><i class="fa fa-th" aria-hidden="true"></i>
-                            COMPARE</a>
-                        <a class="share_with_friend" href="#" ><i class="fa fa-share" aria-hidden="true"></i> SHARE WITH
-                            FRIEND</a>
+                            {{__('messages.compare')}}</a>
+                        <a class="share_with_friend" href="#" ><i class="fa fa-share" aria-hidden="true"></i> {{__('messages.shareFriend')}}</a>
                     </div>
 
                     <!-- Size Guide -->
                     <div class="sizeguide">
-                        <h6>Size Guide</h6>
+                        <h6>{{__('messages.sizeGuide')}}</h6>
                         <div class="size_guide_thumb d-flex">
                             @php
                                 $size_guide=explode(',',$product->size_guide);
@@ -185,16 +184,14 @@
                             <a href="#description" class="nav-link active" data-toggle="tab" role="tab">Description</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#reviews" class="nav-link" data-toggle="tab" role="tab">Reviews <span
+                            <a href="#reviews" class="nav-link" data-toggle="tab" role="tab">{{__('messages.review')}} <span
                                     class="text-muted">({{App\Models\ProductReview::where('product_id',$product->id)->count()}})</span></a>
                         </li>
                         <li class="nav-item">
-                            <a href="#addi-info" class="nav-link" data-toggle="tab" role="tab">Additional
-                                Information</a>
+                            <a href="#addi-info" class="nav-link" data-toggle="tab" role="tab">{{__('messages.add_info')}} </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#refund" class="nav-link" data-toggle="tab" role="tab">Return &amp;
-                                Cancellation</a>
+                            <a href="#refund" class="nav-link" data-toggle="tab" role="tab">{{__('messages.return')}} &amp; {{__('messages.cancel')}}</a>
                         </li>
                     </ul>
                     <!-- Tab Content -->
@@ -215,12 +212,12 @@
                         <div role="tabpanel" class="tab-pane fade" id="reviews">
 
                             <div class="submit_a_review_area mt-50">
-                                <h4>Submit A Review</h4>
+                                <h4>{{__('messages.submitReview')}}</h4>
                                 @auth
                                 <form action="{{route('product.review',$product->slug)}}" method="post">
                                     @csrf
                                     <div class="form-group">
-                                        <span>Your Ratings</span>
+                                        <span>{{__('messages.yrRate')}}</span>
                                         <div class="stars">
                                             <input type="radio" name="rate" class="star-1" id="star-1" value="1">
                                             <label class="star-1" for="star-1">1</label>
@@ -239,7 +236,7 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">
-                                        <label for="name">Nickname</label>
+                                        <label for="name">{{__('messages.nickname')}}</label>
                                         <input type="email" class="form-control" id="name" readonly
                                             value="{{auth()->user()->email}}" placeholder="Nazrul">
                                     </div>
@@ -248,17 +245,17 @@
                                     <input type="hidden" class="form-control" id="name" name="product_id"
                                         value="{{$product->id}}">
                                     <div class="form-group">
-                                        <label for="options">Reason for your rating</label>
+                                        <label for="options">{{__('messages.RFYR')}}</label>
                                         <select class="py-0 form-control small right w-100" name="reason" id="options">
-                                            <option value="quality" {{old('reason')=='quality' ? 'selected' : '' }}>
-                                                Quality</option>
-                                            <option value="value" {{old('reason')=='value' ? 'selected' : '' }}>Value
+                                            <option value="quality" {{old('reason')=='quality' ? 'selected' : '' }}>{{__('messages.qty')}}
                                             </option>
-                                            <option value="design" {{old('reason')=='design' ? 'selected' : '' }}>Design
+                                            <option value="value" {{old('reason')=='value' ? 'selected' : '' }}>{{__('messages.value')}}
                                             </option>
-                                            <option value="price" {{old('reason')=='price' ? 'selected' : '' }}>Price
+                                            <option value="design" {{old('reason')=='design' ? 'selected' : '' }}>{{__('messages.design')}}
                                             </option>
-                                            <option value="others" {{old('reason')=='others' ? 'selected' : '' }}>Others
+                                            <option value="price" {{old('reason')=='price' ? 'selected' : '' }}>{{__('messages.price')}}
+                                            </option>
+                                            <option value="others" {{old('reason')=='others' ? 'selected' : '' }}>{{__('messages.others')}}
                                             </option>
                                         </select>
                                         @error('reason')
@@ -266,24 +263,24 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">
-                                        <label for="comments">Comments</label>
+                                        <label for="comments">{{__('messages.comments')}}</label>
                                         <textarea class="form-control" id="comments" name="review" rows="5"
                                             data-max-length="150"></textarea>
                                         @error('review')
                                         <p class="text-danger">{{$message}}</p>
                                         @enderror
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Submit Review</button>
+                                    <button type="submit" class="btn btn-primary">{{__('messages.submitReview')}}</button>
                                 </form>
                                 @else
-                                <p class="py-5">You need to login for writing review.<a href="{{route('user.auth')}}">
-                                        Click here!</a></p>
+                                <p class="py-5">{{__('messages.YNTLFWR')}}<a href="{{route('user.auth')}}">
+                                    {{__('messages.clickHere')}}</a></p>
                                 @endauth
                             </div>
 
                             <div class="reviews_area">
                                 <ul class="mt-5">
-                                    <p>Last feedback's!</p>
+                                    <p>{{__('messages.lastFeed')}}</p>
                                     @php
                                     $reviews=App\Models\ProductReview::where('product_id',$product->id)->latest()->paginate(2);
                                     @endphp
@@ -296,16 +293,20 @@
                                                     @if ($review->rate>$i)
                                                         <i class="fa fa-star" aria-hidden="true"></i>
                                                     @else
-                                                        <i class="far fa-star" aria-hidden="true"></i>
+                                                        <i class="fa fa-star-o" aria-hidden="true"></i>
                                                     @endif
                                                 @endfor
-                                                    <span>for {{ucfirst($review->reason)}}</span>
+                                                    <span>{{__('messages.for')}} {{ucfirst($review->reason)}}</span>
                                             </div>
                                             <div class="review-details">
-                                                <p>by <a
-                                                        href="#">{{App\Models\User::where('id',$review->user_id)->value('full_name')}}</a>
-                                                    on <span>{{\Carbon\Carbon::parse($review->created_at)->format(' d M
-                                                        y')}}</span></p>
+                                                <p>{{__('messages.by')}}
+                                                    @php
+                                                        $user=App\Models\User::where('id',$review->user_id)->first();
+                                                    @endphp
+                                                    <a href="#">{{$user->full_name}}</a>
+                                                        {{__('messages.on')}}
+                                                    <span>{{\Carbon\Carbon::parse($review->created_at)->format(' d M y')}}</span>
+                                                </p>
                                                 <p>{{$review->review}}</p>
                                             </div>
                                         </div>
@@ -314,29 +315,30 @@
 
                                         @if (auth()->user())
                                         <div class="single_user_review">
-                                            <p>Your last feedback!</p>
+                                            <p>{{__('messages.YLF')}}</p>
                                             @php
-                                            $reviews_user=App\Models\ProductReview::where('user_id',auth()->user()->id)->latest()->paginate(1);
+                                                $reviews_user=App\Models\ProductReview::where('user_id',auth()->user()->id)->latest()->paginate(1);
                                             @endphp
                                             @if (count($reviews_user)>0)
-                                            @foreach ($reviews_user as $review)
-                                            <div class="review-rating">
-                                                @for ($i=0; $i<5; $i++) @if ($review->rate>$i)
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    @else
-                                                    <i class="far fa-star" aria-hidden="true"></i>
-                                                    @endif
-                                                    @endfor
-                                                    <span>for {{ucfirst($review->reason)}}</span>
-                                            </div>
-                                            <div class="review-details">
-                                                <p>by <a
-                                                        href="#">{{App\Models\User::where('id',$review->user_id)->value('full_name')}}</a>
-                                                    on <span>{{\Carbon\Carbon::parse($review->created_at)->format(' d M
-                                                        y')}}</span></p>
-                                                <p>{{$review->review}}</p>
-                                            </div>
-                                            @endforeach
+                                                @foreach ($reviews_user as $review)
+                                                    <div class="review-rating">
+                                                        @for ($i=0; $i<5; $i++)
+                                                            @if ($review->rate>$i)
+                                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                                            @else
+                                                                <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                            @endif
+                                                        @endfor
+                                                            <span>{{__('messages.for')}} {{ucfirst($review->reason)}}</span>
+                                                    </div>
+                                                    <div class="review-details">
+                                                        <p>{{__('messages.by')}} <a
+                                                                href="#">{{App\Models\User::where('id',$review->user_id)->value('full_name')}}</a>
+                                                                {{__('messages.on')}} <span>{{\Carbon\Carbon::parse($review->created_at)->format(' d M
+                                                                y')}}</span></p>
+                                                        <p>{{$review->review}}</p>
+                                                    </div>
+                                                @endforeach
                                             @endif
                                         </div>
                                         @endif
@@ -348,14 +350,14 @@
 
                         <div role="tabpanel" class="tab-pane fade" id="addi-info">
                             <div class="additional_info_area">
-                                <h5>Additional Info</h5>
+                                <h5>{{__('messages.add_info')}}</h5>
                                 <p>{!! html_entity_decode($product->additional_info) !!}</p>
                             </div>
                         </div>
 
                         <div role="tabpanel" class="tab-pane fade" id="refund">
                             <div class="refund_area">
-                                <h6>Return Policy</h6>
+                                <h6>{{__('messages.returnPol')}}</h6>
                                 <p>{!! html_entity_decode($product->return_cancellation) !!}</p>
                             </div>
                         </div>
@@ -373,7 +375,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="section_heading new_arrivals">
-                    <h5>You May Also Like</h5>
+                    <h5>{{__('messages.YMAL')}}</h5>
                 </div>
             </div>
         </div>
@@ -419,14 +421,14 @@
                             <div class="product_add_to_cart">
                                 <a href="#" data-quantity="1" data-product-id="{{$item->id}}" class="add_to_cart"
                                     id="add_to_cart{{$item->id}}">
-                                    <i class="icofont-shopping-cart"></i> Add to Cart
+                                    <i class="icofont-shopping-cart"></i> {{__('messages.addToCart')}}
                                 </a>
                             </div>
 
                             <!-- Quick View -->
                             <div class="product_quick_view">
                                 <a href="{{route('product.detail1',$item->id)}}" data-id="{{$product->id}}" id="{{$product->id}}" data-toggle="modal" data-target="#quickview"><i class="icofont-eye-alt"></i>
-                                    Quick View</a>
+                                    {{__('messages.quickView')}}</a>
                             </div>
 
                             <p class="brand_name">{{\App\Models\Brand::where('id',$item->brand_id)->value('title')}}</p>

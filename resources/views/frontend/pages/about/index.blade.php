@@ -7,10 +7,10 @@
         <div class="container h-100">
             <div class="row h-100 align-items-center">
                 <div class="col-12">
-                    <h5>About Us</h5>
+                    <h5>{{__('messages.about_us')}}</h5>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
-                        <li class="breadcrumb-item active">About Us</li>
+                        <li class="breadcrumb-item"><a href="{{route('home')}}">{{__('messages.home')}}</a></li>
+                        <li class="breadcrumb-item active">{{__('messages.about_us')}}</li>
                     </ol>
                 </div>
             </div>
@@ -53,7 +53,7 @@
                     <div class="pl-0 about_us_content pl-lg-5">
                         <h5>{{$about->heading}}</h5>
                         <p>{!! html_entity_decode($about->content) !!}</p>
-                        <a href="#" class="btn btn-primary mt-30">Learn More</a>
+                        <a href="#" class="btn btn-primary mt-30">{{__('messages.learn_more')}}</a>
                     </div>
                 </div>
             </div>
@@ -69,7 +69,7 @@
                 <div class="col-12 col-sm-6 col-lg-4">
                     <div class="single-service-area mb-50">
                         <i class="icofont-ssl-security"></i>
-                        <h5>Secure Payment Gateway</h5>
+                        <h5>{{__('messages.spg')}}</h5>
                         <p>{{$about->secure_payment_Gat}}</p>
                     </div>
                 </div>
@@ -77,7 +77,7 @@
                 <div class="col-12 col-sm-6 col-lg-4">
                     <div class="single-service-area mb-50">
                         <i class="icofont-badge"></i>
-                        <h5>Quality Products</h5>
+                        <h5>{{__('messages.qp')}}</h5>
                         <p>{{$about->quality_products}}</p>
                     </div>
                 </div>
@@ -85,7 +85,7 @@
                 <div class="col-12 col-sm-6 col-lg-4">
                     <div class="single-service-area mb-50">
                         <i class="icofont-fast-delivery"></i>
-                        <h5>Fast Delivery</h5>
+                        <h5>{{__('messages.fd')}}</h5>
                         <p>{{$about->fast_delivery}}</p>
                     </div>
                 </div>
@@ -93,7 +93,7 @@
                 <div class="col-12 col-sm-6 col-lg-4">
                     <div class="single-service-area mb-50">
                         <i class="icofont-cash-on-delivery"></i>
-                        <h5>Cash On Delivery</h5>
+                        <h5>{{__('messages.cod')}}</h5>
                         <p>{{$about->cashOn_delivery}}</p>
                     </div>
                 </div>
@@ -101,7 +101,7 @@
                 <div class="col-12 col-sm-6 col-lg-4">
                     <div class="single-service-area mb-50">
                         <i class="icofont-gift"></i>
-                        <h5>Free Delivery</h5>
+                        <h5>{{__('messages.freeD')}}</h5>
                         <p>{{$about->free_delivery}}</p>
                     </div>
                 </div>
@@ -109,7 +109,7 @@
                 <div class="col-12 col-sm-6 col-lg-4">
                     <div class="single-service-area mb-50">
                         <i class="icofont-life-bouy"></i>
-                        <h5>Customer Support</h5>
+                        <h5>{{__('messages.cs')}}</h5>
                         <p>{{$about->customer_support}}</p>
                     </div>
                 </div>
@@ -125,28 +125,28 @@
                 <div class="col-12 col-sm-6 col-lg-3">
                     <div class="text-center cool_fact_text wow fadeInUp" data-wow-delay="0.2s">
                         <h2><span class="counter">{{$about->exp_years}}</span>+</h2>
-                        <h5>Years of experience</h5>
+                        <h5>{{__('messages.YOE')}}</h5>
                     </div>
                 </div>
                 <!-- Single Cool Facts -->
                 <div class="col-12 col-sm-6 col-lg-3">
                     <div class="text-center cool_fact_text wow fadeInUp" data-wow-delay="0.4s">
                         <h2><span class="counter">{{$about->happy_customer}}</span>+</h2>
-                        <h5>Happy Customer</h5>
+                        <h5>{{__('messages.HC')}}</h5>
                     </div>
                 </div>
                 <!-- Single Cool Facts -->
                 <div class="col-12 col-sm-6 col-lg-3">
                     <div class="text-center cool_fact_text wow fadeInUp" data-wow-delay="0.6s">
                         <h2><span class="counter">{{$about->team_advisor}}</span>+</h2>
-                        <h5>Team Advisor</h5>
+                        <h5>{{__('messages.TA')}}</h5>
                     </div>
                 </div>
                 <!-- Single Cool Facts -->
                 <div class="col-12 col-sm-6 col-lg-3">
                     <div class="text-center cool_fact_text wow fadeInUp" data-wow-delay="0.8s">
                         <h2><span class="counter">{{$about->return_customer}}</span>%</h2>
-                        <h5>Return Customer</h5>
+                        <h5>{{__('messages.RC')}}</h5>
                     </div>
                 </div>
             </div>
@@ -160,8 +160,8 @@
             <div class="row justify-content-center">
                 <div class="col-12 col-lg-6">
                     <div class="text-center popular_section_heading mb-50">
-                        <h5 class="mb-3">Few Words from Clients</h5>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur saepe labore adipisci assumenda molestiae, omnis, quod ipsa facere praesentium.</p>
+                        <h5 class="mb-3">{{__('messages.FWFC')}}</h5>
+                        <p>{{__('messages.temoin')}}</p>
                     </div>
                 </div>
             </div>
@@ -202,7 +202,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="popular_section_heading mb-50">
-                            <h5>Popular Brands</h5>
+                            <h5>{{__('messages.pop_brand')}}</h5>
                         </div>
                     </div>
                     <div class="col-12">

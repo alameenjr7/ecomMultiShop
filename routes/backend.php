@@ -92,6 +92,11 @@ Route::group(['prefix'=>'admin', 'middleware'=>['admin']], function(){
 
     //messages
     Route::get('messages', [\App\Http\Controllers\Backend\IndexController::class, 'messages'])->name('messages');
+    Route::get('messages/{id}', [\App\Http\Controllers\Backend\IndexController::class, 'messagesID'])->name('messages.ID');
+
+    //ProductReview section
+    Route::resource('/review', \App\Http\Controllers\ProductReviewController::class);
+    Route::post('review_status', [\App\Http\Controllers\ProductReviewController::class, 'reviewStatus'])->name('review.status');
 
     //profile
     Route::get('profile', [\App\Http\Controllers\Backend\IndexController::class, 'profile'])->name('profile');

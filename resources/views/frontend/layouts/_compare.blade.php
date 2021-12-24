@@ -32,7 +32,7 @@
                             @if (round($item->model->reviews->avg('rate'))>$i)
                                 <i class="fa fa-star" aria-hidden="true"></i>
                             @else
-                                <i class="far fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star-o" aria-hidden="true"></i>
 
                             @endif
                         @endfor

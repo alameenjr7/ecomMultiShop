@@ -1,6 +1,6 @@
 <!-- Quick View Modal Area -->
 <div class="modal fade hide in" id="quickview1{{$product->id}}" data-backdrop="static" backdrop="static" keyboard="true" show="true" tabindex="-1" role="dialog" aria-labelledby="quickview1"
-    aria-hidden="true" style="background: rgba(0, 0, 0, 0.5);z-index:999999999999999999;">
+    aria-hidden="true" style="background: rgba(0, 0, 0, 0.5); z-index: 999999;">
     <div class="modal-dialog modal-lg modal-dialog-centered " role="document">
         <div class="modal-content">
             <button type="button" class="close btn" data-dismiss="modal" aria-label="Close">

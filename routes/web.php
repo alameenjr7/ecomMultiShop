@@ -30,4 +30,6 @@ Route::group(['prefix'=>'filemanager', 'middleware'=>['web','auth']], function (
 
 Route::post('currency_load',[\App\Http\Controllers\CurrencyController::class, 'currencyLoad'])->name('currency.load');
 
+Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'App\Http\Controllers\LanguageController@switchLang']);
+
 Auth::routes(['register'=>false]);

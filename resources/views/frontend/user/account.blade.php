@@ -7,10 +7,10 @@
         <div class="container h-100">
             <div class="row h-100 align-items-center">
                 <div class="col-12">
-                    <h5>My Account</h5>
+                    <h5>{{__('messages.account')}}</h5>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
-                        <li class="breadcrumb-item active">My Account</li>
+                        <li class="breadcrumb-item"><a href="{{route('home')}}">{{__('messages.home')}}</a></li>
+                        <li class="breadcrumb-item active">{{__('messages.account')}}</li>
                     </ol>
                 </div>
             </div>

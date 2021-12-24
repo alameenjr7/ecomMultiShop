@@ -7,10 +7,10 @@
         <div class="container h-100">
             <div class="row h-100 align-items-center">
                 <div class="col-12">
-                    <h5>Shop Grid</h5>
+                    <h5>{{__('messages.shop')}}</h5>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li class="breadcrumb-item active">Shop Grid</li>
+                        <li class="breadcrumb-item"><a href="{{route('home')}}">{{__('messages.home')}}</a></li>
+                        <li class="breadcrumb-item active">{{__('messages.shop')}}</li>
                     </ol>
                 </div>
             </div>
@@ -28,7 +28,7 @@
                                 @if (count($cats)>0)
                                     <!-- Single Widget -->
                                     <div class="widget catagory mb-30">
-                                        <h6 class="widget-title">Product Categories</h6>
+                                        <h6 class="widget-title">{{__('messages.product_cat')}}</h6>
                                         <div class="widget-desc">
                                             @if (!empty($_GET['category']))
                                                 @php
@@ -52,7 +52,7 @@
 
                                 <!-- Single Widget -->
                                 <div class="widget price mb-30">
-                                    <h6 class="widget-title">Filter by Price</h6>
+                                    <h6 class="widget-title">{{__('messages.filter_price')}}</h6>
                                     <div class="widget-desc">
                                         <div class="slider-range">
                                             <div id="slider-range" data-min="{{Helper::minPrice()}}" data-max="{{Helper::maxPrice()}}" data-unit="$" class="slider-range-price ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-value-min="{{Helper::minPrice()}}" data-value-max="{{Helper::maxPrice()}}" data-label-result="Price:">
@@ -69,7 +69,7 @@
                                                 <input type="hidden" id="price_range" value="@if(!empty($_GET['price'])) {{$_GET['price']}} @endif" name="price_range">
                                                 <input type="text" readonly id="amount" style="border: 0;width:70%;background-color: #f8f8ff;" value="$@if(!empty($_GET['price'])){{$price['0']}}@else{{Helper::minPrice()}}@endif-$@if(!empty($_GET['price'])){{$price['1']}}@else{{Helper::maxPrice()}}@endif">
                                                 {{-- <div class="range-price" id="amount" >Price: {{Helper::minPrice()}} - {{Helper::maxPrice()}}</div> --}}
-                                                <button type="submit" class="float-right btn btn-sm btn-primary" style="margin: 12px 0px 12px 7px;height:30px;line-height:12px;">Filter</button>
+                                                <button type="submit" class="float-right btn btn-sm btn-primary" style="margin: 12px 0px 12px 7px;height:30px;line-height:12px;">{{__('messages.filter')}}</button>
                                             </div>
                                         </div>
                                     </div>
@@ -78,7 +78,7 @@
                                 @if (count($brands)>0)
                                     <!-- Single Widget -->
                                     <div class="widget brands mb-30">
-                                        <h6 class="widget-title">Filter by brands</h6>
+                                        <h6 class="widget-title">{{__('messages.filter_brand')}}</h6>
                                         <div class="widget-desc">
                                             <!-- Single Checkbox -->
                                             @if (!empty($_GET['brand']))
@@ -102,7 +102,7 @@
 
                                 <!-- Single Widget -->
                                 <div class="widget rating mb-30">
-                                    <h6 class="widget-title">Average Rating</h6>
+                                    <h6 class="widget-title">{{__('messages.filter_rate')}}</h6>
                                     <div class="widget-desc">
                                         <ul>
                                             <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i> <span class="text-muted">(103)</span></a></li>
@@ -120,27 +120,27 @@
 
                                 <!-- Single Widget -->
                                 <div class="widget size mb-30">
-                                    <h6 class="widget-title">Filter by Size</h6>
+                                    <h6 class="widget-title">{{__('messages.filter_size')}}</h6>
                                     <div class="widget-desc">
                                         <!-- Single Checkbox -->
                                         <div class="mb-2 custom-control custom-checkbox d-flex align-items-center">
                                             <input type="checkbox" class="custom-control-input" id="customCheck2" @if (!empty($_GET['size']) && $_GET['size'] =='S') checked @endif name="size" value="S" onchange="this.form.submit();">
-                                            <label class="custom-control-label" for="customCheck2">Small <span class="text-muted">({{App\Models\Product::where(['status'=>'active','size'=>'S'])->count()}})</span></label>
+                                            <label class="custom-control-label" for="customCheck2">{{__('messages.small')}} <span class="text-muted">({{App\Models\Product::where(['status'=>'active','size'=>'S'])->count()}})</span></label>
                                         </div>
                                         <!-- Single Checkbox -->
                                         <div class="mb-2 custom-control custom-checkbox d-flex align-items-center">
                                             <input type="checkbox" class="custom-control-input" id="customCheck12" @if (!empty($_GET['size']) && $_GET['size'] =='M') checked @endif name="size" value="M" onchange="this.form.submit();">
-                                            <label class="custom-control-label" for="customCheck12">Medium <span class="text-muted">({{App\Models\Product::where(['status'=>'active','size'=>'M'])->count()}})</span></label>
+                                            <label class="custom-control-label" for="customCheck12">{{__('messages.medium')}} <span class="text-muted">({{App\Models\Product::where(['status'=>'active','size'=>'M'])->count()}})</span></label>
                                         </div>
                                         <!-- Single Checkbox -->
                                         <div class="mb-2 custom-control custom-checkbox d-flex align-items-center">
                                             <input type="checkbox" class="custom-control-input" id="customCheck22" @if (!empty($_GET['size']) && $_GET['size'] =='L') checked @endif name="size" value="L" onchange="this.form.submit();">
-                                            <label class="custom-control-label" for="customCheck22">Large <span class="text-muted">({{App\Models\Product::where(['status'=>'active','size'=>'L'])->count()}})</span></label>
+                                            <label class="custom-control-label" for="customCheck22">{{__('messages.large')}} <span class="text-muted">({{App\Models\Product::where(['status'=>'active','size'=>'L'])->count()}})</span></label>
                                         </div>
                                         <!-- Single Checkbox -->
                                         <div class="mb-2 custom-control custom-checkbox d-flex align-items-center">
                                             <input type="checkbox" class="custom-control-input" id="customCheck32" @if (!empty($_GET['size']) && $_GET['size'] =='XL') checked @endif name="size" value="XL" onchange="this.form.submit();">
-                                            <label class="custom-control-label" for="customCheck32">Extra-Large <span class="text-muted">({{App\Models\Product::where(['status'=>'active','size'=>'XL'])->count()}})</span></label>
+                                            <label class="custom-control-label" for="customCheck32">{{__('messages.exLarge')}} <span class="text-muted">({{App\Models\Product::where(['status'=>'active','size'=>'XL'])->count()}})</span></label>
                                         </div>
                                         {{-- <ul>
                                             <li><a href="#">S</a></li>
@@ -158,25 +158,25 @@
                         <div class="flex-wrap shop_top_sidebar_area d-flex align-items-center justify-content-between">
                             <div class="view_area d-flex">
                                 <div class="grid_view">
-                                    <a href="shop-grid-left-sidebar.html" data-toggle="tooltip" data-placement="top" title="Grid View"><i class="icofont-layout"></i></a>
+                                    <a href="{{route('shop')}}" data-toggle="tooltip" data-placement="top" title="Grid View"><i class="icofont-layout"></i></a>
                                 </div>
                                 <div class="ml-3 list_view">
-                                    <a href="shop-list-left-sidebar.html" data-toggle="tooltip" data-placement="top" title="List View"><i class="icofont-listine-dots"></i></a>
+                                    <a href="{{route('shop')}}" data-toggle="tooltip" data-placement="top" title="List View"><i class="icofont-listine-dots"></i></a>
                                 </div>
                             </div>
                             <select id="sortBy" name="sortBy" onchange="this.form.submit();" class="small right">
-                                <option value=" ">Default</option>
-                                <option value="priceAsc" @if (!empty($_GET['sortBy']) && $_GET['sortBy']=='priceAsc') selected @endif>Price - Lower To Higher</option>
-                                <option value="priceDesc" @if (!empty($_GET['sortBy']) && $_GET['sortBy']=='priceDesc') selected @endif>Price - Higher To Lower</option>
-                                <option value="titleAsc" @if (!empty($_GET['sortBy']) && $_GET['sortBy']=='titleAsc') selected @endif>Alphabetical Ascending</option>
-                                <option value="titleDesc" @if (!empty($_GET['sortBy']) && $_GET['sortBy']=='titleDesc') selected @endif>Alphabetical Descending</option>
-                                <option value="discAsc" @if (!empty($_GET['sortBy']) && $_GET['sortBy']=='discAsc') selected @endif>Discount - Lower To Higher</option>
-                                <option value="discDesc" @if (!empty($_GET['sortBy']) && $_GET['sortBy']=='discDesc') selected @endif>Discount - Higher To Lower</option>
+                                <option value=" ">{{__('messages.default')}}</option>
+                                <option value="priceAsc" @if (!empty($_GET['sortBy']) && $_GET['sortBy']=='priceAsc') selected @endif>{{__('messages.priceLH')}}</option>
+                                <option value="priceDesc" @if (!empty($_GET['sortBy']) && $_GET['sortBy']=='priceDesc') selected @endif>{{__('messages.priceHL')}}</option>
+                                <option value="titleAsc" @if (!empty($_GET['sortBy']) && $_GET['sortBy']=='titleAsc') selected @endif>{{__('messages.alphaA')}}</option>
+                                <option value="titleDesc" @if (!empty($_GET['sortBy']) && $_GET['sortBy']=='titleDesc') selected @endif>{{__('messages.alphaD')}}</option>
+                                <option value="discAsc" @if (!empty($_GET['sortBy']) && $_GET['sortBy']=='discAsc') selected @endif>{{__('messages.discLH')}}</option>
+                                <option value="discDesc" @if (!empty($_GET['sortBy']) && $_GET['sortBy']=='discDesc') selected @endif>{{__('messages.discHL')}}</option>
                             </select>
                         </div>
 
                         <div class="shop_grid_product_area" id="product-update">
-                            <p class=""> Total Products : {{$products->total()}}</p>
+                            <p class=""> {{__('messages.totalProduct')}} : {{$products->total()}}</p>
                             <div class="row justify-content-center">
                                 @if (count($products)>0)
                                     <!-- Single Product -->

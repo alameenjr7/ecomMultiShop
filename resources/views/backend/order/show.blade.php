@@ -42,7 +42,7 @@
                                     <thead class="thead-dark">
                                         <tr>
                                             <th style="width:60px;">#</th>
-                                            <th>Name</th>
+                                            <th>Full Name</th>
                                             <th>Email</th>
                                             <th>Payment Methode</th>
                                             <th>Condition</th>

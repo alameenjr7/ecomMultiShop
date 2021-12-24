@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\ProductOrder;
 use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
@@ -13,7 +14,30 @@ class AdminController extends Controller
     public function admin(){
 
         // List Orders
-        $orders=Order::orderBy('id','DESC')->get();
+        $orders=Order::orderBy('id','DESC')->limit('7')->get();
+
+        // New order groupe product and user
+        $new_orders=DB::select(DB::raw("
+            select
+                product_id,
+                count(users.id) as users_id,
+                SUM(total_amount) as total,
+                count(product_id) as count_product
+            from product_orders
+                join orders on (product_orders.order_id = orders.id)
+                join users on (orders.user_id = users.id)
+                where `payment_status`='paid'
+                group by product_id
+                limit 4
+        "));
+
+        // dd($new_orders);
+        // SELECT user_id, SUM(total_amount) FROM orders GROUP BY user_id HAVING SUM(total_amount) > 40
+        // SELECT product_id FROM product_orders INNER JOIN orders ON product_id = orders.user_id
+
+//select COUNT(product_id),COUNT(order_id) from product_orders PO join orders O on (PO.order_id = O.id) join users U on (O.user_id = U.id) join products P on (PO.product_id = P.id) where `payment_status`='paid' GROUP BY(product_id)
+//select * from product_orders PO join orders O on (PO.order_id = O.id) join users U on (O.user_id = U.id) join products P on (PO.product_id = P.id) where `payment_status`='paid' GROUP BY(product_id)
+
 
         // Sales Report Annual
         $order_sales= Order::select(
@@ -107,6 +131,7 @@ class AdminController extends Controller
 
         return view('backend.index',compact(
             'orders',
+            'new_orders',
             'annuals_revenues',
             'chartData1',
             'json',

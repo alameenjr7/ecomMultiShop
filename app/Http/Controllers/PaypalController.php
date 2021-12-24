@@ -19,6 +19,7 @@ class PaypalController extends Controller
     {
         $clientID=env('PAYPAL_CLIENT_ID');
         $clientSECRET=env('PAYPAL_CLIENT_SECRET');
+        // dd($clientID);
 
         if(get_setting('paypal_sandbox')==1){
             $environment=new SandboxEnvironment($clientID,$clientSECRET);
