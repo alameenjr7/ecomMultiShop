@@ -32,7 +32,3 @@ Route::group(['prefix'=>'seller', 'middleware'=>['seller']], function(){
 
 });
 
-
-// Route::group(['prefix'=>'filemanager', 'middleware'=>['web','auth:seller']], function () {
-//     \UniSharp\LaravelFilemanager\Lfm::routes();
-// });

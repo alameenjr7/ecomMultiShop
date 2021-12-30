@@ -34,7 +34,7 @@ class CreateSettingsTable extends Migration
             $table->string('playStore_url')->nullable();
             $table->string('appStore_url')->nullable();
             $table->string('youtube_url')->nullable();
-            $table->string('map_url')->nullable();
+            $table->text('map_url')->nullable();
             $table->boolean('paypal_sandbox')->default(1);
 
 

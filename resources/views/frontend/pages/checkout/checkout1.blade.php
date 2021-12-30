@@ -7,10 +7,10 @@
     <div class="container h-100">
         <div class="row h-100 align-items-center">
             <div class="col-12">
-                <h5>Checkout</h5>
+                <h5>{{__('messages.checkout_m')}}</h5>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
-                    <li class="breadcrumb-item active">Checkout</li>
+                    <li class="breadcrumb-item"><a href="{{route('home')}}">{{__('messages.home')}}</a></li>
+                    <li class="breadcrumb-item active">{{__('messages.checkout_m')}}</li>
                 </ol>
             </div>
         </div>
@@ -22,10 +22,10 @@
 <div class="checkout_steps_area">
     {{-- {% comment %} <a class="complated" href="checkout-1.html"><i class="icofont-check-circled"></i> Login</a> {%
     endcomment %} --}}
-    <a class="active" href="{{route('checkout1')}}"><i class="icofont-check-circled"></i> Billing</a>
-    <a href="#"><i class="icofont-check-circled"></i> Shipping</a>
-    <a href="#"><i class="icofont-check-circled"></i> Payment</a>
-    <a href="#"><i class="icofont-check-circled"></i> Review</a>
+    <a class="active" href="{{route('checkout1')}}"><i class="icofont-check-circled"></i> {{__('messages.billing')}}</a>
+    <a href="#"><i class="icofont-check-circled"></i> {{__('messages.shipping')}}</a>
+    <a href="#"><i class="icofont-check-circled"></i> {{__('messages.payment')}}</a>
+    <a href="#"><i class="icofont-check-circled"></i> {{__('messages.reviews')}}</a>
 </div>
 
 <!-- Checkout Area -->
@@ -49,65 +49,65 @@
                 @csrf
                 <div class="col-12">
                     <div class="clearfix checkout_details_area">
-                        <h5 class="mb-4">Billing Details</h5>
+                        <h5 class="mb-4">{{__('messages.bil_detail')}}</h5>
                         <div class="row">
                             @php
                             $name=explode(' ',$user->full_name)
                             @endphp
                             <div class="mb-3 col-md-6">
-                                <label for="first_name">First Name</label>
+                                <label for="first_name">{{__('messages.f_name')}}</label>
                                 <input type="text" class="form-control" id="first_name" name="first_name"
-                                    placeholder="First Name" value="{{$name[0]}}" required>
+                                    placeholder="{{__('messages.f_name')}}" value="{{$name[0]}}" required>
                             </div>
                             <div class="mb-3 col-md-6">
-                                <label for="last_name">Last Name</label>
+                                <label for="last_name">{{__('messages.l_name')}}</label>
                                 <input type="text" class="form-control" id="last_name" name="last_name"
-                                    placeholder="Last Name" value="{{$name[1]}}" required>
+                                    placeholder="{{__('messages.l_name')}}" value="{{$name[1]}}" required>
                             </div>
                             <div class="mb-3 col-md-6">
-                                <label for="email_address">Email Address</label>
+                                <label for="email_address">{{__('messages.e_address')}}</label>
                                 <input type="email" class="form-control" id="email" name="email"
-                                    placeholder="Email Address" value="{{$user->email}}" readonly>
+                                    placeholder="{{__('messages.e_address')}}" value="{{$user->email}}" readonly>
                             </div>
                             <div class="mb-3 col-md-6">
-                                <label for="phone_number">Phone Number</label>
+                                <label for="phone_number">{{__('messages.p_number')}}</label>
                                 <input type="number" class="form-control" id="phone" name="phone" min="9"
                                     value="{{$user->phone}}" placeholder="221 772050626">
                             </div>
                             <div class="mb-3 col-md-12">
-                                <label for="country">Country</label>
+                                <label for="country">{{__('messages.country')}}</label>
                                 <input type="text" class="form-control" id="country" name="country"
                                     value="{{$user->country}}" placeholder="ex. Sénégal">
                             </div>
                             <div class="mb-3 col-md-12">
-                                <label for="street_address">Street address</label>
+                                <label for="street_address">{{__('messages.s_address')}}</label>
                                 <input type="text" class="form-control" id="address" name="address"
-                                    placeholder="Street Address" value="{{$user->address}}">
+                                    placeholder="{{__('messages.s_address')}}" value="{{$user->address}}">
                             </div>
                             <div class="mb-3 col-md-6">
-                                <label for="apartment_suite">Apartment/Suite/Unit</label>
+                                <label for="apartment_suite">{{__('messages.ApSuUni')}}</label>
                                 <input type="text" class="form-control" id="apartment" name="apartment"
-                                    placeholder="Apartment, suite, unit etc" value="{{old('apartment')}}">
+                                    placeholder="{{__('messages.ApSuUni')}} etc" value="{{old('apartment')}}">
                             </div>
                             <div class="mb-3 col-md-6">
-                                <label for="city">Town/City</label>
-                                <input type="text" class="form-control" id="city" name="city" placeholder="Town/City"
+                                <label for="city">{{__('messages.townC')}}</label>
+                                <input type="text" class="form-control" id="city" name="city" placeholder="{{__('messages.townC')}}"
                                     value="{{$user->city}}">
                             </div>
                             <div class="mb-3 col-md-6">
-                                <label for="state">State</label>
-                                <input type="text" class="form-control" id="state" name="state" placeholder="State"
+                                <label for="state">{{__('messages.state')}}</label>
+                                <input type="text" class="form-control" id="state" name="state" placeholder="{{__('messages.state')}}"
                                     value="{{$user->state}}">
                             </div>
                             <div class="mb-3 col-md-6">
-                                <label for="postcode">Postcode/Zip</label>
+                                <label for="postcode">{{__('messages.postcodeZip')}}</label>
                                 <input type="number" class="form-control" id="postcode" name="postcode"
-                                    placeholder="Postcode / Zip" value="{{$user->postcode}}">
+                                    placeholder="{{__('messages.postcodeZip')}}" value="{{$user->postcode}}">
                             </div>
                             <div class="col-md-12">
-                                <label for="order-notes">Order Notes</label>
+                                <label for="order-notes">{{__('messages.orderNote')}}</label>
                                 <textarea class="form-control" id="order-notes" va name="note" cols="30" rows="10"
-                                    placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
+                                    placeholder="{{__('messages.noteAbout')}}"></textarea>
                             </div>
                         </div>
 
@@ -116,60 +116,59 @@
                             <div class="mb-3 ship-different-title">
                                 <div class="custom-control custom-checkbox">
                                     <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                    <label class="custom-control-label" for="customCheck1">Ship to a same
-                                        address?</label>
+                                    <label class="custom-control-label" for="customCheck1">{{__('messages.sameAddress')}}</label>
                                 </div>
                             </div>
                             <div class="row shipping_input_field">
                                 <div class="mb-3 col-md-6">
-                                    <label for="first_name">First Name</label>
+                                    <label for="first_name">{{__('messages.f_name')}}</label>
                                     <input type="text" class="form-control" id="n_first_name" name="n_first_name"
-                                        placeholder="First Name" value="{{$name[0]}}" required>
+                                        placeholder="{{__('messages.f_name')}}" value="{{$name[0]}}" required>
                                 </div>
                                 <div class="mb-3 col-md-6">
-                                    <label for="last_name">Last Name</label>
+                                    <label for="last_name">{{__('messages.l_name')}}</label>
                                     <input type="text" class="form-control" id="n_last_name" name="n_last_name"
-                                        placeholder="Last Name" value="{{$name[1]}}" required>
+                                        placeholder="{{__('messages.l_name')}}" value="{{$name[1]}}" required>
                                 </div>
                                 <div class="mb-3 col-md-6">
-                                    <label for="email_address">Email Address</label>
+                                    <label for="email_address">{{__('messages.e_address')}}</label>
                                     <input type="email" class="form-control" id="n_email" name="n_email"
-                                        placeholder="Email Address" value="{{$user->email}}">
+                                        placeholder="{{__('messages.e_address')}}" value="{{$user->email}}">
                                 </div>
                                 <div class="mb-3 col-md-6">
-                                    <label for="phone_number">Phone Number</label>
+                                    <label for="phone_number">{{__('messages.p_number')}}</label>
                                     <input type="number" class="form-control" id="n_phone" name="n_phone" min="0"
                                         value="{{$user->phone}}" required>
                                 </div>
                                 <div class="mb-3 col-md-12">
-                                    <label for="country">Country</label>
+                                    <label for="country">{{__('messages.country')}}</label>
                                     <input type="text" class="form-control" id="n_country" name="n_country"
                                         value="{{$user->n_country}}" placeholder="ex. Sénégal">
                                 </div>
                                 <div class="mb-3 col-md-12">
-                                    <label for="street_address">Street address</label>
+                                    <label for="street_address">{{__('messages.s_address')}}</label>
                                     <input type="text" class="form-control" id="n_address" name="n_address"
-                                        placeholder="Street Address" value="{{$user->n_address}}" required>
+                                        placeholder="{{__('messages.s_address')}}" value="{{$user->n_address}}" required>
                                 </div>
                                 <div class="mb-3 col-md-6">
-                                    <label for="apartment_suite">Apartment/Suite/Unit</label>
+                                    <label for="apartment_suite">{{__('messages.ApSuUni')}}</label>
                                     <input type="text" class="form-control" id="n_apartment" name="n_apartment"
-                                        placeholder="Apartment, suite, unit etc" value="{{old('n_apartment')}}">
+                                        placeholder="{{__('messages.ApSuUni')}} etc" value="{{old('n_apartment')}}">
                                 </div>
                                 <div class="mb-3 col-md-6">
-                                    <label for="city">Town/City</label>
+                                    <label for="city">{{__('messages.townC')}}</label>
                                     <input type="text" class="form-control" id="n_city" name="n_city"
-                                        placeholder="Town/City" value="{{$user->n_city}}" required>
+                                        placeholder="{{__('messages.townC')}}" value="{{$user->n_city}}" required>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="state">State</label>
+                                    <label for="state">{{__('messages.state')}}</label>
                                     <input type="text" class="form-control" id="n_state" name="n_state"
-                                        placeholder="State" value="{{$user->n_state}}">
+                                        placeholder="{{__('messages.state')}}" value="{{$user->n_state}}">
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="postcode">Postcode/Zip</label>
+                                    <label for="postcode">{{__('messages.postcodeZip')}}</label>
                                     <input type="number" class="form-control" id="n_postcode" name="n_postcode"
-                                        placeholder="Postcode / Zip" value="{{$user->n_postcode}}">
+                                        placeholder="{{__('messages.postcodeZip')}}" value="{{$user->n_postcode}}">
                                 </div>
                             </div>
                         </div>
@@ -182,8 +181,8 @@
                 @endforeach --}}
                 <div class="col-12">
                     <div class="checkout_pagination d-flex justify-content-end mt-50">
-                        <a onclick="window.history.back();" class="mt-2 ml-2 btn btn-primary">Go Back</a>
-                        <button type="submit" class="mt-2 ml-2 btn btn-primary">Continue</button>
+                        <a onclick="window.history.back();" class="mt-2 ml-2 btn btn-primary">{{__('messages.goback')}}</a>
+                        <button type="submit" class="mt-2 ml-2 btn btn-primary">{{__('messages.continue')}}</button>
                     </div>
                 </div>
             </form>

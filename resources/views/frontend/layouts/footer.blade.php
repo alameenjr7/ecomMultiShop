@@ -30,7 +30,7 @@
                 <div class="col-12 col-sm-6 col-md col-lg-4 col-xl-2">
                     <div class="single_footer_area mb-100">
                         <div class="mb-4 footer_heading">
-                            <h6>Account</h6>
+                            <h6>{{__('messages.acc')}}</h6>
                         </div>
                         <ul class="footer_widget_menu">
                             <li><a href="{{route('user.account')}}"><i class="icofont-rounded-right"></i> {{__('messages.account')}}</a></li>
@@ -49,11 +49,11 @@
                             <h6>{{__('messages.info')}}</h6>
                         </div>
                         <ul class="footer_widget_menu">
-                            <li><a href="#"><i class="icofont-rounded-right"></i> Terms &amp; Conditions</a></li>
-                            <li><a href="#"><i class="icofont-rounded-right"></i> Help</a></li>
-                            <li><a href="#"><i class="icofont-rounded-right"></i> Privacy Policy</a></li>
-                            <li><a href="#"><i class="icofont-rounded-right"></i> Delivary Info</a></li>
-                            <li><a href="#"><i class="icofont-rounded-right"></i> Return Policy</a></li>
+                            <li><a href="#"><i class="icofont-rounded-right"></i> {{__('messages.termCond')}}</a></li>
+                            <li><a href="#"><i class="icofont-rounded-right"></i> {{__('messages.help')}}</a></li>
+                            <li><a href="#"><i class="icofont-rounded-right"></i> {{__('messages.pPol')}}</a></li>
+                            <li><a href="#"><i class="icofont-rounded-right"></i> {{__('messages.deliveryInfo')}}</a></li>
+                            <li><a href="#"><i class="icofont-rounded-right"></i> {{__('messages.returnPol')}}</a></li>
                         </ul>
                     </div>
                 </div>
@@ -65,11 +65,11 @@
                             <h6>{{__('messages.support')}}</h6>
                         </div>
                         <ul class="footer_widget_menu">
-                            <li><a href="#"><i class="icofont-rounded-right"></i> Payment Method</a></li>
-                            <li><a href="#"><i class="icofont-rounded-right"></i> Product Support</a></li>
-                            <li><a href="#"><i class="icofont-rounded-right"></i> Affiliate Program</a></li>
-                            <li><a href="#"><i class="icofont-rounded-right"></i> Free Coupon</a></li>
-                            <li><a href="#"><i class="icofont-rounded-right"></i> Free Shipping Policy</a></li>
+                            <li><a href="#"><i class="icofont-rounded-right"></i> {{__('messages.payMethod')}}</a></li>
+                            <li><a href="#"><i class="icofont-rounded-right"></i> {{__('messages.proSupp')}}</a></li>
+                            <li><a href="#"><i class="icofont-rounded-right"></i> {{__('messages.affProg')}}</a></li>
+                            <li><a href="#"><i class="icofont-rounded-right"></i> {{__('messages.freeCoupon')}}</a></li>
+                            <li><a href="#"><i class="icofont-rounded-right"></i> {{__('messages.freePShipping')}}</a></li>
                         </ul>
                     </div>
                 </div>

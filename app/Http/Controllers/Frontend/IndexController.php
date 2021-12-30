@@ -113,7 +113,9 @@ class IndexController extends Controller
     {
         $about=AboutUs::first();
         $brands=Brand::where('status','active')->orderBy('id','DESC')->get();
-        return view('frontend.pages.about.index',compact('about','brands'));
+        $temoins=DB::select(DB::raw("SELECT * FROM `messages` WHERE `subject`='quality' OR `subject`='satisfaction' ORDER BY id DESC LIMIT 5"));
+
+        return view('frontend.pages.about.index',compact('about','brands','temoins'));
     }
 
 	//contact us

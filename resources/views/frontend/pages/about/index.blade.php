@@ -168,26 +168,23 @@
             <div class="row justify-content-center">
                 <div class="col-12 col-lg-8">
                     <div class="testimonials_slides owl-carousel">
-                        <div class="text-center single_tes_slide">
-                            <img src="{{asset('frontend/assets/img/partner-img/tes-1.png')}}" alt="">
-                            <h6>Bigshop is smart &amp; elegant e-commerce HTML5 Template. <br> It's suitable for all e-commerce business platform.</h6>
-                            <p>Emm Sarah</p>
-                            <span>Support Manager</span>
-                        </div>
-
-                        <div class="text-center single_tes_slide">
-                            <img src="{{asset('frontend/assets/img/partner-img/tes-2.png')}}" alt="">
-                            <h6>Bigshop is smart &amp; elegant e-commerce HTML5 Template. <br> It's suitable for all e-commerce business platform.</h6>
-                            <p>Nazrul Islam</p>
-                            <span>Support Manager</span>
-                        </div>
-
-                        <div class="text-center single_tes_slide">
-                            <img src="{{asset('frontend/assets/img/partner-img/tes-3.png')}}" alt="">
-                            <h6>Bigshop is smart &amp; elegant e-commerce HTML5 Template. <br> It's suitable for all e-commerce business platform.</h6>
-                            <p>Justin Align</p>
-                            <span>Support Manager</span>
-                        </div>
+                        @forelse ($temoins as $temoin)
+                            <div class="text-center single_tes_slide">
+                                @php
+                                    $user=App\Models\User::where('email',$temoin->email)->first();
+                                @endphp
+                                @if($user)
+                                    <img  src="{{asset($user->photo)}}" alt="">
+                                @else
+                                    <img src="{{Helper::userDefaultImage()}}" alt="default user image">
+                                @endif
+                                <h6>{{$temoin->message}}</h6>
+                                <p>{{$temoin->email}}</p>
+                                <span>{{ucfirst($temoin->subject)}}</span>
+                            </div>
+                        @empty
+                            <p class="text-center">{{__('messages.temoins')}}</p>
+                        @endforelse
                     </div>
                 </div>
             </div>

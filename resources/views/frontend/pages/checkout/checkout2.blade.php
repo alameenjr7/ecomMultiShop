@@ -7,10 +7,10 @@
     <div class="container h-100">
         <div class="row h-100 align-items-center">
             <div class="col-12">
-                <h5>Checkout</h5>
+                <h5>{{__('messages.checkout_m')}}</h5>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
-                    <li class="breadcrumb-item active">Checkout</li>
+                    <li class="breadcrumb-item"><a href="{{route('home')}}">{{__('messages.home')}}</a></li>
+                    <li class="breadcrumb-item active">{{__('messages.checkout_m')}}</li>
                 </ol>
             </div>
         </div>
@@ -20,10 +20,10 @@
 
 <!-- Checkout Steps Area -->
 <div class="checkout_steps_area">
-    <a class="complated button" onclick="window.history.back();"><i class="icofont-check-circled"></i> Billing</a>
-    <a class="active button" onclick="window.history.back();><i class="icofont-check-circled"></i> Shipping</a>
-    <a href="#"><i class="icofont-check-circled"></i> Payment</a>
-    <a href="#"><i class="icofont-check-circled"></i> Review</a>
+    <a class="complated button" onclick="window.history.back();"><i class="icofont-check-circled"></i> {{__('messages.billing')}}</a>
+    <a class="active button" onclick="window.history.back();"><i class="icofont-check-circled"></i> {{__('messages.shipping')}}</a>
+    <a href="#"><i class="icofont-check-circled"></i> {{__('messages.payment')}}</a>
+    <a href="#"><i class="icofont-check-circled"></i> {{__('messages.reviews')}}</a>
 </div>
 <!-- Checkout Steps Area -->
 
@@ -36,17 +36,17 @@
             <div class="row">
                 <div class="col-12">
                     <div class="clearfix checkout_details_area">
-                        <h5 class="mb-4">Shipping Method</h5>
+                        <h5 class="mb-4">{{__('messages.ship_method')}}</h5>
 
                         <div class="shipping_method">
                             <div class="table-responsive">
                                 <table class="table table-bordered">
                                     <thead>
                                         <tr>
-                                            <th scope="col">Method</th>
-                                            <th scope="col">Zone</th>
+                                            <th scope="col">{{__('messages.method')}}</th>
+                                            <th scope="col">{{__('messages.zone')}}</th>
                                             {{-- <th scope="col">Price</th> --}}
-                                            <th scope="col">Choose</th>
+                                            <th scope="col">{{__('messages.choose')}}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -68,7 +68,7 @@
                                         @endforeach
                                         @else
                                         <tr>
-                                            <td colspan="3">No Shipping method found!</td>
+                                            <td colspan="3">{{__('messages.methodFound')}}</td>
                                         </tr>
                                         @endif
                                     </tbody>
@@ -80,8 +80,8 @@
 
                 <div class="col-12">
                     <div class="clearfix mt-3 checkout_pagination d-flex justify-content-end">
-                        <a onclick="window.history.back();" class="mt-2 ml-2 btn btn-primary">Go Back</a>
-                        <button type="submit" class="mt-2 ml-2 btn btn-primary">Continue</button>
+                        <a onclick="window.history.back();" class="mt-2 ml-2 btn btn-primary">{{__('messages.goback')}}</a>
+                        <button type="submit" class="mt-2 ml-2 btn btn-primary">{{__('messages.continue')}}</button>
                     </div>
                 </div>
             </div>

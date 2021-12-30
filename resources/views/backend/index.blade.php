@@ -156,7 +156,7 @@
                 <div class="card">
                     <div class="header">
                         <h2>Recent Orders</h2>
-                        <ul class="header-dropdown">
+                        {{-- <ul class="header-dropdown">
                             <li class="dropdown">
                                 <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
                                 <ul class="dropdown-menu dropdown-menu-right">
@@ -165,7 +165,7 @@
                                     <li><a href="javascript:void(0);">Something else</a></li>
                                 </ul>
                             </li>
-                        </ul>
+                        </ul> --}}
                     </div>
                     <div class="body">
                         <div class="table-responsive">
@@ -283,7 +283,7 @@
                 <div class="card">
                     <div class="header">
                         <h2>Top Selling Country</h2>
-                        <ul class="header-dropdown">
+                        {{-- <ul class="header-dropdown">
                             <li class="dropdown">
                                 <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
                                 <ul class="dropdown-menu dropdown-menu-right">
@@ -292,7 +292,7 @@
                                     <li><a href="javascript:void(0);">Something else</a></li>
                                 </ul>
                             </li>
-                        </ul>
+                        </ul> --}}
                     </div>
                     <div class="body">
                         <div id="world-map-markers" class="jvector-map" style="height: 300px"></div>

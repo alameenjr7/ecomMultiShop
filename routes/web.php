@@ -2,9 +2,6 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\BannerController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\Frontend\IndexController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +21,7 @@ require __DIR__ . '/backend.php';
 
 require __DIR__ . '/seller.php';
 
-Route::group(['prefix'=>'filemanager', 'middleware'=>['web','auth']], function () {
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web','auth:admin,seller']], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });
 

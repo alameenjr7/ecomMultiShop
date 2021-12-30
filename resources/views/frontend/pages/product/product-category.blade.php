@@ -54,9 +54,12 @@
                     </div>
                 </div>
 
-                <div class="text-center ajax-load">
+                {{-- <div class="text-center ajax-load">
                     <img src="{{asset('frontend/assets/img/loading.gif')}}" style="width: 5%">
-                </div>
+                </div> --}}
+
+                <!-- Shop Pagination Area -->
+                {{$products->appends($_GET)->links('vendor.pagination.custom')}}
             </div>
         </div>
     </div>

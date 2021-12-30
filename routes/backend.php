@@ -7,17 +7,17 @@ use Illuminate\Support\Facades\Route;
 Route::group(['prefix'=>'admin'],function(){
     Route::get('/login',[\App\Http\Controllers\Auth\Admin\LoginController::class, 'showLoginForm'])->name('admin.login.form');
     Route::post('/login',[\App\Http\Controllers\Auth\Admin\LoginController::class, 'login'])->name('admin.login');
+    Route::get('/logout',[\App\Http\Controllers\Auth\Admin\LogoutController::class, 'logout'])->name('admin.logout');
 });
-
-
-// Route::group(['prefix'=>'seller', 'middleware'=>['auth','seller']], function(){
-//     Route::get('/', [\App\Http\Controllers\AdminController::class, 'admin'])->name('seller');
-// });
 
 //Admin Dashboard
 
 Route::group(['prefix'=>'admin', 'middleware'=>['admin']], function(){
     Route::get('/', [\App\Http\Controllers\AdminController::class, 'admin'])->name('admin');
+    //File manager
+    Route::get('/file-manager',function(){
+        return view('backend.layouts.file-manager');
+    })->name('file-manager');
 
     //About Us
     Route::get('about_us', [\App\Http\Controllers\AboutUsController::class, 'index'])->name('about.index');
@@ -103,5 +103,3 @@ Route::group(['prefix'=>'admin', 'middleware'=>['admin']], function(){
     Route::put('profile-update', [\App\Http\Controllers\Backend\IndexController::class, 'profileUpdate'])->name('profile.update');
 
 });
-
-

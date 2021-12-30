@@ -247,7 +247,7 @@
                                     <div class="form-group">
                                         <label for="options">{{__('messages.RFYR')}}</label>
                                         <select class="py-0 form-control small right w-100" name="reason" id="options">
-                                            <option value="quality" {{old('reason')=='quality' ? 'selected' : '' }}>{{__('messages.qty')}}
+                                            <option value="quality" {{old('reason')=='quality' ? 'selected' : '' }}>{{__('messages.qualite')}}
                                             </option>
                                             <option value="value" {{old('reason')=='value' ? 'selected' : '' }}>{{__('messages.value')}}
                                             </option>

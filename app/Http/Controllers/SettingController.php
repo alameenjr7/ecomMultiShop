@@ -36,6 +36,7 @@ class SettingController extends Controller
             'playStore_url'=>$request->playStore_url,
             'appStore_url'=>$request->appStore_url,
             'youtube_url'=>$request->youtube_url,
+            'map_url' =>$request->map_url,
         ]);
         $status=$setting->fill($request->all());
         if($status){

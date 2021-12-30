@@ -106,3 +106,4 @@ Route::group(['prefix'=>'user'], function () {
     Route::post('/update/account/{id}', [\App\Http\Controllers\Frontend\IndexController::class, 'updateAccount'])->name('update.account');
 
 });
+

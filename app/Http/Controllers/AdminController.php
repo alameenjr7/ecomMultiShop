@@ -11,7 +11,8 @@ use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
-    public function admin(){
+    public function admin()
+    {
 
         // List Orders
         $orders=Order::orderBy('id','DESC')->limit('7')->get();
@@ -35,8 +36,8 @@ class AdminController extends Controller
         // SELECT user_id, SUM(total_amount) FROM orders GROUP BY user_id HAVING SUM(total_amount) > 40
         // SELECT product_id FROM product_orders INNER JOIN orders ON product_id = orders.user_id
 
-//select COUNT(product_id),COUNT(order_id) from product_orders PO join orders O on (PO.order_id = O.id) join users U on (O.user_id = U.id) join products P on (PO.product_id = P.id) where `payment_status`='paid' GROUP BY(product_id)
-//select * from product_orders PO join orders O on (PO.order_id = O.id) join users U on (O.user_id = U.id) join products P on (PO.product_id = P.id) where `payment_status`='paid' GROUP BY(product_id)
+        //select COUNT(product_id),COUNT(order_id) from product_orders PO join orders O on (PO.order_id = O.id) join users U on (O.user_id = U.id) join products P on (PO.product_id = P.id) where `payment_status`='paid' GROUP BY(product_id)
+        //select * from product_orders PO join orders O on (PO.order_id = O.id) join users U on (O.user_id = U.id) join products P on (PO.product_id = P.id) where `payment_status`='paid' GROUP BY(product_id)
 
 
         // Sales Report Annual

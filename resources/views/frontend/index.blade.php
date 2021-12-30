@@ -625,7 +625,7 @@
                                                                                                     <h5 class="price">{{Helper::currency_converter($sales->offer_price)}}</h5>
                                                                                                 @endif
                                                                                                 <p>{!! html_entity_decode($sales->summary) !!}</p>
-                                                                                                <a href="{{route('product.detail',$sales->slug)}}">View Full Product Details</a>
+                                                                                                <a href="{{route('product.detail',$sales->slug)}}">{{__('messages.fullDetail')}}</a>
                                                                                             </div>
                                                                                             <!-- Add to Cart Form -->
                                                                                             <form class="cart">
@@ -634,7 +634,7 @@
                                                                                                         name="quantity" value="1">
                                                                                                 </div>
                                                                                                 <button type="button" name="addtocart" data-product_id="{{$sales->id}}" data-quantity="1" data-price="{{$sales->offer_price}}" id="add_to_cart_button_details_{{$sales->id}}" value="5"
-                                                                                                    class="mt-1 ml-1 add_to_cart_button_details btn btn-primary mt-md-0 ml-md-3">Add to cart
+                                                                                                    class="mt-1 ml-1 add_to_cart_button_details btn btn-primary mt-md-0 ml-md-3">{{__('messages.addToCart')}}
                                                                                                 </button>
                                                                                                 <!-- Wishlist -->
                                                                                                 <div class="modal_pro_wishlist">
@@ -648,7 +648,7 @@
                                                                                             </form>
                                                                                             <!-- Share -->
                                                                                             <div class="share_wf mt-30">
-                                                                                                <p>Share with friends</p>
+                                                                                                <p>{{__('messages.shareFriends')}}</p>
                                                                                                 <div class="_icon">
                                                                                                     <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
                                                                                                     <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
@@ -798,8 +798,8 @@
                             <span><i class="icofont-check-alt"></i></span>
                         </div>
                         <div class="feature_content">
-                            <h6>Free Shipping</h6>
-                            <p>For orders above $100</p>
+                            <h6>{{__('messages.freeShipping')}}</h6>
+                            <p>{{__('messages.orderAbove')}} $100</p>
                         </div>
                     </div>
                 </div>
@@ -812,8 +812,8 @@
                             <span><i class="icofont-check-alt"></i></span>
                         </div>
                         <div class="feature_content">
-                            <h6>Happy Returns</h6>
-                            <p>7 Days free Returns</p>
+                            <h6>{{__('messages.happyReturn')}}</h6>
+                            <p>{{__('messages.dayFree')}}</p>
                         </div>
                     </div>
                 </div>
@@ -826,8 +826,8 @@
                             <span><i class="icofont-check-alt"></i></span>
                         </div>
                         <div class="feature_content">
-                            <h6>100% Money Back</h6>
-                            <p>If product is damaged</p>
+                            <h6>{{__('messages.moneyBack')}}</h6>
+                            <p>{{__('messages.productDamaged')}}</p>
                         </div>
                     </div>
                 </div>
@@ -840,8 +840,8 @@
                             <span><i class="icofont-check-alt"></i></span>
                         </div>
                         <div class="feature_content">
-                            <h6>Dedicated Support</h6>
-                            <p>We provide support 24/7</p>
+                            <h6>{{__('messages.dedSupport')}}</h6>
+                            <p>{{__('messages.provSupport')}}</p>
                         </div>
                     </div>
                 </div>

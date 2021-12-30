@@ -124,23 +124,35 @@
                                     <div class="widget-desc">
                                         <!-- Single Checkbox -->
                                         <div class="mb-2 custom-control custom-checkbox d-flex align-items-center">
+                                            @php
+                                                $countS=App\Models\Product::where(['status'=>'active','size'=>'S'])->count();
+                                            @endphp
                                             <input type="checkbox" class="custom-control-input" id="customCheck2" @if (!empty($_GET['size']) && $_GET['size'] =='S') checked @endif name="size" value="S" onchange="this.form.submit();">
-                                            <label class="custom-control-label" for="customCheck2">{{__('messages.small')}} <span class="text-muted">({{App\Models\Product::where(['status'=>'active','size'=>'S'])->count()}})</span></label>
+                                            <label class="custom-control-label" for="customCheck2">{{__('messages.small')}} <span class="text-muted">({{ $countS}})</span></label>
                                         </div>
                                         <!-- Single Checkbox -->
                                         <div class="mb-2 custom-control custom-checkbox d-flex align-items-center">
+                                            @php
+                                                $countM=App\Models\Product::where(['status'=>'active','size'=>'M'])->count();
+                                            @endphp
                                             <input type="checkbox" class="custom-control-input" id="customCheck12" @if (!empty($_GET['size']) && $_GET['size'] =='M') checked @endif name="size" value="M" onchange="this.form.submit();">
-                                            <label class="custom-control-label" for="customCheck12">{{__('messages.medium')}} <span class="text-muted">({{App\Models\Product::where(['status'=>'active','size'=>'M'])->count()}})</span></label>
+                                            <label class="custom-control-label" for="customCheck12">{{__('messages.medium')}} <span class="text-muted">({{$countM}})</span></label>
                                         </div>
                                         <!-- Single Checkbox -->
                                         <div class="mb-2 custom-control custom-checkbox d-flex align-items-center">
+                                            @php
+                                                $countL=App\Models\Product::where(['status'=>'active','size'=>'L'])->count();
+                                            @endphp
                                             <input type="checkbox" class="custom-control-input" id="customCheck22" @if (!empty($_GET['size']) && $_GET['size'] =='L') checked @endif name="size" value="L" onchange="this.form.submit();">
-                                            <label class="custom-control-label" for="customCheck22">{{__('messages.large')}} <span class="text-muted">({{App\Models\Product::where(['status'=>'active','size'=>'L'])->count()}})</span></label>
+                                            <label class="custom-control-label" for="customCheck22">{{__('messages.large')}} <span class="text-muted">({{$countL}})</span></label>
                                         </div>
                                         <!-- Single Checkbox -->
                                         <div class="mb-2 custom-control custom-checkbox d-flex align-items-center">
+                                            @php
+                                                $countXL=App\Models\Product::where(['status'=>'active','size'=>'XL'])->count();
+                                            @endphp
                                             <input type="checkbox" class="custom-control-input" id="customCheck32" @if (!empty($_GET['size']) && $_GET['size'] =='XL') checked @endif name="size" value="XL" onchange="this.form.submit();">
-                                            <label class="custom-control-label" for="customCheck32">{{__('messages.exLarge')}} <span class="text-muted">({{App\Models\Product::where(['status'=>'active','size'=>'XL'])->count()}})</span></label>
+                                            <label class="custom-control-label" for="customCheck32">{{__('messages.exLarge')}} <span class="text-muted">({{$countXL}})</span></label>
                                         </div>
                                         {{-- <ul>
                                             <li><a href="#">S</a></li>
@@ -232,7 +244,7 @@
                                     </div> --}}
                                     @endforeach
                                 @else
-                                    <p>No product found !</p>
+                                    <p>{{__('messages.p_notF')}}</p>
                                 @endif
                             </div>
                         </div>

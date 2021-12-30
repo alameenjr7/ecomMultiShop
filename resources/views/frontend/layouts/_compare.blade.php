@@ -1,11 +1,11 @@
 @if (Gloudemans\Shoppingcart\Facades\Cart::instance('compare')->count() <=0)
-    <p class="text-center">You don't have any items in compare list</p>
+    <p class="text-center">{{__('messages.dontCompare')}}</p>
 @else
 
 <table class="table mb-0 table-bordered">
     <tbody>
         <tr>
-            <td class="com-title">Product Image</td>
+            <td class="com-title">{{__('messages.proImage')}}</td>
             @foreach (Gloudemans\Shoppingcart\Facades\Cart::instance('compare')->content() as $item)
                 @php
                     $photo=explode(',',$item->model->photo)
@@ -17,14 +17,14 @@
             @endforeach
         </tr>
         <tr>
-            <td class="com-title">Product Name</td>
+            <td class="com-title">{{__('messages.proName')}}</td>
 
             @foreach (Gloudemans\Shoppingcart\Facades\Cart::instance('compare')->content() as $item)
                 <td><a href="{{route('product.detail',$item->model->slug)}}">{{ucfirst($item->name)}}</a></td>
             @endforeach
         </tr>
         <tr>
-            <td class="com-title">Rating</td>
+            <td class="com-title">{{__('messages.rating')}}</td>
             @foreach (Gloudemans\Shoppingcart\Facades\Cart::instance('compare')->content() as $item)
                 <td>
                     <div class="rating">
@@ -41,7 +41,7 @@
             @endforeach
         </tr>
         <tr>
-            <td class="com-title">Price</td>
+            <td class="com-title">{{__('messages.price')}}</td>
             @foreach (Gloudemans\Shoppingcart\Facades\Cart::instance('compare')->content() as $item)
                 <td>{{Helper::currency_converter($item->price)}}</td>
             @endforeach
@@ -53,29 +53,29 @@
             @endforeach
         </tr>
         <tr>
-            <td class="com-title">Category</td>
+            <td class="com-title">{{__('messages.category')}}</td>
             @foreach (Gloudemans\Shoppingcart\Facades\Cart::instance('compare')->content() as $item)
                 <td>{{$item->model->category['title']}}</td>
             @endforeach
         </tr>
         <tr>
-            <td class="com-title">Brand</td>
+            <td class="com-title">{{__('messages.brand')}}</td>
             @foreach (Gloudemans\Shoppingcart\Facades\Cart::instance('compare')->content() as $item)
                 <td>{{$item->model->brand['title']}}</td>
             @endforeach
         </tr>
         <tr>
-            <td class="com-title">Availability</td>
+            <td class="com-title">{{__('messages.available')}}</td>
             @foreach (Gloudemans\Shoppingcart\Facades\Cart::instance('compare')->content() as $item)
                 @if ($item->model->stock>0)
-                    <td class="instock">Instock</td>
+                    <td class="instock">{{__('messages.instock')}}</td>
                 @else
-                    <td class="outofstock">Out Of Stock</td>
+                    <td class="outofstock">{{__('messages.outStock')}}</td>
                 @endif
             @endforeach
         </tr>
         <tr>
-            <td class="com-title">Size</td>
+            <td class="com-title">{{__('messages.size')}}</td>
             @foreach (Gloudemans\Shoppingcart\Facades\Cart::instance('compare')->content() as $item)
                 <td>{{$item->model->size}}</td>
             @endforeach

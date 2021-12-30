@@ -8,10 +8,10 @@
     <div class="container h-100">
         <div class="row h-100 align-items-center">
             <div class="col-12">
-                <h5>Checkout</h5>
+                <h5>{{__('messages.checkout_m')}}</h5>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
-                    <li class="breadcrumb-item active">Checkout</li>
+                    <li class="breadcrumb-item"><a href="{{route('home')}}">{{__('messages.home')}}</a></li>
+                    <li class="breadcrumb-item active">{{__('messages.checkout_m')}}</li>
                 </ol>
             </div>
         </div>
@@ -21,10 +21,10 @@
 
 <!-- Checkout Step Area -->
 <div class="checkout_steps_area">
-    <a class="complated button" onclick="window.history.back();"><i class="icofont-check-circled"></i> Billing</a>
-    <a class="complated button" onclick="window.history.back();"><i class="icofont-check-circled"></i> Shipping</a>
-    <a class="complated button" onclick="window.history.back();"><i class="icofont-check-circled"></i> Payment</a>
-    <a class="active " href="{{route('checkout4')}}"><i class="icofont-check-circled"></i> Review</a>
+    <a class="complated button" onclick="window.history.back();"><i class="icofont-check-circled"></i> {{__('messages.billing')}}</a>
+    <a class="complated button" onclick="window.history.back();"><i class="icofont-check-circled"></i> {{__('messages.shipping')}}</a>
+    <a class="complated button" onclick="window.history.back();"><i class="icofont-check-circled"></i> {{__('messages.payment')}}</a>
+    <a class="active " href="{{route('checkout4')}}"><i class="icofont-check-circled"></i> {{__('messages.reviews')}}</a>
 </div>
 <!-- Checkout Step Area -->
 
@@ -34,7 +34,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="clearfix checkout_details_area">
-                    <h5 class="mb-30">Review Your Order</h5>
+                    <h5 class="mb-30">{{__('messages.reviewOrder')}}</h5>
 
                     <div class="cart-table">
                         <div class="table-responsive">
@@ -42,9 +42,9 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">Image</th>
-                                        <th scope="col">Product</th>
-                                        <th scope="col">Unit Price</th>
-                                        <th scope="col">Quantity</th>
+                                        <th scope="col">{{__('messages.product')}}</th>
+                                        <th scope="col">{{__('messages.unPrice')}}</th>
+                                        <th scope="col">{{__('messages.qty')}}</th>
                                         <th scope="col">Total</th>
                                     </tr>
                                 </thead>
@@ -74,17 +74,17 @@
 
             <div class="ml-auto col-12 col-lg-7">
                 <div class="cart-total-area">
-                    <h5 class="mb-3">Cart Totals</h5>
+                    <h5 class="mb-3">{{__('messages.cartTotal')}}</h5>
                     <div class="table-responsive">
                         <table class="table mb-0">
                             <tbody>
                                 <tr>
-                                    <td>Sub Total</td>
+                                    <td>{{__('messages.subTotal')}}</td>
                                     <td>{{Helper::currency_converter(\Gloudemans\Shoppingcart\Facades\Cart::subtotal())}}</td>
                                 </tr>
                                 @if (\Illuminate\Support\Facades\Session::get('checkout')[0]['delivery_charge'])
                                     <tr>
-                                        <td>Shipping</td>
+                                        <td>{{__('messages.shipping')}}</td>
                                         <td>{{Helper::currency_converter(\Illuminate\Support\Facades\Session::get('checkout')[0]['delivery_charge'])}}</td>
                                     </tr>
                                 @endif
@@ -110,8 +110,8 @@
                         </table>
                     </div>
                     <div class="mt-3 checkout_pagination d-flex justify-content-end">
-                        <a onclick="window.history.back();" class="mt-2 ml-2 btn btn-primary d-none d-sm-inline-block">Go Back</a>
-                        <a href="{{route('checkout.store')}}" class="mt-2 ml-2 btn btn-success">Confirm</a>
+                        <a onclick="window.history.back();" class="mt-2 ml-2 btn btn-primary d-none d-sm-inline-block">{{__('messages.goback')}}</a>
+                        <a href="{{route('checkout.store')}}" class="mt-2 ml-2 btn btn-success">{{__('messages.confirm')}}</a>
                     </div>
                 </div>
             </div>

@@ -47,7 +47,7 @@
                 <div class="card overflowhidden">
                     <div class="body">
                         <h3>{{App\Models\Product::where('status','active')->where('created_at','>',now()->subDays(30)->endOfDay())->count()}} <i class="float-right icon-briefcase"></i></h3>
-                        <span>Total products: {{App\Models\Product::where('status','active')->count()}}</span>
+                        <span>Total Products: {{App\Models\Product::where('status','active')->count()}}</span>
                     </div>
                     <div class="progress progress-xs progress-transparent custom-color-yellow m-b-0">
                         <div class="progress-bar" data-transitiongoal="89"></div>
@@ -68,8 +68,8 @@
             <div class="col-lg-3 col-md-6">
                 <div class="card overflowhidden">
                     <div class="body">
-                        <h3>{{Helper::currency_converter(App\Models\Product::where('status','active')->sum('offer_price'))}} <i class="float-right"></i></h3>
-                        <span>Total product active</span>
+                        <h3>{{Helper::currency_converter(App\Models\Product::where(['status'=>'active','added_by'=>'seller'])->sum('offer_price'))}} <i class="float-right"></i></h3>
+                        <span>Total Product Active</span>
                     </div>
                     <div class="progress progress-xs progress-transparent custom-color-blue m-b-0">
                         <div class="progress-bar" data-transitiongoal="64"></div>
@@ -80,7 +80,7 @@
                 <div class="card overflowhidden">
                     <div class="body">
                         <h3>{{Helper::currency_converter(App\Models\Order::where('payment_status','paid')->sum('total_amount'))}}<i class="float-right"></i></h3>
-                        <span>Total Product Paid</span>
+                        <span>Total Order Paid</span>
                     </div>
                     <div class="progress progress-xs progress-transparent custom-color-green m-b-0">
                         <div class="progress-bar" data-transitiongoal="68"></div>

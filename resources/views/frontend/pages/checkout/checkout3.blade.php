@@ -7,10 +7,10 @@
     <div class="container h-100">
         <div class="row h-100 align-items-center">
             <div class="col-12">
-                <h5>Checkout</h5>
+                <h5>{{__('messages.checkout_m')}}</h5>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
-                    <li class="breadcrumb-item active">Checkout</li>
+                    <li class="breadcrumb-item"><a href="{{route('home')}}">{{__('messages.home')}}</a></li>
+                    <li class="breadcrumb-item active">{{__('messages.checkout_m')}}</li>
                 </ol>
             </div>
         </div>
@@ -19,10 +19,10 @@
 <!-- Breadcumb Area -->
 
 <div class="checkout_steps_area">
-    <a class="complated button" onclick="window.history.back();"><i class="icofont-check-circled"></i> Billing</a>
-    <a class="complated button" onclick="window.history.back();"><i class="icofont-check-circled"></i> Shipping</a>
-    <a class="active" href="{{route('checkout3')}}"><i class="icofont-check-circled"></i> Payment</a>
-    <a href="#"><i class="icofont-check-circled"></i> Review</a>
+    <a class="complated button" onclick="window.history.back();"><i class="icofont-check-circled"></i> {{__('messages.billing')}}</a>
+    <a class="complated button" onclick="window.history.back();"><i class="icofont-check-circled"></i> {{__('messages.shipping')}}</a>
+    <a class="active" href="{{route('checkout3')}}"><i class="icofont-check-circled"></i> {{__('messages.payment')}}</a>
+    <a href="#"><i class="icofont-check-circled"></i> {{__('messages.reviews')}}</a>
 </div>
 
 <!-- Checkout Area -->
@@ -43,7 +43,7 @@
                                             <a class="collapsed" role="button" data-toggle="collapse"
                                                 data-parent="#accordion" href="#collapse_five" aria-expanded="false"
                                                 aria-controls="collapse_five"><i
-                                                    class="icofont-cash-on-delivery-alt"></i> Cash on Delivery
+                                                    class="icofont-cash-on-delivery-alt"></i> {{__('messages.cod')}}
                                             </a>
                                         </h6>
                                     </div>
@@ -52,11 +52,9 @@
                                         <div class="panel-body">
                                             <div class="custom-control custom-checkbox">
                                                 <input type="radio" required name="payment_method" value="cod" class="custom-control-input" id="customCheck2">
-                                                <label class="custom-control-label" for="customCheck2">Cash on
-                                                    Delivery</label>
+                                                <label class="custom-control-label" for="customCheck2">{{__('messages.cod')}}</label>
                                             </div>
-                                            <p>Please send your cheque to Store Name, Store Street, Store Town, Store
-                                                State / County, Store Postcode.</p>
+                                            <p>{{__('messages.pleaseSend')}}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -68,7 +66,7 @@
                                             <a class="collapsed" role="button" data-toggle="collapse"
                                                 data-parent="#accordion" href="#collapse_five1" aria-expanded="false"
                                                 aria-controls="collapse_five1"><i
-                                                    class="icofont-paypal-alt"></i> Pay with PayPal
+                                                    class="icofont-paypal-alt"></i> {{__('messages.payWith')}} PayPal
                                             </a>
                                         </h6>
                                     </div>
@@ -77,7 +75,7 @@
                                         <div class="panel-body">
                                             <div class="custom-control custom-checkbox">
                                                 <input type="radio" required name="payment_method" value="paypal" class="custom-control-input" id="customCheck3">
-                                                <label class="custom-control-label" for="customCheck3">Pay with
+                                                <label class="custom-control-label" for="customCheck3">{{__('messages.payWith')}}
                                                     PayPal</label>
                                             </div>
                                         </div>
@@ -91,7 +89,7 @@
                                             <a class="collapsed" role="button" data-toggle="collapse"
                                                 data-parent="#accordion" href="#collapse_five2" aria-expanded="false"
                                                 aria-controls="collapse_five2"><i
-                                                    class="fa fa-money"></i> Pay with Razor
+                                                    class="fa fa-money"></i> {{__('messages.payWith')}} Razor
                                             </a>
                                         </h6>
                                     </div>
@@ -100,7 +98,7 @@
                                         <div class="panel-body">
                                             <div class="custom-control custom-checkbox">
                                                 <input type="radio" required name="payment_method" value="razor" class="custom-control-input" id="customCheck4">
-                                                <label class="custom-control-label" for="customCheck4">Pay with
+                                                <label class="custom-control-label" for="customCheck4">{{__('messages.payWith')}}
                                                     Razor</label>
                                             </div>
                                         </div>
@@ -114,7 +112,7 @@
                                             <a class="collapsed" role="button" data-toggle="collapse"
                                                 data-parent="#accordion" href="#collapse_five3" aria-expanded="false"
                                                 aria-controls="collapse_five3"><i
-                                                    class="fa fa-money"></i> Pay with Orange Money
+                                                    class="fa fa-money"></i> {{__('messages.payWith')}} Orange Money
                                             </a>
                                         </h6>
                                     </div>
@@ -123,7 +121,7 @@
                                         <div class="panel-body">
                                             <div class="custom-control custom-checkbox">
                                                 <input type="radio" required name="payment_method" value="om" class="custom-control-input" id="customCheck5">
-                                                <label class="custom-control-label" for="customCheck5">Pay with
+                                                <label class="custom-control-label" for="customCheck5">{{__('messages.payWith')}}
                                                     Orange Money</label>
                                             </div>
                                         </div>
@@ -278,8 +276,8 @@
 
                 <div class="col-12">
                     <div class="checkout_pagination d-flex justify-content-end mt-30">
-                        <a onclick="window.history.back();" class="mt-2 ml-2 btn btn-primary">Go Back</a>
-                        <button type="submit" class="mt-2 ml-2 btn btn-primary">Final Step</button>
+                        <a onclick="window.history.back();" class="mt-2 ml-2 btn btn-primary">{{__('messages.goback')}}</a>
+                        <button type="submit" class="mt-2 ml-2 btn btn-primary">{{__('messages.finalStep')}}</button>
                     </div>
                 </div>
             </div>

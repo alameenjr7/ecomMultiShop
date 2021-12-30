@@ -3,8 +3,8 @@
         <tr>
             <th scope="col"><i class="icofont-ui-delete wishlist_delete" ></i></th>
             <th scope="col">Image</th>
-            <th scope="col">Product</th>
-            <th scope="col">Unit Price</th>
+            <th scope="col">{{__('messages.product')}}</th>
+            <th scope="col">{{__('messages.unPrice')}}</th>
             <th scope="col">Action</th>
         </tr>
     </thead>
@@ -25,14 +25,14 @@
                     </td>
                     <td>{{Helper::currency_converter($item->price)}}</td>
 
-                    <td><a href="javascript:void(0);" data-id="{{$item->rowId}}" class="move-to-cart btn btn-primary btn-sm">Add to Cart</a></td>
+                    <td><a href="javascript:void(0);" data-id="{{$item->rowId}}" class="move-to-cart btn btn-primary btn-sm">{{__('messages.addToCart')}}</a></td>
                 </tr>
 
             @endforeach
         @else
             <tr>
                 <td colspan="5" class="text-center">
-                    You don't have any wishlist product!
+                    {{__('messages.dontProduct')}}
                 </td>
             </tr>
         @endif

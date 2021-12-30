@@ -31,14 +31,13 @@
         <!-- Add to cart -->
         <div class="product_add_to_cart">
             <a href="javascript:void(0);" data-quantity="1" data-price="{{$product->offer_price}}" data-product-id="{{$product->id}}"
-                class="add_to_cart" id="add_to_cart{{$product->id}}"><i class="icofont-shopping-cart"></i> Add to
-                Cart</a>
+                class="add_to_cart" id="add_to_cart{{$product->id}}"><i class="icofont-shopping-cart"></i> {{__('messages.addToCart')}}</a>
         </div>
 
         <!-- Quick View -->
         <div class="product_quick_view">
             <a href="javascript:void(0);" data-target="#quickview{{$product->id}}" data-toggle="modal"><i class="icofont-eye-alt"></i>
-                Quick View</a>
+                {{__('messages.quickView')}}</a>
                 {{-- data-target="#quickview{{$product->id}}"  --}}
         </div>
 
