@@ -81,9 +81,12 @@
                             <h6>{{__('messages.JOML')}}</h6>
                         </div>
                         <div class="subscribtion_form">
-                            <form action="#" method="post">
-                                <input type="email" name="mail" class="form-control mail" placeholder="Your E-mail Addrees">
-                                <button type="submit" class="submit"><i class="icofont-long-arrow-right"></i></button>
+                            <form action="{{route('mailing.list.submit')}}" method="post">
+                                @csrf
+                                <input type="email" name="email" class="form-control mail" value="{{old('email')}}" required placeholder="Your E-mail Addrees">
+                                <button type="submit" class="submit">
+                                    <i class="icofont-long-arrow-right"></i>
+                                </button>
                             </form>
                         </div>
                     </div>

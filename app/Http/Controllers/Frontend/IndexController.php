@@ -3,23 +3,25 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Models\User;
+use App\Mail\Contact;
+use App\Mail\Mailing;
 use App\Models\Brand;
 use App\Models\Order;
 use App\Models\Banner;
+use App\Models\AboutUs;
+use App\Models\Message;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\URL;
 use App\Http\Controllers\Controller;
-use App\Models\AboutUs;
-use App\Mail\Contact;
-use App\Models\Message;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
+use App\Models\MailingList;
 
 class IndexController extends Controller
 {
@@ -145,6 +147,26 @@ class IndexController extends Controller
             Mail::to('babangom673@gmail.com')->send(new Contact($data));
 
             return back()->with('success','Successfully send your enquiry');
+        } else {
+            return back()->while('error', 'Something went wrong!');
+        }
+	}
+
+    //Mailing List submit
+	public function mailingListSubmit(Request $request)
+	{
+		$this->validate($request,[
+			'email'=>'email|required|unique:users,email',
+		]);
+
+		$data=$request->all();
+
+        $status=MailingList::create($data);
+
+        if($status){
+            Mail::to('babangom673@gmail.com')->send(new Mailing($data));
+
+            return back()->with('success','Successfully added in our mailing list');
         } else {
             return back()->while('error', 'Something went wrong!');
         }

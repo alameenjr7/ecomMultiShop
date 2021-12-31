@@ -14,7 +14,7 @@ return [
     'logout' => 'Se déconnecter',
     'logRegister' => 'Se connecter & S\'inscrire',
     'buyShop' => 'Achetez maintenant',
-    'new_arrival' => 'NOUVELLES ARRIVÉES',
+    'new_arrival' => 'NOUVELLES ARRIVAGES',
     'featured_product' => 'PRODUITS POPULAIRES',
     'top_seller' => 'Meilleures ventes',
     'best_rated' => 'Les mieux notés',

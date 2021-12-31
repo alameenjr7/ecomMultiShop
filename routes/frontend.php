@@ -19,6 +19,9 @@ Route::get('/about-us', [\App\Http\Controllers\Frontend\IndexController::class, 
 Route::get('/contact-us', [\App\Http\Controllers\Frontend\IndexController::class, 'contactUs'])->name('contact.us');
 Route::post('/contact-submit', [\App\Http\Controllers\Frontend\IndexController::class, 'contactSubmit'])->name('contact.submit');
 
+//Mailing list submit
+Route::post('/mailing-list-submit', [\App\Http\Controllers\Frontend\IndexController::class, 'mailingListSubmit'])->name('mailing.list.submit');
+
 //Product category
 Route::get('product-category/{slug}/', [\App\Http\Controllers\Frontend\IndexController::class, 'productCategory'])->name('product.category');
 
