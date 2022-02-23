@@ -262,7 +262,7 @@
     $('input[name=toogle]').change(function(){
         var mode = $(this).prop('checked');
         var id=$(this).val();
-        // alert(id);
+        console.log(id);
         $.ajax({
             url:"{{route('product.status')}}",
             type:"POST",

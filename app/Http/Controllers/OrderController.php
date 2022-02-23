@@ -32,8 +32,12 @@ class OrderController extends Controller
                     $product=Product::where('id',$item->pivot->product_id)->first();
                     $stock=$product->stock;
                     $stock -=$item->pivot->quantity;
-                    $product->update(['stock'=>$stock]);
-                    Order::where('id',$request->input('order_id'))->update(['payment_status'=>'paid']);
+                    if($stock<=0){
+                        return with('error','The stock is finished!');
+                    } else{
+                        $product->update(['stock'=>$stock]);
+                        Order::where('id',$request->input('order_id'))->update(['payment_status'=>'paid']);
+                    }
                 }
             }
             $status=Order::where('id',$request->input('order_id'))->update(['condition'=>$request->input('condition')]);

@@ -83,7 +83,7 @@
                         <div class="subscribtion_form">
                             <form action="{{route('mailing.list.submit')}}" method="post">
                                 @csrf
-                                <input type="email" name="email" class="form-control mail" value="{{old('email')}}" required placeholder="Your E-mail Addrees">
+                                <input type="email" name="email" class="form-control mail" value="{{old('email')}}" required placeholder="{{__('messages.yourMailAddress')}}">
                                 <button type="submit" class="submit">
                                     <i class="icofont-long-arrow-right"></i>
                                 </button>

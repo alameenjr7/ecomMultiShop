@@ -250,7 +250,7 @@
             $('#size').change(function() {
                 var size=$(this).val();
                 $('.add_to_cart_button_details').attr('data-size',size);
-                var product_id = $(this).data('product_id');;
+                var product_id = $(this).data('product_id');
 
                 if(product_id !=null){
                     $.ajax({

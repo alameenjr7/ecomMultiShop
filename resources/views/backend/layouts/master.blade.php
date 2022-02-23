@@ -4,26 +4,27 @@
 <head>
     @include('backend.layouts.head')
 </head>
+
 <body class="theme-cyan">
 
     <!-- Page Loader -->
-<div class="page-loader-wrapper">
-    <div class="loader">
-        <div class="m-t-30"><img src="{{asset(get_setting('logo'))}}" width="48" height="48" alt="Kaay-Deals"></div>
-        <p>Please wait...</p>
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="m-t-30"><img src="{{asset(get_setting('logo'))}}" width="48" height="48" alt="Kaay-Deals"></div>
+            <p>Please wait...</p>
+        </div>
     </div>
-</div>
-<!-- Overlay For Sidebars -->
+    <!-- Overlay For Sidebars -->
 
-<div id="wrapper">
+    <div id="wrapper">
 
-   @include('backend.layouts.nav')
+        @include('backend.layouts.nav')
 
-    @include('backend.layouts.sidebar')
+        @include('backend.layouts.sidebar')
 
-   @yield('content')
+        @yield('content')
 
-</div>
+    </div>
     @include('backend.layouts.footer')
 
     {{-- Change currency--}}
@@ -50,4 +51,5 @@
     {{-- End Change currency--}}
 
 </body>
+
 </html>

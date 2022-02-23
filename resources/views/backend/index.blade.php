@@ -265,7 +265,7 @@
                                                 $photo_user=\App\Models\User::where('id',$new->users_id)->first();
                                             @endphp
                                             <ul class="list-unstyled team-info margin-0">
-                                                <li><img src="{{asset($photo_user->photo)}}" title="Avatar" alt=""></li>
+                                                {{-- <li><img src="{{asset($photo_user->photo)}}" title="Avatar" alt=""></li> --}}
                                             </ul>
                                         </td>
                                         <td>{{Helper::currency_converter($new->total)}}</td>

@@ -68,7 +68,7 @@
                                                 @endif
                                                 <input type="hidden" id="price_range" value="@if(!empty($_GET['price'])) {{$_GET['price']}} @endif" name="price_range">
                                                 <input type="text" readonly id="amount" style="border: 0;width:70%;background-color: #f8f8ff;" value="$@if(!empty($_GET['price'])){{$price['0']}}@else{{Helper::minPrice()}}@endif-$@if(!empty($_GET['price'])){{$price['1']}}@else{{Helper::maxPrice()}}@endif">
-                                                {{-- <div class="range-price" id="amount" >Price: {{Helper::minPrice()}} - {{Helper::maxPrice()}}</div> --}}
+                                                <div class="range-price" id="amount" >Price: {{Helper::minPrice()}} - {{Helper::maxPrice()}}</div>
                                                 <button type="submit" class="float-right btn btn-sm btn-primary" style="margin: 12px 0px 12px 7px;height:30px;line-height:12px;">{{__('messages.filter')}}</button>
                                             </div>
                                         </div>
@@ -154,12 +154,12 @@
                                             <input type="checkbox" class="custom-control-input" id="customCheck32" @if (!empty($_GET['size']) && $_GET['size'] =='XL') checked @endif name="size" value="XL" onchange="this.form.submit();">
                                             <label class="custom-control-label" for="customCheck32">{{__('messages.exLarge')}} <span class="text-muted">({{$countXL}})</span></label>
                                         </div>
-                                        {{-- <ul>
+                                        <ul>
                                             <li><a href="#">S</a></li>
                                             <li><a href="#">M</a></li>
                                             <li><a href="#">L</a></li>
                                             <li><a href="#">XL</a></li>
-                                        </ul> --}}
+                                        </ul>
                                     </div>
                                 </div>
                             </div>

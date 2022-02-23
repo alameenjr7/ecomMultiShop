@@ -195,6 +195,7 @@ return [
     'freeCoupon' => 'Free Coupon',
     'freePShipping' => 'Free Shipping Policy',
     'acc' => 'Account',
+    'yourMailAddress' => 'Your E-mail Address',
 ];
 
 

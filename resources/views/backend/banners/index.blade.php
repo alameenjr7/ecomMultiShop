@@ -97,7 +97,8 @@
                                             <td>
                                                 <a href="{{route('banner.edit', $item->id)}}" data-toggle="tooltip"
                                                     title="edit" class="float-left btn btn-sm btn-outline-warning"
-                                                    data-placement="bottom"><i class="icon-note"></i></a>
+                                                    data-placement="bottom"><i class="icon-note"></i>
+                                                </a>
                                                 <form class="float-left ml-1"
                                                     action="{{route('banner.destroy', $item->id)}}" method="post">
                                                     @csrf

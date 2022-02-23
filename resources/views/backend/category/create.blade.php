@@ -130,7 +130,7 @@
     $('#is_parent').change(function(e){
         e.preventDefault();
         var is_checked=$('#is_parent').prop('checked');
-        // alert(is_checked);
+        alert(is_checked);
         if(is_checked){
             $('#parent_cat_div').addClass('d-none');
             $('#parent_cat_div').val('');

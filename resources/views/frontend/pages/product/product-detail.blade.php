@@ -286,31 +286,31 @@
                                     @endphp
                                     <li>
                                         @if (count($reviews)>0)
-                                        @foreach ($reviews as $review)
-                                        <div class="single_user_review mb-15">
-                                            <div class="review-rating">
-                                                @for ($i=0; $i<5; $i++)
-                                                    @if ($review->rate>$i)
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-                                                    @else
-                                                        <i class="fa fa-star-o" aria-hidden="true"></i>
-                                                    @endif
-                                                @endfor
-                                                    <span>{{__('messages.for')}} {{ucfirst($review->reason)}}</span>
-                                            </div>
-                                            <div class="review-details">
-                                                <p>{{__('messages.by')}}
-                                                    @php
-                                                        $user=App\Models\User::where('id',$review->user_id)->first();
-                                                    @endphp
-                                                    <a href="#">{{$user->full_name}}</a>
-                                                        {{__('messages.on')}}
-                                                    <span>{{\Carbon\Carbon::parse($review->created_at)->format(' d M y')}}</span>
-                                                </p>
-                                                <p>{{$review->review}}</p>
-                                            </div>
-                                        </div>
-                                        @endforeach
+                                            @foreach ($reviews as $review)
+                                                <div class="single_user_review mb-15">
+                                                    <div class="review-rating">
+                                                        @for ($i=0; $i<5; $i++)
+                                                            @if ($review->rate>$i)
+                                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                                            @else
+                                                                <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                            @endif
+                                                        @endfor
+                                                            <span>{{__('messages.for')}} {{ucfirst($review->reason)}}</span>
+                                                    </div>
+                                                    <div class="review-details">
+                                                        <p>{{__('messages.by')}}
+                                                            @php
+                                                                $user=App\Models\User::where('id',$review->user_id)->first();
+                                                            @endphp
+                                                            <a href="#">{{$user->full_name}}</a>
+                                                                {{__('messages.on')}}
+                                                            <span>{{\Carbon\Carbon::parse($review->created_at)->format(' d M y')}}</span>
+                                                        </p>
+                                                        <p>{{$review->review}}</p>
+                                                    </div>
+                                                </div>
+                                            @endforeach
                                         @endif
 
                                         @if (auth()->user())

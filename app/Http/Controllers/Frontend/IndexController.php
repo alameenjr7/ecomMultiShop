@@ -156,7 +156,7 @@ class IndexController extends Controller
 	public function mailingListSubmit(Request $request)
 	{
 		$this->validate($request,[
-			'email'=>'email|required|unique:users,email',
+			'email'=>'email|required|unique:mailing_lists,email',
 		]);
 
 		$data=$request->all();

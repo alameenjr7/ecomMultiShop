@@ -249,11 +249,13 @@
                     cat_id:cat_id,
                 },
                 success:function(response){
-                    // console.log(response);
+                    console.log(response);
                     var html_option="<option value=''>--- Child Category ---</option>";
                     if(response.status){
                         $('#child_cat_div').removeClass('d-none');
                         $.each(response.data,function(id,title){
+
+                        console.log(id, title)
                             html_option +="<option value='"+id+"'>"+title+"</option>"
                         });
                     }
