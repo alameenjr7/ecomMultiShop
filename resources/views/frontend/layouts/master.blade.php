@@ -64,12 +64,12 @@
                             $('body #header-ajax').html(data['header']);
                             $('body #cart_counter').html(data['cart_count']);
                             if(data['status']){
-                                // swal({
-                                //     title: "Good job !",
-                                //     text: data['message'],
-                                //     icon: "success",
-                                //     button: "OK !",
-                                // });
+                                swal({
+                                    title: "Good job !",
+                                    text: data['message'],
+                                    icon: "success",
+                                    button: "OK !",
+                                });
                             }
 
                             window.location.href=window.location.href;
@@ -137,7 +137,7 @@
                 e.preventDefault();
                 var product_id=$(this).data('product-id');
                 var product_qty=$(this).data('quantity');
-
+                // alert();
 
                 var token="{{csrf_token()}}";
                 var path="{{route('cart.store')}}";

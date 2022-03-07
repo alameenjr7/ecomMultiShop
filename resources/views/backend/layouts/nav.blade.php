@@ -5,7 +5,7 @@
         </div>
 
         <div class="navbar-brand">
-            <a href="{{route('admin')}}"><img src="{{asset(get_setting('logo'))}}" alt="Kaay-Deals Logo"
+            <a href="{{route('admin')}}"><img src="{{asset(get_setting('logo'))}}" alt="SGM Logo"
                     class="img-responsive logo"></a>
         </div>
 
@@ -26,14 +26,14 @@
                             <i class="icon-calendar"></i>
                         </a>
                     </li>
-                    <li>
+                    {{-- <li>
                         <a href="app-chat.html" class="icon-menu d-none d-sm-block"><i class="icon-bubbles"></i></a>
-                    </li>
+                    </li> --}}
                     <li>
                         <a href="{{route('messages')}}" class="icon-menu d-none d-sm-block"><i class="icon-envelope"></i><span
                                 class="notification-dot"></span></a>
                     </li>
-                    <li class="dropdown">
+                    {{-- <li class="dropdown">
                         <a href="javascript:void(0);" class="dropdown-toggle icon-menu" data-toggle="dropdown">
                             <i class="icon-bell"></i>
                             <span class="notification-dot"></span>
@@ -97,7 +97,7 @@
                             </li>
                             <li class="footer"><a href="javascript:void(0);" class="more">See all notifications</a></li>
                         </ul>
-                    </li>
+                    </li> --}}
                     <li class="dropdown">
                         <a href="javascript:void(0);" class="dropdown-toggle icon-menu" data-toggle="dropdown"><i
                                 class="icon-equalizer"></i></a>
@@ -113,7 +113,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="dropdown currency-dropdown">
+                    {{-- <li class="dropdown currency-dropdown">
                         @php
                             Helper::currency_load();
                             $currency_code=session('currency_code');
@@ -131,7 +131,7 @@
                                 <a class="dropdown-item" href="javascript:;" onclick="currency_change('{{$currency['code']}}')">{{$currency->symbol}} {{Illuminate\Support\Str::upper($currency->code)}}</a>
                             @endforeach
                         </div>
-                    </li>
+                    </li> --}}
                     <li>
                         <a href="{{route('admin.logout')}}" class="icon-menu"><i class="icon-login"></i></a>
                     </li>

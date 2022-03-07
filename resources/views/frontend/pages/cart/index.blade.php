@@ -98,6 +98,7 @@
         var productQuantity=$("#update-cart-"+id).data('product-quantity');
         update_cart(id,productQuantity);
     });
+
     function update_cart(id,productQuantity) {
         var rowId=id;
         var product_qty=$('#qty-input-'+rowId).val();

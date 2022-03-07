@@ -27,7 +27,7 @@ class IndexController extends Controller
 {
     public function home()
     {
-        $banners=Banner::where(['status'=>'active','condition'=>'banner'])
+        $banners = Banner::where(['status'=>'active','condition'=>'banner'])
             ->orderBy('id','desc')->limit('5')
             ->get();
         $promo_banner=Banner::where(['status'=>'active','condition'=>'promo'])
@@ -144,7 +144,7 @@ class IndexController extends Controller
         $status=Message::create($data);
 
         if($status){
-            Mail::to('babangom673@gmail.com')->send(new Contact($data));
+            Mail::to('sakhir50@gmail.com')->send(new Contact($data));
 
             return back()->with('success','Successfully send your enquiry');
         } else {
@@ -164,7 +164,7 @@ class IndexController extends Controller
         $status=MailingList::create($data);
 
         if($status){
-            Mail::to('babangom673@gmail.com')->send(new Mailing($data));
+            Mail::to('sakhir50@gmail.com')->send(new Mailing($data));
 
             return back()->with('success','Successfully added in our mailing list');
         } else {

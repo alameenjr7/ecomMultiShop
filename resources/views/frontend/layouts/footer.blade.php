@@ -110,7 +110,7 @@
                     <!-- Copywrite -->
                     <div class="col-12 col-md-6">
                         <div class="copywrite_text">
-                            <p>{{__('messages.MW')}} <i class="fa fa-heart" aria-hidden="true"></i> {{__('messages.by')}} <a href="https://ameentech.com/" target="_blank">{{App\Models\Setting::value('footer')}}</a></p>
+                            <p>{{__('messages.MW')}} <i class="fa fa-heart" aria-hidden="true"></i> {{__('messages.by')}} <a href="https://ameenaltech.com/" target="_blank">{{App\Models\Setting::value('footer')}}</a></p>
                         </div>
                     </div>
                     <!-- Payment Method -->

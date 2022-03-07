@@ -133,13 +133,13 @@ class CheckoutController extends Controller
             'payment_method'=>$request->payment_method,
             'payment_status'=>'paid',
         ]);
-        // return Session::get('checkout');
+        // dd(Session::get('checkout'));
         return view('frontend.pages.checkout.checkout4');
     }
 
     public function checkoutStore(Request $request)
     {
-        $order=new Order();
+        $order = new Order();
         $order['user_id']=auth()->user()->id;
         $order['order_number']=Str::upper('ORD-'.Str::random(6));
         $order['sub_total']=(float) str_replace(',','',Session::get('checkout')['sub_total']);
@@ -232,7 +232,7 @@ class CheckoutController extends Controller
         }
 
         if($status){
-            Mail::to($order['email'])->bcc($order['n_email'])->cc('ngomalameen90@gmail.com')->send(new OrderMail($order));
+            Mail::to($order['email'])->bcc($order['n_email'])->cc('sakhir50@gmail.com')->send(new OrderMail($order));
             Cart::instance('shopping')->destroy();
             Session::forget('coupon');
             Session::forget('checkout');
@@ -250,7 +250,7 @@ class CheckoutController extends Controller
         $order->payment_details=$payment;
         $status=$order->save();
         if($status){
-            Mail::to($order['email'])->bcc($order['n_email'])->cc('babangom673@gmail.com')->send(new OrderMail($order));
+            Mail::to($order['email'])->bcc($order['n_email'])->cc('sakhir50@gmail.com')->send(new OrderMail($order));
             Cart::instance('shopping')->destroy();
             Session::forget('coupon');
             Session::forget('checkout');
@@ -265,7 +265,7 @@ class CheckoutController extends Controller
         $order->payment_details=$payment;
         $status=$order->save();
         if($status){
-            Mail::to($order['email'])->bcc($order['n_email'])->cc('babangom673@gmail.com')->send(new OrderMail($order));
+            Mail::to($order['email'])->bcc($order['n_email'])->cc('sakhir50@gmail.com')->send(new OrderMail($order));
             Cart::instance('shopping')->destroy();
             Session::forget('coupon');
             Session::forget('checkout');

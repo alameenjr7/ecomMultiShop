@@ -36,8 +36,8 @@
 
         <!-- Quick View -->
         <div class="product_quick_view">
-            <a href="javascript:void(0);" data-target="#quickview{{$product->id}}" data-toggle="modal"><i class="icofont-eye-alt"></i>
-                {{__('messages.quickView')}}</a>
+            {{-- <a href="javascript:void(0);" data-target="#quickview{{$product->id}}" data-toggle="modal"><i class="icofont-eye-alt"></i>
+                {{__('messages.quickView')}}</a> --}}
                 {{-- data-target="#quickview{{$product->id}}"  --}}
         </div>
 
@@ -49,6 +49,7 @@
         @else
             <h6 class="product-price">{{Helper::currency_converter($product->price)}}</h6>
         @endif
+        {{-- var product_id=$(this).data('product-id'); --}}
     </div>
     <div class="container">
         <!-- Quick View Modal Area -->

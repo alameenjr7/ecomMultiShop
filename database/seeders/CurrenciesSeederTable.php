@@ -16,24 +16,26 @@ class CurrenciesSeederTable extends Seeder
     {
         DB::table('currencies')->insert(
             [
-
+                [
+                    'name'=>'Sénégal',
+                    'symbol'=>'F',
+                    'exchange_rate'=>582.29,
+                    'code'=>'CFA',
+                    'status'=>'active',
+                ],
                 [
                     'name'=>'USA Dollar',
                     'symbol'=>'$',
                     'exchange_rate'=>1.00,
                     'code'=>'USD',
-                ],
-                [
-                    'name'=>'Sénégal',
-                    'symbol'=>'FCFA',
-                    'exchange_rate'=>582.29,
-                    'code'=>'XOF',
+                    'status'=>'inactive',
                 ],
                 [
                     'name'=>'Europe',
                     'symbol'=>'€',
                     'exchange_rate'=>0.89,
                     'code'=>'Euro',
+                    'status'=>'inactive',
                 ]
             ]
         );

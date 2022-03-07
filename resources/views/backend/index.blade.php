@@ -46,7 +46,7 @@
                         <span>Total products</span>
                     </div>
                     <div class="progress progress-xs progress-transparent custom-color-yellow m-b-0">
-                        <div class="progress-bar" data-transitiongoal="{{$total_productMonth/$total_product*100}}"></div>
+                        {{-- <div class="progress-bar" data-transitiongoal="{{$total_productMonth/$total_product*100}}"></div> --}}
                     </div>
                 </div>
             </div>
@@ -57,7 +57,7 @@
                         <span>New Customers (last month)</span>
                     </div>
                     <div class="progress progress-xs progress-transparent custom-color-purple m-b-0">
-                        <div class="progress-bar" data-transitiongoal="{{$lastCustomer/$totalCustomer*100}}"></div>
+                        {{-- <div class="progress-bar" data-transitiongoal="{{$lastCustomer/$totalCustomer*100}}"></div> --}}
                     </div>
                 </div>
             </div>

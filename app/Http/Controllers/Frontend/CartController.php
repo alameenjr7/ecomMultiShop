@@ -24,6 +24,7 @@ class CartController extends Controller
         $product=Product::getProductByCart($product_id);
         $price=$product[0]['offer_price'];
 
+
         $cart_array=[];
 
         foreach(Cart::instance('shopping')->content() as $item){

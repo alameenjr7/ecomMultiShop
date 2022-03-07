@@ -29,7 +29,7 @@
                             </div>
 
                             <!-- Currency Dropdown -->
-                            <div class="currency-dropdown">
+                            {{-- <div class="currency-dropdown">
                                 <div class="dropdown">
                                     @php
                                         Helper::currency_load();
@@ -50,7 +50,7 @@
                                         @endforeach
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
@@ -142,10 +142,10 @@
                                             <li>
                                                 <div class="cart-item-desc">
                                                     <a href="{{route('user.dashboard')}}" class="image">
-                                                        <img src="{{$item->model->photo}}" class="cart-thumb" alt="{{$item->model->photo}}">
+                                                        {{-- <img src="{{$item->model->photo}}" class="cart-thumb" alt="{{$item->model->photo}}"> --}}
                                                     </a>
                                                     <div>
-                                                        <a href="{{route('product.detail',$item->model->slug)}}">{{$item->name}}</a>
+                                                        {{-- <a href="{{route('product.detail',$item->model->slug)}}">{{$item->name}}</a> --}}
                                                         <p>{{$item->qty}} x - <span class="price">{{Helper::currency_converter($item->price)}}</span></p>
                                                     </div>
                                                 </div>
