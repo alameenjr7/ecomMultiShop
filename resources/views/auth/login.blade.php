@@ -26,7 +26,7 @@
 			<div class="vertical-align-middle auth-main">
 				<div class="auth-box">
                     <div class="top">
-                        <img src="{{asset(get_setting('logo'))}}" alt="Kaay-Deals">
+                        <img src="{{asset(get_setting('logo'))}}" alt="Sen-Global-Market">
                     </div>
 					<div class="card">
                         <div class="header">

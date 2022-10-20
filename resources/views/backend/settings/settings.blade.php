@@ -77,7 +77,7 @@
                                         </div>
                                         <div id="holder" style="margin-top:15px; max-height:100px;">
                                             @if (get_setting('logo'))
-                                                <img src="{{asset($setting->logo)}}" alt="logo" style="border: 1px solid #ddd; padding: 4px 8px; ">
+                                                <img src="{{asset($setting->logo)}}" alt="logo" style="max-width:100px; border: 1px solid #ddd; padding: 4px 8px; ">
                                             @endif
                                         </div>
                                     </div>
@@ -97,7 +97,7 @@
                                         </div>
                                         <div id="holder1" style="margin-top:15px; max-height:100px;">
                                             @if (get_setting('favicon'))
-                                                <img src="{{asset($setting->favicon)}}" alt="favicon" style="border: 1px solid #ddd; padding: 4px 8px; ">
+                                                <img src="{{asset($setting->favicon)}}" alt="favicon" style="max-width:100px; border: 1px solid #ddd; padding: 4px 8px; ">
                                             @endif
                                         </div>
                                     </div>
@@ -230,7 +230,7 @@
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-success">Update</button>
-                            <button type="button" onclick="window.history.back();  class="btn btn-outline-secondary">Cancel</button>
+                            <button type="button" onclick="window.history.back();"  class="btn btn-outline-secondary">Cancel</button>
 
                         </form>
                     </div>

@@ -9,7 +9,7 @@
     <!-- Page Loader -->
 <div class="page-loader-wrapper">
     <div class="loader">
-        <div class="m-t-30"><img src="{{asset(get_setting('logo'))}}" width="48" height="48" alt="Kaay-Deals"></div>
+        <div class="m-t-30"><img src="{{asset(get_setting('logo'))}}" width="48" height="48" alt="Sen-Global-Market"></div>
         <p>Please wait...</p>
     </div>
 </div>

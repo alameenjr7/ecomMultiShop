@@ -42,19 +42,19 @@
                                                 <div class="row">
                                                     <div class="col">
                                                         <a target="_blank" href="https://lobianijs.com">
-                                                            <img src="{{asset('frontend/assets/img/core-img/logo.png')}}"
+                                                            <img src="{{asset('backend/assets/images/logo/logo.png')}}"
                                                                 data-holder-rendered="true" />
                                                         </a>
                                                     </div>
                                                     <div class="col company-details">
                                                         <h2 class="name">
-                                                            <a target="_blank" href="https://kaay-deals.com">
-                                                                KAAY-DEALS
+                                                            <a target="_blank" href="https://senglobalmarket.com">
+                                                                Sen-Global-Market
                                                             </a>
                                                         </h2>
-                                                        <div>Liberte 6 Ext., Dakar, SN</div>
-                                                        <div>(+221) 772050626</div>
-                                                        <div>kaaydeals@gmail.com</div>
+                                                        <div>Ouest Foire, Dakar, SN</div>
+                                                        <div>(+221) 776857750</div>
+                                                        <div>sakhir50@gmail.com</div>
                                                     </div>
                                                 </div>
                                             </header>

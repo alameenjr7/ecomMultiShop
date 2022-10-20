@@ -5,8 +5,9 @@
         </div>
 
         <div class="navbar-brand">
-            <a href="{{route('admin')}}"><img src="{{asset(get_setting('logo'))}}" alt="SGM Logo"
-                    class="img-responsive logo"></a>
+            <a href="{{route('admin')}}">
+                <img src="{{asset(get_setting('logo'))}}" alt="SGM Logo" class="img-responsive logo" style="max-width: 60px;s">
+            </a>
         </div>
 
         <div class="navbar-right">

@@ -5,7 +5,7 @@
                 <div class="row h-100 align-items-center">
                     <div class="col-6">
                         <div class="welcome-note">
-                            <span class="popover--text" data-toggle="popover" data-content="Welcome to kaayDeals ecommerce template."><i class="icofont-info-square"></i></span>
+                            <span class="popover--text" data-toggle="popover" data-content="Welcome to Sen-Global-Market ecommerce template."><i class="icofont-info-square"></i></span>
                             <span class="text">{{__('messages.welcome')}} {{get_setting('meta_keywords')}}</span>
                         </div>
                     </div>
@@ -69,7 +69,9 @@
                         </div>
 
                         <!-- Nav Brand -->
-                        <a href="{{route('home')}}" class="nav-brand"><img src="{{asset(get_setting('logo'))}}" alt="logo"></a>
+                        <a href="{{route('home')}}" class="nav-brand">
+                            <img src="{{asset(get_setting('logo'))}}" alt="logo" style="max-height:100px">
+                        </a>
 
                         <!-- Menu -->
                         <div class="classy-menu">
