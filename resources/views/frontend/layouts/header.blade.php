@@ -89,8 +89,9 @@
                                     <li>
                                         <a href="{{route('shop')}}">{{__('messages.shop')}}</a>
                                     </li>
-                                    <li><a href="{{route('blog.detail')}}">{{__('messages.blog')}}</a>
-                                    </li>
+                                    {{-- <li>
+                                        <a href="{{route('blog.detail')}}">{{__('messages.blog')}}</a>
+                                    </li> --}}
                                     <li><a href="{{route('contact.us')}}">{{__('messages.contact')}}</a></li>
                                 </ul>
                             </div>
