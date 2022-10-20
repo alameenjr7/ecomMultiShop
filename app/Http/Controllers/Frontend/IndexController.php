@@ -490,9 +490,11 @@ class IndexController extends Controller
 
     public function userAccount()
     {
-        $user=Auth::user();
+        // $user=Auth::user();
         // dd($user);
-        return view('frontend.user.account',compact('user'));
+        Session::put('url.intended',URL::previous());
+        return view('frontend.auth.auth');
+        // return view('frontend.user.account',compact('user'));
     }
 
     public function userAddress()

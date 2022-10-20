@@ -6,7 +6,7 @@
                     <div class="col-6">
                         <div class="welcome-note">
                             <span class="popover--text" data-toggle="popover" data-content="Welcome to Sen-Global-Market ecommerce template."><i class="icofont-info-square"></i></span>
-                            <span class="text">{{__('messages.welcome')}} {{get_setting('meta_keywords')}}</span>
+                            <span class="text">{{__('messages.welcome')}} {{get_setting('meta_keywords')}} {{__('messages.text_home')}}</span>
                         </div>
                     </div>
                     <div class="col-6">

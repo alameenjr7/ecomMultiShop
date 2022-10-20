@@ -18,9 +18,9 @@ class SettingsSeederTable extends Seeder
         DB::table('settings')->insert([
             'title'=>'Sen-Global-Market Ecom',
             'meta_description'=>'Sen-Global-Market online Ecom',
-            'meta_keywords'=>'Sen-Global-Market, Online Ecommerce, Ecommerce website',
-            'logo'=>'',
-            'favicon'=>'',
+            'meta_keywords'=>'Sen-Global-Market, ',
+            'logo'=>'backend/assets/images/logo/logo.png',
+            'favicon'=>'backend/assets/images/logo/logo.png',
             'email'=>'sakhir50@gmail.com',
             'phone'=>'221776857750',
             'fax'=>'',

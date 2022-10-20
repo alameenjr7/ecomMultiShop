@@ -35,9 +35,9 @@
                         <ul class="footer_widget_menu">
                             <li><a href="{{route('user.account')}}"><i class="icofont-rounded-right"></i> {{__('messages.account')}}</a></li>
                             <li><a href="{{route('user.order')}}"><i class="icofont-rounded-right"></i> {{__('messages.f_shop')}}</a></li>
-                            <li><a href="{{route('blog.detail')}}"><i class="icofont-rounded-right"></i> {{__('messages.f_blog')}}</a></li>
                             <li><a href="{{route('contact.us')}}"><i class="icofont-rounded-right"></i> {{__('messages.f_contact')}}</a></li>
                             <li><a href="{{route('home')}}"><i class="icofont-rounded-right"></i> {{__('messages.f_home')}}</a></li>
+                            <li><a href="{{route('seller.login')}}"><i class="icofont-rounded-right"></i> {{__('messages.logSeller')}}</a></li>
                         </ul>
                     </div>
                 </div>

@@ -18,7 +18,7 @@ class AboutUsSeederTable extends Seeder
             [
                 'heading'=>'Sénégal Global Market est un plateform multivendeur en ligne.',
                 'content'=>'Sen-Global-Market vous permet de vendre vos product en toute sécurité1',
-                'image'=>'',
+                'image'=>'backend/assets/images/logo/logo.png',
                 'exp_years'=>0,
                 'happy_customer'=>0,
                 'team_advisor'=>0,

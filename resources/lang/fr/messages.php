@@ -195,4 +195,6 @@ return [
     'freePShipping' => 'Politique livraison gratuite',
     'acc' => 'Compte',
     'yourMailAddress' => 'Votre adresse e-mail',
+    'text_home' => 'Commerce électronique en ligne',
+    'logSeller' => 'Vendeur',
 ];

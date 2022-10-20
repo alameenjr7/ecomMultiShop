@@ -196,6 +196,8 @@ return [
     'freePShipping' => 'Free Shipping Policy',
     'acc' => 'Account',
     'yourMailAddress' => 'Your E-mail Address',
+    'text_home' => 'Online Ecommerce, Ecommerce website',
+    'logSeller' => 'Seller',
 ];
 
 
