@@ -28,8 +28,6 @@ return [
 
     'allow_private_folder'     => true,
 
-    'allow_multi_user' => true,
-
     // Flexible way to customize client folders accessibility
     // If you want to customize client folders, publish tag="lfm_handler"
     // Then you can rewrite userField function in App\Handler\ConfigHandler class
@@ -52,6 +50,9 @@ return [
             'folder_name'  => 'files',
             'startup_view' => 'list',
             'max_size'     => 50000, // size in KB
+            'thumb' => true,
+            'thumb_width' => 80,
+            'thumb_height' => 80,
             'valid_mime'   => [
                 'image/jpeg',
                 'image/pjpeg',
@@ -65,6 +66,9 @@ return [
             'folder_name'  => 'photos',
             'startup_view' => 'grid',
             'max_size'     => 50000, // size in KB
+            'thumb' => true,
+            'thumb_width' => 80,
+            'thumb_height' => 80,
             'valid_mime'   => [
                 'image/jpeg',
                 'image/pjpeg',
@@ -108,6 +112,9 @@ return [
     // setting it to true cause old file replace with new one
     // setting it to false show `error-file-exist` error and stop upload
     'over_write_on_duplicate'  => false,
+
+    // mimetypes of executables to prevent from uploading
+    'disallowed_mimetypes' => ['text/x-php', 'text/html', 'text/plain'],
 
     // Item Columns
     'item_columns' => ['name', 'url', 'time', 'icon', 'is_file', 'is_image', 'thumb_url'],

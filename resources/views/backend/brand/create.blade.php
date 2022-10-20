@@ -74,8 +74,10 @@
                                 </div>
                             </div>
 
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                            <button type="button" onclick="window.history.back();  class="btn btn-outline-secondary">Cancel</button>
+                            <div class="py-3">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="button" onclick="window.history.back();"  class="btn btn-outline-secondary">Cancel</button>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -87,6 +89,23 @@
 @endsection
 
 @section('scripts')
+<link rel="stylesheet" href="{{ asset('backend/assets/css/dropify.min.css') }}">
+<script src="{{ asset('backend/assets/js/dropify.min.js') }} "></script>
+<script>
+    $(function () {
+        $('.dropify').dropify({
+            messages: {
+                'default': 'Faites glisser et déposez une image ici ou cliquez ici',
+                'replace': 'Glisser et déposer ou cliquer pour remplacer',
+                'remove':  'Retirer',
+                'error':  "Ooops, quelque chose de mal s'est passé."
+            },
+            tpl: {
+                message: '<div class="dropify-message"> <p style="font-size: 14px">Faites glisser et déposez une image ici ou cliquez ici</p></div>',
+            }
+        });
+    })
+</script>
 <script src="/vendor/laravel-filemanager/js/stand-alone-button.js"></script>
 <script>
     $('#lfm').filemanager('image');

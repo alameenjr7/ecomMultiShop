@@ -25,6 +25,10 @@ Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web','auth:ad
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });
 
+// Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+//     \UniSharp\LaravelFilemanager\Lfm::routes();
+// });
+
 Route::post('currency_load',[\App\Http\Controllers\CurrencyController::class, 'currencyLoad'])->name('currency.load');
 
 Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'App\Http\Controllers\LanguageController@switchLang']);

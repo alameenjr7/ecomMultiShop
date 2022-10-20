@@ -67,7 +67,7 @@
                                             <th>{{$loop->iteration}}</th>
                                             <td>{{$item->title}}</td>
                                             <td>{{$item->slug}}</td>
-                                            <td style="text-align: center"><img src="{{$item->photo ==null ? Helper::backDefaultImage() : asset($item->photo)}}" alt="brand img"
+                                            <td style="text-align: center"><img alt="{{$item->title}}" src="{{$item->photo ? asset(\Storage::url($item->photo)) : asset(Helper::backDefaultImage())}}" alt="brand img"
                                                 style="height: 60px; width: 60px;">
                                             </td>
 

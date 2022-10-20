@@ -26,7 +26,7 @@
 			<div class="vertical-align-middle auth-main">
 				<div class="auth-box">
                     <div class="top">
-                        <img src="{{asset('backend/assets/images/logo-white.svg')}}" alt="Lucid">
+                        <img src="{{asset(get_setting('logo'))}}" alt="Kaay-Deals">
                     </div>
 					<div class="card">
                         <div class="header">
@@ -54,16 +54,16 @@
                                     @enderror
                                 </div>
                                 <div class="clearfix form-group">
-                                    <label class="fancy-checkbox element-left">
+                                    {{-- <label class="fancy-checkbox element-left">
                                         <input type="checkbox">
                                         <span>Remember me</span>
-                                    </label>
+                                    </label> --}}
                                 </div>
                                 <button type="submit" class="btn btn-primary btn-lg btn-block">LOGIN</button>
-                                <div class="bottom">
+                                {{-- <div class="bottom">
                                     <span class="helper-text m-b-10"><i class="fa fa-lock"></i> <a href="page-forgot-password.html">Forgot password?</a></span>
                                     <span>Don't have an account? <a href="page-register.html">Register</a></span>
-                                </div>
+                                </div> --}}
                             </form>
                         </div>
                     </div>

@@ -103,7 +103,7 @@
                             <a href="javascript:void(0);" class="has-arrow"><i class="icon-star"></i> <span>Review Management</span></a>
                             <ul>
                                 <li><a href="{{route('review.index')}}">All Reviews</a></li>
-                                <li><a href="{{route('review.create')}}">Add Review</a></li>
+                                {{-- <li><a href="{{route('review.create')}}">Add Review</a></li> --}}
                             </ul>
                         </li>
                         <li class="desactive">
@@ -120,34 +120,34 @@
                                 {{-- <li><a href="{{route('user.create')}}">Add User</a></li> --}}
                             </ul>
                         </li>
-                        <li class="desactive">
+                        {{-- <li class="desactive">
                             <a href="javascript:void(0);" class="has-arrow"><i class="icon-tag"></i> <span>Post Tag</span></a>
                             <ul>
-                                {{-- <li><a href="{{route('post-tag.index')}}">All Post Tags</a></li>
-                                <li><a href="{{route('post-tag.create')}}">Add Post Tag</a></li> --}}
+                                <li><a href="{{route('post-tag.index')}}">All Post Tags</a></li>
+                                <li><a href="{{route('post-tag.create')}}">Add Post Tag</a></li>
                             </ul>
-                        </li>
-                        <li class="desactive">
+                        </li> --}}
+                        {{-- <li class="desactive">
                             <a href="javascript:void(0);" class="has-arrow"><i class="icon-paper-clip"></i> <span>Post Management</span></a>
                             <ul>
-                                {{-- <li><a href="{{route('post.index')}}">All Post Managements</a></li>
-                                <li><a href="{{route('post.create')}}">Add Post Management</a></li> --}}
+                                <li><a href="{{route('post.index')}}">All Post Managements</a></li>
+                                <li><a href="{{route('post.create')}}">Add Post Management</a></li>
                             </ul>
-                        </li>
-                        <li class="desactive">
+                        </li> --}}
+                        {{-- <li class="desactive">
                             <a href="javascript:void(0);" class="has-arrow"><i class="icon-vector"></i> <span>Post Category</span></a>
                             <ul>
-                                {{-- <li><a href="{{route('post-category.index')}}">All Post Categories</a></li>
-                                <li><a href="{{route('post-category.create')}}">Add Post Category</a></li> --}}
+                                <li><a href="{{route('post-category.index')}}">All Post Categories</a></li>
+                                <li><a href="{{route('post-category.create')}}">Add Post Category</a></li>
                             </ul>
-                        </li>
-                        <li class="desactive">
+                        </li> --}}
+                        {{-- <li class="desactive">
                             <a href="javascript:void(0);" class="has-arrow"><i class="icon-bubbles"></i> <span>Comment Management</span></a>
                             <ul>
-                                {{-- <li><a href="{{route('comment.index')}}">All Comments</a></li>
-                                <li><a href="{{route('comment.create')}}">Add Comment</a></li> --}}
+                                <li><a href="{{route('comment.index')}}">All Comments</a></li>
+                                <li><a href="{{route('comment.create')}}">Add Comment</a></li>
                             </ul>
-                        </li>
+                        </li> --}}
                         <li class="desactive"><a href="{{route('about.index')}}"><i class="icon-user-following"></i> <span>About Us</span></a>
                     </ul>
                 </nav>

@@ -684,7 +684,7 @@
     <!-- Best Rated/Onsale/Top Sale Product Area -->
 
     <!-- Offer Area -->
-    <section class="offer_area">
+    {{-- <section class="offer_area">
         <div class="container">
             <div class="row">
                 <!-- Beach Offer -->
@@ -758,7 +758,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     <!-- Offer Area End -->
 
     <!-- Popular Brands Area -->
