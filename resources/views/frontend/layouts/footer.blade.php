@@ -9,19 +9,41 @@
                             <h6>{{__('messages.contact_us')}}</h6>
                         </div>
                         <ul class="footer_content">
-                            <li><span>{{__('messages.address')}}:</span> {{App\Models\Setting::value('address')}}</li>
-                            <li><span>{{__('messages.phone')}}: </span>  +{{App\Models\Setting::value('phone')}}</li>
-                            <li><span>{{__('messages.fax')}}:</span> {{App\Models\Setting::value('fax')}}</li>
-                            <li><span>{{__('messages.email')}}:</span> {{App\Models\Setting::value('email')}}</li>
+                            @if (App\Models\Setting::value('address'))
+                                <li><span>{{__('messages.address')}}:</span> {{App\Models\Setting::value('address')}}</li>
+                            @endif
+                            @if (App\Models\Setting::value('phone'))
+                                <li><span>{{__('messages.phone')}}: </span>  +{{App\Models\Setting::value('phone')}}</li>
+                            @endif
+                            @if (App\Models\Setting::value('fax'))
+                                <li><span>{{__('messages.fax')}}:</span> {{App\Models\Setting::value('fax')}}</li>
+                            @endif
+                            @if (App\Models\Setting::value('email'))
+                                <li><span>{{__('messages.email')}}:</span> {{App\Models\Setting::value('email')}}</li>
+                            @endif
                         </ul>
                         <div class="footer_social_area mt-15">
-                            <a href="{{App\Models\Setting::value('facebook_url')}}"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                            <a href="{{App\Models\Setting::value('twitter_url')}}"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                            <a href="{{App\Models\Setting::value('linkedin_url')}}"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                            <a href="{{App\Models\Setting::value('pinterest_url')}}"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
-                            <a href="{{App\Models\Setting::value('instagram_url')}}"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                            <a href="{{App\Models\Setting::value('snapchat_url')}}"><i class="fa fa-snapchat" aria-hidden="true"></i></a>
-                            <a href="{{App\Models\Setting::value('youtube_url')}}"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+                            @if (App\Models\Setting::value('facebook_url'))
+                                <a href="{{App\Models\Setting::value('facebook_url')}}"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                            @endif
+                            @if (App\Models\Setting::value('twitter_url'))
+                                <a href="{{App\Models\Setting::value('twitter_url')}}"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                            @endif
+                            @if (App\Models\Setting::value('linkedin_url'))
+                                <a href="{{App\Models\Setting::value('linkedin_url')}}"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                            @endif
+                            @if (App\Models\Setting::value('pinterest_url'))
+                                <a href="{{App\Models\Setting::value('pinterest_url')}}"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+                            @endif
+                            @if (App\Models\Setting::value('instagram_url'))
+                                <a href="{{App\Models\Setting::value('instagram_url')}}"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                            @endif
+                            @if (App\Models\Setting::value('snapchat_url'))
+                                <a href="{{App\Models\Setting::value('snapchat_url')}}"><i class="fa fa-snapchat" aria-hidden="true"></i></a>
+                            @endif
+                            @if (App\Models\Setting::value('youtube_url'))
+                                <a href="{{App\Models\Setting::value('youtube_url')}}"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -34,7 +56,7 @@
                         </div>
                         <ul class="footer_widget_menu">
                             <li><a href="{{route('user.account')}}"><i class="icofont-rounded-right"></i> {{__('messages.account')}}</a></li>
-                            <li><a href="{{route('user.order')}}"><i class="icofont-rounded-right"></i> {{__('messages.f_shop')}}</a></li>
+                            <li><a href="{{route('shop')}}"><i class="icofont-rounded-right"></i> {{__('messages.f_shop')}}</a></li>
                             <li><a href="{{route('contact.us')}}"><i class="icofont-rounded-right"></i> {{__('messages.f_contact')}}</a></li>
                             <li><a href="{{route('home')}}"><i class="icofont-rounded-right"></i> {{__('messages.f_home')}}</a></li>
                             <li><a href="{{route('seller.login')}}"><i class="icofont-rounded-right"></i> {{__('messages.logSeller')}}</a></li>
@@ -92,11 +114,17 @@
                     </div>
                     <div class="single_footer_area mb-100">
                         <div class="mb-4 footer_heading">
-                            <h6>{{__('messages.DOMA')}}</h6>
+                            @if (App\Models\Setting::value('playStore_url') || App\Models\Setting::value('playStore_url'))
+                                <h6>{{__('messages.DOMA')}}</h6>
+                            @endif
                         </div>
                         <div class="apps_download">
-                            <a href="{{App\Models\Setting::value('playStore_url')}}"><img src="{{asset('frontend/assets/img/core-img/play-store.png')}}" alt="Play Store"></a>
-                            <a href="{{App\Models\Setting::value('appStore_url')}}"><img src="{{asset('frontend/assets/img/core-img/app-store.png')}}" alt="Apple Store"></a>
+                            @if (App\Models\Setting::value('playStore_url'))
+                                <a href="{{App\Models\Setting::value('playStore_url')}}"><img src="{{asset('frontend/assets/img/core-img/play-store.png')}}" alt="Play Store"></a>
+                            @endif
+                            @if (App\Models\Setting::value('playStore_url'))
+                                <a href="{{App\Models\Setting::value('appStore_url')}}"><img src="{{asset('frontend/assets/img/core-img/app-store.png')}}" alt="Apple Store"></a>
+                            @endif
                         </div>
                     </div>
                 </div>
